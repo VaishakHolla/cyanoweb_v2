@@ -1,0 +1,18 @@
+.align-left {
+    text-align: left;
+    margin: 20px;
+  }
+
+.center-header .p-dialog-header .p-dialog-title {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.dialog-margin{
+    margin: 20px;
+}
+
+.align-form-inputs{
+    text-align:left;
+    
+}
