@@ -2,7 +2,7 @@
 import React from 'react'; 
 import { InputText } from 'primereact/inputtext';
 
-export default function Test() {
+export default function PresetsDemo() {
     return (
         <div className="card">
             <div className="flex flex-wrap gap-3 mb-4">
@@ -18,27 +18,6 @@ export default function Test() {
                     </label>
                     <InputText id="number" keyfilter="num" className="w-full" />
                 </div>
-                <div className="flex-auto">
-                    <label htmlFor="money" className="font-bold block mb-2">
-                        Money
-                    </label>
-                    <InputText id="money" keyfilter="money" className="w-full" />
-                </div>
-
-                <div className="flex-auto">
-                    <label htmlFor="money" className="font-bold block mb-2">
-                        Money
-                    </label>
-                    <InputText id="money" keyfilter="money" className="w-full" />
-                </div>
-
-                <div className="flex-auto">
-                    <label htmlFor="money" className="font-bold block mb-2">
-                        Money
-                    </label>
-                    <InputText id="money" keyfilter="money" className="w-full" />
-                </div>
-
                 <div className="flex-auto">
                     <label htmlFor="money" className="font-bold block mb-2">
                         Money
