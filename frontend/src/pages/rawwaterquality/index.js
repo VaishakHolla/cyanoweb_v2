@@ -31,7 +31,6 @@ const RawWaterQuality = () => {
     "mcyE Planktothrix (Log gene copies/L)",
     "Total Microcytins (ppb)",
   ];
-  console.log(paramterLabels)
   const [turbidity,setTurbidity]=useState([])
   const [ph,setPh]=useState([])
   const [dissolvedOxygen,setDissolvedOxygen]=useState([])
@@ -73,7 +72,6 @@ const RawWaterQuality = () => {
         date: [],
       }
     if (selected !== null) {
-      
         setTurbidity([])
         setDissolvedOxygen([])
         setTemperature([])
@@ -85,7 +83,6 @@ const RawWaterQuality = () => {
       let testData=  apiData.filter((obj) => compareLocation(obj));
 
     testData.map((obj) => {
-        // console.log(templateData.turbidity,"templateData.turbidity")
         defaultData.turbidity.push(obj.turbidity);
         defaultData.ph.push(obj.ph);
         defaultData.dissolvedoxygen.push(obj.dissolvedoxygen);
@@ -106,37 +103,22 @@ const RawWaterQuality = () => {
       setMycePlanktothrix(defaultData.mcyeplanktothrix)
       setTotalMicrocystins(defaultData.totalmicrocystins)
       setTotalMicrocystis(defaultData.totalmicrocytis)
-      console.log(temperature)
     }
-
-    
-    
-    // apiData.map((obj) => {
-    //   // console.log(templateData.turbidity,"templateData.turbidity")
-    //   templateData.turbidity.push(obj.turbidity);
-    //   templateData.ph.push(obj.ph);
-    //   templateData.dissolvedoxygen.push(obj.dissolvedoxygen);
-    //   templateData.mcyemicrocytis.push(obj.mcyemicrocytis);
-    //   templateData.mcyeplanktothrix.push(obj.mcyeplanktothrix);
-    //   templateData.temperature.push(obj.temperature);
-    //   templateData.totalmicrocystins.push(obj.totalmicrocystins);
-    //   templateData.totalmicrocytis.push(obj.totalmicrocytis);
-    //   templateData.date.push(new Date(obj.date).toLocaleDateString());
-    // });
-
-
-    console.log(temperature, "templateData",date);
   };
 
+//   useEffect(() => {
+//     return () => {
+//         console.log("here useeffect",selected)
+//       formatData(apiData);
+//     }
+//   }, [selected])
   useEffect(() => {
-    return () => {
-      formatData(apiData);
-    }
-  }, [selected])
-  
+    formatData(apiData)
+  }, [selected]);
 
   const handleClick = (obj) => {
     setSelected(obj);
+    formatData(apiData)
   };
   const chartData = {
     x_label: "x_label",

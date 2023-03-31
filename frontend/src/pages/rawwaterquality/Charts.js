@@ -21,7 +21,7 @@ export default function Charts(props) {
     
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
-    console.log(props)
+    
     useEffect(() => {
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');

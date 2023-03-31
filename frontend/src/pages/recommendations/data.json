@@ -1,0 +1,77 @@
+[{
+  "coagulation": {
+    "waterTemperature": 19,
+    "waterpH": 7,
+    "chemicalType": "Aluminum Sulfate",
+    "chemicalDosage": 10,
+    "chemicalSpeed": 100,
+    "reactionTime": "6 Sec",
+    "turbidityRemoval": 13.3,
+    "totalMicrocystisRemoval": 10.0,
+    "mcyEMicrocystisRemoval": 10.0,
+    "mcyEPlanktothrixRemoval": 10.0,
+    "totalMiocrocystinsRemoval": 10.0
+  },
+  "coagulation_flocculation": {
+    "waterTemperature": 19,
+    "waterpH": 7,
+    "chemicalType": "PolyDADMAC",
+    "chemicalDosage": 10,
+    "chemicalSpeed": 25,
+    "reactionTime": "12 Min",
+    "turbidityRemoval": 66.7,
+    "totalMicrocystisRemoval": 50.0,
+    "mcyEMicrocystisRemoval": 50.0,
+    "mcyEPlanktothrixRemoval": 50.0,
+    "totalMiocrocystinsRemoval": 50.0
+  },
+  "coagulation_flocculation_sedimentaion": {
+    "waterTemperature": 19,
+    "waterpH": 7,
+    "reactionTime": "30 Min",
+    "turbidityRemoval": 90.0,
+    "totalMicrocystisRemoval": 90.0,
+    "mcyEMicrocystisRemoval": 90.0,
+    "mcyEPlanktothrixRemoval": 90.0,
+    "totalMiocrocystinsRemoval": 90.0
+  }
+},
+{
+    "coagulation": {
+      "waterTemperature": 19,
+      "waterpH": 7,
+      "chemicalType": "Aluminum Sulfate",
+      "chemicalDosage": 5,
+      "chemicalSpeed": 100,
+      "reactionTime": "6 Sec",
+      "turbidityRemoval": 6.7,
+      "totalMicrocystisRemoval": 5.0,
+      "mcyEMicrocystisRemoval": 5.0,
+      "mcyEPlanktothrixRemoval": 5.0,
+      "totalMiocrocystinsRemoval": 10.0
+    },
+    "coagulation_flocculation": {
+      "waterTemperature": 19,
+      "waterpH": 7,
+      "chemicalType": "PolyDADMAC",
+      "chemicalDosage": 5,
+      "chemicalSpeed": 25,
+      "reactionTime": "12 Min",
+      "turbidityRemoval": 33.3,
+      "totalMicrocystisRemoval": 25.0,
+      "mcyEMicrocystisRemoval": 25.0,
+      "mcyEPlanktothrixRemoval": 25.0,
+      "totalMiocrocystinsRemoval": 22.0
+    },
+    "coagulation_flocculation_sedimentaion": {
+      "waterTemperature": 19,
+      "waterpH": 7,
+      "reactionTime": "30 Min",
+      "turbidityRemoval": 46.7,
+      "totalMicrocystisRemoval": 35.0,
+      "mcyEMicrocystisRemoval": 50.0,
+      "mcyEPlanktothrixRemoval": 50.0,
+      "totalMiocrocystinsRemoval": 50.0
+    }
+  }
+]

@@ -8,7 +8,7 @@ import { Controller, useForm } from "react-hook-form";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
-import "./Coagulation.css"
+import "./Coagulation.css";
 
 const Coagulation = () => {
   // const [visible, setVisible] = useState(false);
@@ -34,7 +34,7 @@ const Coagulation = () => {
     otherChemicalType: "", //inputText
     manufacturer: "", //inputText
     chemicalDosage: "", //inputNumber
-    chemicalSpeed: "", //inputNumber
+    mixingSpeed: "", //inputNumber
     reactionTime: "", //
     reactionUnit: "", //dropdown [Min,Sec]
 
@@ -98,55 +98,63 @@ const Coagulation = () => {
   ]);
 
   useEffect(() => {
-    console.log('useeffect',watchTurbidity)
-    console.log(watchTurbidity[0]!='' & watchTurbidity[1]!='' &
-      getValues("turbidityRemoval") != watchTurbidity[0] - watchTurbidity[1])
+    console.log("useeffect", watchTurbidity);
+    console.log(
+      (watchTurbidity[0] != "") &
+        (watchTurbidity[1] != "") &
+        (getValues("turbidityRemoval") != watchTurbidity[1] - watchTurbidity[0])
+    );
     const interval = setTimeout(() => {
       if (
-        watchTurbidity[0]!='' & watchTurbidity[1]!='' &
-      getValues("turbidityRemoval") != watchTurbidity[0] - watchTurbidity[1]
+        (watchTurbidity[0] != "") &
+        (watchTurbidity[1] != "") &
+        (getValues("turbidityRemoval") != watchTurbidity[1] - watchTurbidity[0])
       ) {
-        console.log('inside if')
-        setValue("turbidityRemoval", watchTurbidity[0] - watchTurbidity[1]);
+        console.log("inside if");
+        setValue("turbidityRemoval", watchTurbidity[1] - watchTurbidity[0]);
       }
       if (
-        watchTotalMicrocystis[0]!='' & watchTotalMicrocystis[1]!='' &
-        getValues("totalMicrocystisRemoval") !=
-          watchTotalMicrocystis[0] - watchTotalMicrocystis[1]
+        (watchTotalMicrocystis[0] != "") &
+        (watchTotalMicrocystis[1] != "") &
+        (getValues("totalMicrocystisRemoval") !=
+          watchTotalMicrocystis[1] - watchTotalMicrocystis[0])
       ) {
         setValue(
           "totalMicrocystisRemoval",
-          watchTotalMicrocystis[0] - watchTotalMicrocystis[1]
+          watchTotalMicrocystis[1] - watchTotalMicrocystis[0]
         );
       }
       if (
-        watchmcyeMicrocystis[0]!='' & watchmcyeMicrocystis[1]!='' &
-        getValues("mcyeMicrocystisRemoval") !=
-          watchmcyeMicrocystis[0] - watchmcyeMicrocystis[1]
+        (watchmcyeMicrocystis[0] != "") &
+        (watchmcyeMicrocystis[1] != "") &
+        (getValues("mcyeMicrocystisRemoval") !=
+          watchmcyeMicrocystis[1] - watchmcyeMicrocystis[0])
       ) {
         setValue(
           "mcyeMicrocystisRemoval",
-          watchmcyeMicrocystis[0] - watchmcyeMicrocystis[1]
+          watchmcyeMicrocystis[1] - watchmcyeMicrocystis[0]
         );
       }
       if (
-        watchmycePlanktothrix[0]!='' & watchmycePlanktothrix[1]!='' &
-        getValues("mycePlanktothrixRemoval") !=
-          watchmycePlanktothrix[0] - watchmycePlanktothrix[1]
+        (watchmycePlanktothrix[0] != "") &
+        (watchmycePlanktothrix[1] != "") &
+        (getValues("mycePlanktothrixRemoval") !=
+          watchmycePlanktothrix[1] - watchmycePlanktothrix[0])
       ) {
         setValue(
           "mycePlanktothrixRemoval",
-          watchmycePlanktothrix[0] - watchmycePlanktothrix[1]
+          watchmycePlanktothrix[1] - watchmycePlanktothrix[0]
         );
       }
       if (
-        watchtotalMicrocystins[0]!='' & watchtotalMicrocystins[1]!='' &
-        getValues("totalMicrocystinsRemoval") !=
-          watchtotalMicrocystins[0] - watchtotalMicrocystins[1]
+        (watchtotalMicrocystins[0] != "") &
+        (watchtotalMicrocystins[1] != "") &
+        (getValues("totalMicrocystinsRemoval") !=
+          watchtotalMicrocystins[1] - watchtotalMicrocystins[0])
       ) {
         setValue(
           "totalMicrocystinsRemoval",
-          watchtotalMicrocystins[0] - watchtotalMicrocystins[1]
+          watchtotalMicrocystins[1] - watchtotalMicrocystins[0]
         );
       }
     }, 1000);
@@ -204,6 +212,7 @@ const Coagulation = () => {
   const experimentalConditions = () => {
     return (
       <>
+        <div className="justify-content-center">Experimental Conditions</div>
         <div className="align-form-inputs">
           <Controller
             name="waterTemperature"
@@ -215,11 +224,8 @@ const Coagulation = () => {
                 "Enter a valid waterTemperature.",
             }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>waterTemperature</label>
-                </div>
-                <div className="col-3 ">
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -231,59 +237,26 @@ const Coagulation = () => {
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  />{" "}
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>waterTemperature</label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
         </div>
-        {/* <div className="align-form-inputs">
-            <Controller
-              name="pH"
-              control={control}
-              rules={{
-                required: "Enter a valid pH.",
-                validate: (value) =>
-                  (value >= 0 && value <= 14) || "Enter a valid pH.",
-              }}
-              render={({ field, fieldState }) => (
-                <div className="grid align-items-center" style={{margin:"10px"}}>
-                  <div className="col-3 ">
-                    <label htmlFor={field.name}>pH</label>
-                  </div>
-                  <div className="col-3 ">
-                    <InputNumber onValueChange={(e) => field.onChange(e)}
-                      id={field.name}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      min={0}
-                      max={14}
-                      inputClassName={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    />
-                  </div>
-                  <div className="col-5">{getFormErrorMessage(field.name)}</div>
-                </div>
-              )}
-            />
-          </div> */}
         <div className="align-form-inputs">
           <Controller
             name="waterpH"
             control={control}
             rules={{
-              required: "Enter a valid waterpH.",
+              required: "Enter a valid waterpH.     ",
               validate: (value) =>
                 (value >= 0 && value <= 14) || "Enter a valid waterpH.",
             }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>waterpH</label>
-                </div>
-                <div className="col-3 ">
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -295,8 +268,9 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>waterpH</label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
@@ -307,11 +281,8 @@ const Coagulation = () => {
             control={control}
             rules={{ required: "chemicalType is required." }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>chemicalType</label>
-                </div>
-                <div className="col-3">
+              <div className=" align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <Dropdown
                     value={field.value}
                     optionLabel="name"
@@ -320,14 +291,14 @@ const Coagulation = () => {
                     options={cities}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    // style={{ width: "100%" }}
+                    style={{ width: "53%" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
-                </div>
-
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>chemicalType</label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
@@ -340,27 +311,18 @@ const Coagulation = () => {
               required: "Enter a valid otherChemicalType.",
             }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>otherChemicalType</label>
-                </div>
-                <div className="col-3 ">
-                  {/* <InputText
-                      id={field.name}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      inputClassName={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    /> */}
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputText
                     id={field.name}
                     value={field.value}
                     className={classNames({ "p-invalid": fieldState.error })}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>otherChemicalType</label>
+                </span>
+
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
@@ -373,27 +335,18 @@ const Coagulation = () => {
               required: "Enter a valid manufacturer.",
             }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>manufacturer</label>
-                </div>
-                <div className="col-3 ">
-                  {/* <InputText
-                      id={field.name}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      inputClassName={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    /> */}
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputText
                     id={field.name}
                     value={field.value}
                     className={classNames({ "p-invalid": fieldState.error })}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>manufacturer</label>
+                </span>
+
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
@@ -408,11 +361,8 @@ const Coagulation = () => {
                 (value >= 0 && value <= 14) || "Enter a valid chemicalDosage.",
             }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>chemicalDosage</label>
-                </div>
-                <div className="col-3 ">
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -425,25 +375,44 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>chemicalDosage</label>
+                </span>
+
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
         </div>
         <div className="align-form-inputs">
           <Controller
-            name="chemicalSpeed"
+            name="mixingSpeed"
             control={control}
             rules={{
-              required: "Enter a valid chemicalSpeed.",
+              required: "Enter a valid mixingSpeed.",
               validate: (value) =>
-                (value >= 0 && value <= 14) || "Enter a valid chemicalSpeed.",
+                (value >= 0 && value <= 14) || "Enter a valid mixingSpeed.",
             }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>chemicalSpeed</label>
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
+                  <InputNumber
+                    onValueChange={(e) => field.onChange(e)}
+                    id={field.name}
+                    value={field.value}
+                    onBlur={field.onBlur}
+                    min={0}
+                    max={14}
+                    suffix="rpm"
+                    inputClassName={classNames({
+                      "p-invalid": fieldState.error,
+                    })}
+                  />
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>mixingSpeed</label>
+                </span>
+
+                <div>{getFormErrorMessage(field.name)}</div>
+                {/* <div className="col-3 ">
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>mixingSpeed</label>
                 </div>
                 <div className="col-3 ">
                   <InputNumber
@@ -459,7 +428,7 @@ const Coagulation = () => {
                     })}
                   />
                 </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                <div className="col-5">{getFormErrorMessage(field.name)}</div> */}
               </div>
             )}
           />
@@ -474,11 +443,8 @@ const Coagulation = () => {
                 (value >= 0 && value <= 14) || "Enter a valid reactionTime.",
             }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>reactionTime</label>
-                </div>
-                <div className="col-3 ">
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -486,27 +452,15 @@ const Coagulation = () => {
                     onBlur={field.onBlur}
                     min={0}
                     max={14}
+                    suffix="rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
-                </div>
-                {/* <div className="col-1">
-                  <Dropdown
-                      value={field.reactionUnit}
-                      optionLabel="name"
-                      placeholder="Select"
-                      name={'reactionUnit'}
-                      options={[{name:'Minutes',code:'m'},{name:'Seconds',code:'s'}]}
-                      control={control}
-                      onChange={(e) => field.onChange(e.value)}
-                      style={{ width: "100%" }}
-                      className={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    />
-                  </div> */}
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>reactionTime</label>
+                </span>
+
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
@@ -515,10 +469,11 @@ const Coagulation = () => {
             control={control}
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3">
+              <div className="align-items-center" style={{ margin: "40px" }}>
+                <span className="p-float-label" style={{ margin: "5px" }}>
+                  {/* <div className="col-3"> */}
                   <Dropdown
-                    value={field.reactionUnit}
+                    value={field.value}
                     optionLabel="name"
                     placeholder="Select"
                     name={"reactionUnit"}
@@ -528,14 +483,17 @@ const Coagulation = () => {
                     ]}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "100%" }}
+                    style={{ width: "53%" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
-                </div>
 
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>reactionUnit</label>
+                </span>
+                {/* </div> */}
+
+                <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
           />
@@ -553,135 +511,242 @@ const Coagulation = () => {
       removal: name + "Removal",
       removalUsedName: usedName + " Removal",
     };
-    console.log(parameters)
+    console.log(parameters);
     return (
-      <div className="grid align-items-center" style={{margin:"10px"}}style={{margin:'10px'}}>
+      <div className="grid align-items-center" style={{ margin: "10px" }}>
         {/* <div className=""> */}
-          <div className="col-3">{fieldName}</div>
-          <div className="col-3">
-            {/* <label htmlFor="integer" >
+        <div className="col-3">{fieldName}</div>
+        <div className="col-3">
+          {/* <label htmlFor="integer" >
                         Integer
                     </label>
                     <InputText id="integer" keyfilter="int" className="w-full" /> */}
-            <Controller
-              name={parameters.initial}
-              control={control}
-              rules={{
-                required: `Enter a valid ${parameters.initialUsedName}.`,
-                validate: (value) =>
-                  (value >= 0 && value <= 14) ||
-                  `Enter a valid ${parameters.initialUsedName}.,`,
-              }}
-              render={({ field, fieldState }) => (
-                <div>
-                  <span className="p-float-label" style={{ margin: "5px" }}>
-                    <InputNumber
-                      onValueChange={(e) => field.onChange(e)}
-                      id={field.name}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      min={0}
-                      max={14}
-                      style={{width:'75%'}}
-                      inputClassName={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    />
-                    <label htmlFor={field.name} className="block mb-1">
-                      {parameters.initialUsedName}
-                    </label>
-                  </span>
-                  <div>{getFormErrorMessage(field.name)}</div>
-                </div>
-              )}
-            />
-          </div>
+          <Controller
+            name={parameters.initial}
+            control={control}
+            rules={{
+              required: `Enter a valid ${parameters.initialUsedName}.`,
+              validate: (value) =>
+                (value >= 0 && value <= 14) ||
+                `Enter a valid ${parameters.initialUsedName}.,`,
+            }}
+            render={({ field, fieldState }) => (
+              <div>
+                <span className="p-float-label" style={{ margin: "5px" }}>
+                  <InputNumber
+                    onValueChange={(e) => field.onChange(e)}
+                    id={field.name}
+                    value={field.value}
+                    onBlur={field.onBlur}
+                    min={0}
+                    max={14}
+                    // style={{ width: "50%" }}
+                    inputClassName={classNames({
+                      "p-invalid": fieldState.error,
+                    })}
+                  />
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>
+                    {parameters.initialUsedName}
+                  </label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
+              </div>
+            )}
+          />
+        </div>
 
-          <div className="col-3">
-            {/* <label htmlFor="number" className="font-bold block mb-2">
+        <div className="col-3">
+          {/* <label htmlFor="number" className="font-bold block mb-2">
                         Number
                     </label>
                     <InputText id="number" keyfilter="num" className="w-full" /> */}
-            <Controller
-              name={parameters.final}
-              control={control}
-              rules={{
-                required: `Enter a valid ${parameters.finalUsedName}.`,
-                validate: (value) =>
-                  (value >= 0 && value <= 14) ||
-                  `Enter a valid ${parameters.finalUsedName}.,`,
-              }}
-              render={({ field, fieldState }) => (
-                <div>
-                  <span className="p-float-label" style={{ margin: "5px" }}>
-                    <InputNumber
-                      onValueChange={(e) => field.onChange(e)}
-                      id={field.name}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      min={0}
-                      style={{width:'75%'}}
-                      max={14}
-                      inputClassName={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    />
-                    <label htmlFor={field.name} className="block mb-1">
-                      {parameters.finalUsedName}
-                    </label>
-                  </span>
-                  <div>{getFormErrorMessage(field.name)}</div>
-                </div>
-              )}
-            />
-          </div>
-          <div className="col-3">
-            {/* <label htmlFor="money" className="font-bold block mb-2">
+          <Controller
+            name={parameters.final}
+            control={control}
+            rules={{
+              required: `Enter a valid ${parameters.finalUsedName}.`,
+              validate: (value) =>
+                (value >= 0 && value <= 14) ||
+                `Enter a valid ${parameters.finalUsedName}.,`,
+            }}
+            render={({ field, fieldState }) => (
+              <div>
+                <span className="p-float-label" style={{ margin: "5px" }}>
+                  <InputNumber
+                    onValueChange={(e) => field.onChange(e)}
+                    id={field.name}
+                    value={field.value}
+                    onBlur={field.onBlur}
+                    min={0}
+                    // style={{ width: "50%" }}
+                    max={14}
+                    inputClassName={classNames({
+                      "p-invalid": fieldState.error,
+                    })}
+                  />
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>{parameters.finalUsedName}</label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
+              </div>
+            )}
+          />
+        </div>
+        <div className="col-3">
+          {/* <label htmlFor="money" className="font-bold block mb-2">
                         Money
                     </label> */}
+          <Controller
+            name={parameters.removal}
+            control={control}
+            rules={{
+              required: `Enter a valid ${parameters.removalUsedName}.`,
+              validate: (value) =>
+                (value >= 0 && value <= 14) ||
+                `Enter a valid ${parameters.removalUsedName}.,`,
+            }}
+            render={({ field, fieldState }) => (
+              <div>
+                <span className="p-float-label" style={{ margin: "5px" }}>
+                  <InputNumber
+                    onValueChange={(e) => field.onChange(e)}
+                    id={field.name}
+                    value={field.value}
+                    onBlur={field.onBlur}
+                    min={0}
+                    max={14}
+                    // style={{ width: "50%" }}
+                    disabled
+                    inputClassName={classNames({
+                      "p-invalid": fieldState.error,
+                    })}
+                  />
+                  <label htmlFor={field.name} style={{color:"#62afb9"}}>
+                    {parameters.removalUsedName}
+                  </label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
+              </div>
+            )}
+          />
+        </div>
+        {/* </div> */}
+      </div>
+    );
+  };
+
+  const basicInformation = () => {
+    return (
+      <>
+        <div style={{ padding: "5px" }}>Basic Information</div>
+        <div className="grid align-items-center justify-content-center">
+          <div className="align-form-inputs">
             <Controller
-              name={parameters.removal}
+              name="source"
               control={control}
-              rules={{
-                required: `Enter a valid ${parameters.removalUsedName}.`,
-                validate: (value) =>
-                  (value >= 0 && value <= 14) ||
-                  `Enter a valid ${parameters.removalUsedName}.,`,
-              }}
+              rules={{ required: "source is required." }}
               render={({ field, fieldState }) => (
-                <div>
+                <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
-                    <InputNumber
-                      onValueChange={(e) => field.onChange(e)}
-                      id={field.name}
+                    <Dropdown
                       value={field.value}
-                      onBlur={field.onBlur}
-                      min={0}
-                      max={14}
-                      style={{width:'75%'}}
-                      disabled
-                      inputClassName={classNames({
+                      optionLabel="name"
+                      placeholder="Select"
+                      name={field.name}
+                      options={cities}
+                      control={control}
+                      onChange={(e) => field.onChange(e.value)}
+                      style={{ width: "100%" }}
+                      className={classNames({
                         "p-invalid": fieldState.error,
                       })}
                     />
-                    <label htmlFor={field.name} className="block mb-1">
-                      {parameters.removalUsedName}
-                    </label>
+                    <label htmlFor={field.name} style={{color:"#62afb9"}}>source</label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
               )}
             />
           </div>
-        {/* </div> */}
-      </div>
+          <div className="align-form-inputs">
+            <Controller
+              name="date"
+              control={control}
+              rules={{ required: "Date is required." }}
+              render={({ field, fieldState }) => (
+                <div className="align-items-center" style={{ margin: "20px" }}>
+                  <span className="p-float-label" style={{ margin: "5px" }}>
+                    <Calendar
+                      inputId={field.name}
+                      value={field.value}
+                      onChange={field.onChange}
+                      dateFormat="mm/dd/yy"
+                      className={classNames({
+                        "p-invalid": fieldState.error,
+                      })}
+                    />
+                    <label htmlFor={field.name} style={{color:"#62afb9"}}>date</label>
+                  </span>
+                  <div>{getFormErrorMessage(field.name)}</div>
+                </div>
+              )}
+            />
+          </div>
+          <div className="align-form-inputs">
+            <Controller
+              name="model"
+              control={control}
+              rules={{
+                required: "Enter a valid model.",
+              }}
+              render={({ field, fieldState }) => (
+                <div className="align-items-center" style={{ margin: "20px" }}>
+                  <span className="p-float-label" style={{ margin: "5px" }}>
+                    <InputText
+                      id={field.name}
+                      value={field.value}
+                      className={classNames({ "p-invalid": fieldState.error })}
+                      onChange={(e) => field.onChange(e.target.value)}
+                    />
+                    <label htmlFor={field.name} style={{color:"#62afb9"}}>model</label>
+                  </span>
+                  <div>{getFormErrorMessage(field.name)}</div>
+                </div>
+              )}
+            />
+          </div>
+          <div className="align-form-inputs">
+            <Controller
+              name="device"
+              control={control}
+              rules={{
+                required: "Enter a valid device.",
+              }}
+              render={({ field, fieldState }) => (
+                <div className="align-items-center" style={{ margin: "20px" }}>
+                  <span className="p-float-label" style={{ margin: "5px" }}>
+                    <InputText
+                      id={field.name}
+                      value={field.value}
+                      className={classNames({ "p-invalid": fieldState.error })}
+                      onChange={(e) => field.onChange(e.target.value)}
+                    />
+                    <label htmlFor={field.name} style={{color:"#62afb9"}}>device</label>
+                  </span>
+                  <div>{getFormErrorMessage(field.name)}</div>
+                </div>
+              )}
+            />
+          </div>
+        </div>
+      </>
     );
   };
 
   const experimentalResults = () => {
     return (
       <>
-        <div className="align-form-inputs" >
+        <div className="justify-content-center">Experimental Results</div>
+        <div className="align-form-inputs">
           {genericParameterComponent(
             "turbidity",
             "Turbidity",
@@ -707,669 +772,37 @@ const Coagulation = () => {
             "Total Microcystins",
             "Total Microcystins(ppb)"
           )}
-          {/* <Controller
-            name="turbidityInitial"
-            control={control}
-            rules={{
-              required: "Enter a valid Turbidity Initial.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid Turbidity Initial.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="align-items-center">
-                <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                  <label htmlFor={field.name} className="block mb-1">
-                    Turbidity Initial
-                  </label>
-                </span>
-                <div>{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          /> */}
         </div>
-
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="turbidityFinal"
-            control={control}
-            rules={{
-              required: "Enter a valid Turbidity Final.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) || "Enter a valid Turbidity Final.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Turbidity Final</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div> */}
-
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="turbidityRemoval"
-            control={control}
-            // rules={{
-            //   required: "Enter a valid Turbidity Removal.",
-            //   validate: (value) =>
-            //     (value >= 0 && value <= 14) ||
-            //     "Enter a valid Turbidity Removal.",
-            // }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Turbidity Removal</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    disabled
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
- */}
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="totalMicrocystisInitial"
-            control={control}
-            rules={{
-              required: "Enter a valid Total Microcystis Initial.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid Total Microcystis Initial.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Total Microcystis Initial</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div> */}
-
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="totalMicrocystisFinal"
-            control={control}
-            rules={{
-              required: "Enter a valid Total Microcystis Final.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid Total Microcystis Final.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Total Microcystis Final</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
- */}
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="totalMicrocystisRemoval"
-            control={control}
-            // rules={{
-            //   required: "Enter a valid Total Microcystis Removal.",
-            //   validate: (value) =>
-            //     (value >= 0 && value <= 14) ||
-            //     "Enter a valid Total Microcystis Removal.",
-            // }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Total Microcystis Removal</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    disabled
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
-
-        <div className="align-form-inputs">
-          <Controller
-            name="mcyeMicrocystisInitial"
-            control={control}
-            rules={{
-              required: "Enter a valid mcye Microcystis Initial.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid mcye Microcystis Initial.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>mcye Microcystis Initial</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
-
-        <div className="align-form-inputs">
-          <Controller
-            name="mcyeMicrocystisFinal"
-            control={control}
-            rules={{
-              required: "Enter a valid mcye Microcystis Final.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid mcye Microcystis Final.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>mcye Microcystis Final</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
- */}
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="mcyeMicrocystisRemoval"
-            control={control}
-            // rules={{
-            //   required: "Enter a valid mcye Microcystis Removal.",
-            //   validate: (value) =>
-            //     (value >= 0 && value <= 14) ||
-            //     "Enter a valid mcye Microcystis Removal.",
-            // }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>mcye Microcystis Removal</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    disabled
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div> */}
-
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="mycePlanktothrixInitial"
-            control={control}
-            rules={{
-              required: "Enter a valid myce Planktothrix Initial.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid myce Planktothrix Initial.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>myce Planktothrix Initial</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
-
-        <div className="align-form-inputs">
-          <Controller
-            name="mycePlanktothrixFinal"
-            control={control}
-            rules={{
-              required: "Enter a valid myce Planktothrix Final.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid myce Planktothrix Final.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>myce Planktothrix Final</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
- */}
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="mycePlanktothrixRemoval"
-            control={control}
-            // rules={{
-            //   required: "Enter a valid myce Planktothrix Removal.",
-            //   validate: (value) =>
-            //     (value >= 0 && value <= 14) ||
-            //     "Enter a valid myce Planktothrix Removal.",
-            // }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>myce Planktothrix Removal</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    disabled
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
-
-        <div className="align-form-inputs">
-          <Controller
-            name="totalMicrocystinsInitial"
-            control={control}
-            rules={{
-              required: "Enter a valid Total Microcystins Final.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid Total Microcystins Final.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Total Microcystins Initial</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div> */}
-
-        {/* <div className="align-form-inputs">
-          <Controller
-            name="totalMicrocystinsFinal"
-            control={control}
-            rules={{
-              required: "Enter a valid Total Microcystins Final.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                "Enter a valid Total Microcystins Final.",
-            }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Total Microcystins Final</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div>
-
-        <div className="align-form-inputs">
-          <Controller
-            name="totalMicrocystinsRemoval"
-            control={control}
-            // rules={{
-            //   required: "Enter a valid Total Microcystins Removal.",
-            //   validate: (value) =>
-            //     (value >= 0 && value <= 14) ||
-            //     "Enter a valid Total Microcystins Removal.",
-            // }}
-            render={({ field, fieldState }) => (
-              <div className="grid align-items-center" style={{margin:"10px"}}>
-                <div className="col-3 ">
-                  <label htmlFor={field.name}>Total Microcystins Removal</label>
-                </div>
-                <div className="col-3 ">
-                  <InputNumber
-                    onValueChange={(e) => field.onChange(e)}
-                    disabled
-                    id={field.name}
-                    value={field.value}
-                    onBlur={field.onBlur}
-                    min={0}
-                    max={14}
-                    inputClassName={classNames({
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                </div>
-                <div className="col-5">{getFormErrorMessage(field.name)}</div>
-              </div>
-            )}
-          />
-        </div> */}
       </>
     );
   };
 
   return (
     <div>
-      <div className="card justify-content-center dialog-margin">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-column gap-2"
-        >
-          <div className="align-form-inputs">
-            <Controller
-              name="source"
-              control={control}
-              rules={{ required: "source is required." }}
-              render={({ field, fieldState }) => (
-                <div className="grid align-items-center" style={{margin:"10px"}}>
-                  <div className="col-3 ">
-                    <label htmlFor={field.name}>source</label>
-                  </div>
-                  <div className="col-3">
-                    <Dropdown
-                      value={field.value}
-                      optionLabel="name"
-                      placeholder="Select"
-                      name={field.name}
-                      options={cities}
-                      control={control}
-                      onChange={(e) => field.onChange(e.value)}
-                      // style={{ width: auto }}
-                      className={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    />
-                  </div>
+      <div
+        className="card justify-content-center dialog-margin"
+        style={{
+          // backgroundColor: "#2f478a",
+          borderRadius: "15px",
+          margin: "10px",
+        }}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>{basicInformation()}</div>
+          <div className="grid">
+            <div className="col-4" style={{borderStyle:"dotted"}}>{experimentalConditions()}</div>
+            <div className="col-8" style={{borderStyle:"dotted"}}>{experimentalResults()}</div>
+          </div>
 
-                  <div className="col-5">{getFormErrorMessage(field.name)}</div>
-                </div>
-              )}
-            />
-          </div>
-          <div className="align-form-inputs">
-            <Controller
-              name="date"
-              control={control}
-              rules={{ required: "Date is required." }}
-              render={({ field, fieldState }) => (
-                <div className="grid align-items-center" style={{margin:"10px"}}>
-                  <div className="col-3 ">
-                    <label htmlFor={field.name}>Date</label>
-                  </div>
-                  <div className="col-3">
-                    <Calendar
-                      inputId={field.name}
-                      value={field.value}
-                      onChange={field.onChange}
-                      dateFormat="mm/dd/yy"
-                      className={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    />
-                  </div>
-                  <div className="col-5">{getFormErrorMessage(field.name)}</div>
-                </div>
-              )}
-            />
-          </div>
-          <div className="align-form-inputs">
-            <Controller
-              name="model"
-              control={control}
-              rules={{
-                required: "Enter a valid model.",
-              }}
-              render={({ field, fieldState }) => (
-                <div className="grid align-items-center" style={{margin:"10px"}}>
-                  <div className="col-3 ">
-                    <label htmlFor={field.name}>model</label>
-                  </div>
-                  <div className="col-3 ">
-                    {/* <InputText
-                      id={field.name}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      inputClassName={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    /> */}
-                    <InputText
-                      id={field.name}
-                      value={field.value}
-                      className={classNames({ "p-invalid": fieldState.error })}
-                      onChange={(e) => field.onChange(e.target.value)}
-                    />
-                  </div>
-                  <div className="col-5">{getFormErrorMessage(field.name)}</div>
-                </div>
-              )}
-            />
-          </div>
-          <div className="align-form-inputs">
-            <Controller
-              name="device"
-              control={control}
-              rules={{
-                required: "Enter a valid device.",
-              }}
-              render={({ field, fieldState }) => (
-                <div className="grid align-items-center" style={{margin:"10px"}}>
-                  <div className="col-3 ">
-                    <label htmlFor={field.name}>device</label>
-                  </div>
-                  <div className="col-3 ">
-                    {/* <InputText
-                      id={field.name}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      inputClassName={classNames({
-                        "p-invalid": fieldState.error,
-                      })}
-                    /> */}
-                    <InputText
-                      id={field.name}
-                      value={field.value}
-                      className={classNames({ "p-invalid": fieldState.error })}
-                      onChange={(e) => field.onChange(e.target.value)}
-                    />
-                  </div>
-                  <div className="col-5">{getFormErrorMessage(field.name)}</div>
-                </div>
-              )}
-            />
-          </div>
-          <div>
-            Experimental Conditions waterTemperature: "", //inputNumber waterpH:
-            "", //inputNumber chemicalType: "", //dropdown otherChemicalType:
-            "", //inputText manufacturer: "", //inputText chemicalDosage: "",
-            //inputNumber chemicalSpeed: "", //inputNumber reactionTime: "", //
-            reactionUnit: "", //dropdown [Min,Sec]
-          </div>
-          {experimentalConditions()}
-
-          <div>Experimental results</div>
-          {experimentalResults()}
-          <Button label="Submit" type="submit" icon="pi pi-check" />
+          <Button
+            label="Submit"
+            type="submit"
+            icon="pi pi-check"
+            style={{ margin: "10px" }}
+          />
         </form>
       </div>
-      <div>
-        <div>Experimental Conditions</div>
-      </div>
+      <div></div>
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
-import Test from "./Test";
-import MapComponent from "../rawwaterquality/MapComponent";
+import RecommendationChart from "./RecommendationChart";
+import data from "./data.json";
+import RecommendationScatter from "./RecommendationScatter";
+import SedimentationScatter from "./SedimentationScatter";
 const Recommendations = () => {
   const sourceOptions = [
     { name: "Lake Erie", code: "LE" },
@@ -26,17 +28,76 @@ const Recommendations = () => {
     { name: "PolyDADMAC", code: "PD" },
     { name: "Sodium polyacrylate", code: "SP" },
   ];
-  
-  
+
+  const removalLabels = [
+    "turbidityRemoval",
+    "totalMicrocystisRemoval",
+    "mcyEMicrocystisRemoval",
+    "mcyEPlanktothrixRemoval",
+    "totalMiocrocystinsRemoval",
+  ];
+
+  function formatData(dataObj) {
+    let coagulationData = {
+      turbidityRemoval: [],
+      totalMicrocystisRemoval: [],
+      mcyEMicrocystisRemoval: [],
+      mcyEPlanktothrixRemoval: [],
+      totalMiocrocystinsRemoval: [],
+    };
+    let flocullationData = {
+      turbidityRemoval: [],
+      totalMicrocystisRemoval: [],
+      mcyEMicrocystisRemoval: [],
+      mcyEPlanktothrixRemoval: [],
+      totalMiocrocystinsRemoval: [],
+    };
+    let sedimentationData = {
+      turbidityRemoval: [],
+      totalMicrocystisRemoval: [],
+      mcyEMicrocystisRemoval: [],
+      mcyEPlanktothrixRemoval: [],
+      totalMiocrocystinsRemoval: [],
+    };
+    dataObj.map((obj) => {
+      removalLabels.map((removalObj) => {
+        coagulationData[removalObj].push({
+          y: obj.coagulation[removalObj],
+          x: obj.coagulation.chemicalDosage,
+        });
+
+        flocullationData[removalObj].push({
+          y: obj.coagulation_flocculation[removalObj],
+          x: obj.coagulation_flocculation.chemicalDosage,
+        });
+        sedimentationData[removalObj].push({
+          y: obj.coagulation_flocculation_sedimentaion[removalObj],
+          x: Number(
+            obj.coagulation_flocculation_sedimentaion.reactionTime.split(
+              "Min"
+            )[0]
+          ),
+        });
+      });
+    });
+    return [coagulationData, flocullationData, sedimentationData];
+  }
+  //   console.log(formatData(data),"hekkk")
+  let [coagulationData, flocullationData, sedimentationData] = formatData(data);
+
   const [selectedSource, setSelectedSource] = useState(null);
   const [selectedParameter, setSelectedParameter] = useState(null);
   const [selectedCoagulant, setSelectedCoagulant] = useState(null);
   const [selectedFlocculant, setSelectedFlocculant] = useState(null);
 
-
-  const handleClick=()=>{
-    console.log(selectedSource,selectedParameter,selectedCoagulant,selectedFlocculant)
-  }
+  const handleClick = () => {
+    console.log(
+      selectedSource,
+      selectedParameter,
+      selectedCoagulant,
+      selectedFlocculant
+    );
+  };
 
   return (
     <div>
@@ -78,9 +139,50 @@ const Recommendations = () => {
         icon="pi pi-search"
         onClick={handleClick}
       />
-
-      {/* <Test/> */}
-      {/* <MapComponent/> */}
+      {removalLabels.map((obj) => {
+        return (
+          <>
+            {/* <RecommendationChart
+            data={{
+              coagulationData: data.coagulation[obj],
+              sedimentationData:
+                data.coagulation_flocculation_sedimentaion[obj],
+              flocculationData: data.coagulation_flocculation[obj],
+              datasetLabel:data.coagulation.chemicalDosage,
+              x_label:obj,
+              y_label:"Removal"
+            }}
+          /> */}
+            {/* {console.log(coagulationData[obj],obj)} */}
+            <div className="grid">
+              <div className="col-6">
+                <RecommendationScatter
+                  data={{
+                    coagulationData: coagulationData[obj],
+                    sedimentationData: sedimentationData[obj],
+                    flocculationData: flocullationData[obj],
+                    //   datasetLabel:chemicalDosage,
+                    y_label: obj,
+                    x_label: "Chemical dosage (mg/L)",
+                  }}
+                />
+              </div>
+              <div className="col-6">
+                <SedimentationScatter
+                  data={{
+                    coagulationData: coagulationData[obj],
+                    sedimentationData: sedimentationData[obj],
+                    flocculationData: flocullationData[obj],
+                    //   datasetLabel:chemicalDosage,
+                    y_label: obj,
+                    x_label: "Chemical dosage (mg/L)",
+                  }}
+                />
+              </div>
+            </div>
+          </>
+        );
+      })}
     </div>
   );
 };

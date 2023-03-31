@@ -41,7 +41,7 @@ const MapComponent = (props) => {
               position={[obj.long, obj.lat]}
               icon={icon}
               eventHandlers={{
-                click: (e) => { 
+                click: (e) => {
                   props.handleClick(obj)
                 },
               }}
