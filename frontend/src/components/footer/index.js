@@ -1,22 +1,22 @@
 import React from 'react'
 import './index.css'
+import { Image } from 'primereact/image';
+import UCLogo from '../../assets/University_of_Cincinnati_logo.png'
+import OSULogo from '../../assets/Ohio_State_Logo.png'
+import ODHELogo from '../../assets/ODHE.png'
 
 const Footer = () => {
   return (
     <section className='footer'>
-        <hr className='footer-seperator'/>
-        <section className='footer-social'>
-            <a href="">Social</a>
-        </section>
         <section className='footer-info'>
             <section className='footer-info-left'>
-                Left
+            <Image src={UCLogo} />
             </section>
             <section className='footer-info-center'>
-                Center
+                <Image src ={OSULogo} />
             </section>
             <section className='footer-info-right'>
-                Right
+            <Image src ={ODHELogo} />
             </section>
         </section>
     </section>

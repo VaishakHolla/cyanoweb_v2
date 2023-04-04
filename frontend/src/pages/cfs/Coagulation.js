@@ -238,7 +238,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />{" "}
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>waterTemperature</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>waterTemperature</label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -268,7 +268,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>waterpH</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>waterpH</label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -296,7 +296,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>chemicalType</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>chemicalType</label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -319,7 +319,7 @@ const Coagulation = () => {
                     className={classNames({ "p-invalid": fieldState.error })}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>otherChemicalType</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>otherChemicalType</label>
                 </span>
 
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -343,7 +343,7 @@ const Coagulation = () => {
                     className={classNames({ "p-invalid": fieldState.error })}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>manufacturer</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>manufacturer</label>
                 </span>
 
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -375,7 +375,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>chemicalDosage</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>chemicalDosage</label>
                 </span>
 
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -407,12 +407,12 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>mixingSpeed</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>mixingSpeed</label>
                 </span>
 
                 <div>{getFormErrorMessage(field.name)}</div>
                 {/* <div className="col-3 ">
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>mixingSpeed</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>mixingSpeed</label>
                 </div>
                 <div className="col-3 ">
                   <InputNumber
@@ -457,7 +457,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>reactionTime</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>reactionTime</label>
                 </span>
 
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -489,7 +489,7 @@ const Coagulation = () => {
                     })}
                   />
 
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>reactionUnit</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>reactionUnit</label>
                 </span>
                 {/* </div> */}
 
@@ -545,7 +545,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>
                     {parameters.initialUsedName}
                   </label>
                 </span>
@@ -584,7 +584,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>{parameters.finalUsedName}</label>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>{parameters.finalUsedName}</label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -620,7 +620,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#62afb9"}}>
+                  <label htmlFor={field.name} style={{color:"#0D98BA"}}>
                     {parameters.removalUsedName}
                   </label>
                 </span>
@@ -660,7 +660,7 @@ const Coagulation = () => {
                         "p-invalid": fieldState.error,
                       })}
                     />
-                    <label htmlFor={field.name} style={{color:"#62afb9"}}>source</label>
+                    <label htmlFor={field.name} style={{color:"#0D98BA"}}>source</label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
@@ -684,7 +684,7 @@ const Coagulation = () => {
                         "p-invalid": fieldState.error,
                       })}
                     />
-                    <label htmlFor={field.name} style={{color:"#62afb9"}}>date</label>
+                    <label htmlFor={field.name} style={{color:"#0D98BA"}}>date</label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
@@ -707,7 +707,7 @@ const Coagulation = () => {
                       className={classNames({ "p-invalid": fieldState.error })}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    <label htmlFor={field.name} style={{color:"#62afb9"}}>model</label>
+                    <label htmlFor={field.name} style={{color:"#0D98BA"}}>model</label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
@@ -730,7 +730,7 @@ const Coagulation = () => {
                       className={classNames({ "p-invalid": fieldState.error })}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    <label htmlFor={field.name} style={{color:"#62afb9"}}>device</label>
+                    <label htmlFor={field.name} style={{color:"#0D98BA"}}>device</label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
@@ -781,17 +781,17 @@ const Coagulation = () => {
     <div>
       <div
         className="card justify-content-center dialog-margin"
-        style={{
-          // backgroundColor: "#2f478a",
-          borderRadius: "15px",
-          margin: "10px",
-        }}
+        // style={{
+        //   backgroundColor: "#a0dcbc",
+        //   borderRadius: "15px",
+        //   margin: "10px",
+        // }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>{basicInformation()}</div>
           <div className="grid">
-            <div className="col-4" style={{borderStyle:"dotted"}}>{experimentalConditions()}</div>
-            <div className="col-8" style={{borderStyle:"dotted"}}>{experimentalResults()}</div>
+            <div className="col-4" >{experimentalConditions()}</div>
+            <div className="col-8" >{experimentalResults()}</div>
           </div>
 
           <Button

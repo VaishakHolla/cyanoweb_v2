@@ -1,9 +1,9 @@
 .footer{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
     font-weight: bold;
     margin-top: auto;
+    background-color: rgb(79, 121, 66) !important;
 }
 
 .footer-seperator{
@@ -13,23 +13,16 @@
     background-color: black;
     width: 100%;
 }
-
-.footer-social{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
 .footer-info{
     display: flex;
     justify-content: center;
+    width:100%;
 }
 
 .footer-info-left,.footer-info-center,.footer-info-right{
-    font-size: x-small;
+    /* font-size: x-small; */
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     width: 30%;
 }

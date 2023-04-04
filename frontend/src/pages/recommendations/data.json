@@ -25,7 +25,7 @@
     "mcyEPlanktothrixRemoval": 50.0,
     "totalMiocrocystinsRemoval": 50.0
   },
-  "coagulation_flocculation_sedimentaion": {
+  "coagulation_flocculation_sedimentation": {
     "waterTemperature": 19,
     "waterpH": 7,
     "reactionTime": "30 Min",
@@ -63,7 +63,7 @@
       "mcyEPlanktothrixRemoval": 25.0,
       "totalMiocrocystinsRemoval": 22.0
     },
-    "coagulation_flocculation_sedimentaion": {
+    "coagulation_flocculation_sedimentation": {
       "waterTemperature": 19,
       "waterpH": 7,
       "reactionTime": "30 Min",
@@ -74,4 +74,5 @@
       "totalMiocrocystinsRemoval": 50.0
     }
   }
+  
 ]

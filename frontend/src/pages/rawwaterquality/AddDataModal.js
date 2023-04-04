@@ -96,7 +96,7 @@ const AddDataModal = () => {
           label="Upload Raw Water Data"
           icon="pi "
           onClick={() => setVisible(true)}
-          className="p-button"
+          className="button"
           style={{ minWidth: "10rem" }}
         />
       </div>
@@ -457,7 +457,7 @@ const AddDataModal = () => {
               />
             </div>
 
-            <Button label="Submit" type="submit" icon="pi pi-check" />
+            <Button label="Submit" type="submit" icon="pi pi-check" className="button"/>
           </form>
         </div>
       </Dialog>

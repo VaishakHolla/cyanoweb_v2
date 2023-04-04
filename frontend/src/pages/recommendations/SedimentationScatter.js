@@ -31,7 +31,7 @@ const SedimentationScatter = (props) => {
       scales: {
         x: {
           min: 0,
-          max: 100,
+          max: 60,
           title: {
             display: true,
             text: "Reaction time (minute)",

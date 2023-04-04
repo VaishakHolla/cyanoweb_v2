@@ -12,11 +12,11 @@ const Recommendations = () => {
     { name: "Ohio River", code: "OR" },
   ];
   const parameterOptions = [
-    { name: "Turbidity", code: "TURB" },
-    { name: "Total Microcystis", code: "TMCS" },
-    { name: "mcye Microcystis", code: "MMCS" },
-    { name: "myce Planktothrix", code: "MPTX" },
-    { name: "Total Microcystins", code: "TMCN" },
+    { name: "Turbidity", code: "turbidityRemoval" },
+    { name: "Total Microcystis", code: "totalMicrocystisRemoval" },
+    { name: "mcye Microcystis", code: "mcyEMicrocystisRemoval" },
+    { name: "myce Planktothrix", code: "mcyEPlanktothrixRemoval" },
+    { name: "Total Microcystins", code: "totalMiocrocystinsRemoval" },
   ];
   const coagulantOptions = [
     { name: "Aluminum sulfate", code: "AS" },
@@ -39,18 +39,18 @@ const Recommendations = () => {
 
   function formatData(dataObj) {
     let coagulationData = {
-      turbidityRemoval: [],
-      totalMicrocystisRemoval: [],
-      mcyEMicrocystisRemoval: [],
-      mcyEPlanktothrixRemoval: [],
-      totalMiocrocystinsRemoval: [],
+      turbidityRemoval: [{x:0,y:0}],
+      totalMicrocystisRemoval: [{x:0,y:0}],
+      mcyEMicrocystisRemoval: [{x:0,y:0}],
+      mcyEPlanktothrixRemoval: [{x:0,y:0}],
+      totalMiocrocystinsRemoval: [{x:0,y:0}],
     };
     let flocullationData = {
-      turbidityRemoval: [],
-      totalMicrocystisRemoval: [],
-      mcyEMicrocystisRemoval: [],
-      mcyEPlanktothrixRemoval: [],
-      totalMiocrocystinsRemoval: [],
+      turbidityRemoval: [{x:0,y:0}],
+      totalMicrocystisRemoval: [{x:0,y:0}],
+      mcyEMicrocystisRemoval: [{x:0,y:0}],
+      mcyEPlanktothrixRemoval: [{x:0,y:0}],
+      totalMiocrocystinsRemoval: [{x:0,y:0}],
     };
     let sedimentationData = {
       turbidityRemoval: [],
@@ -71,15 +71,23 @@ const Recommendations = () => {
           x: obj.coagulation_flocculation.chemicalDosage,
         });
         sedimentationData[removalObj].push({
-          y: obj.coagulation_flocculation_sedimentaion[removalObj],
+          y: obj.coagulation_flocculation_sedimentation[removalObj],
           x: Number(
-            obj.coagulation_flocculation_sedimentaion.reactionTime.split(
+            obj.coagulation_flocculation_sedimentation.reactionTime.split(
               "Min"
             )[0]
           ),
         });
       });
     });
+    [coagulationData, flocullationData, sedimentationData].map(dataObj=>{
+        Object.keys(dataObj).map(obj=>{
+            dataObj[obj]=dataObj[obj].sort((a, b) => a.x - b.x||a.y-b.y)
+        })
+    })
+    
+    // coagulationData.totalMiocrocystinsRemoval=coagulationData.totalMiocrocystinsRemoval.sort((a, b) => a.x - b.x||a.y-b.y)
+    // flocullationData.totalMiocrocystinsRemoval=flocullationData.totalMiocrocystinsRemoval.sort((a, b) => a.x - b.x||a.y-b.y)
     return [coagulationData, flocullationData, sedimentationData];
   }
   //   console.log(formatData(data),"hekkk")
@@ -99,48 +107,72 @@ const Recommendations = () => {
     );
   };
 
+  const getExperimentalConditions =()=>{
+    return <>
+    <div className="card">
+        <div>Temperature</div>
+        <div>pH</div>
+        <div>Coagulation speed</div>
+        <div>Coagulation time</div>
+        <div>Flocculation speed</div>
+        <div>Flocculation time</div>
+        <div>Sedimentation time</div>
+        
+    </div>
+    </>
+  }
+
   return (
     <div>
-      <Dropdown
-        value={selectedSource}
-        options={sourceOptions}
-        optionLabel="name"
-        onChange={(e) => setSelectedSource(e.value)}
-        placeholder="Select a Source"
-      />
-
-      <Dropdown
-        value={selectedParameter}
-        options={parameterOptions}
-        optionLabel="name"
-        onChange={(e) => setSelectedParameter(e.value)}
-        placeholder="Select a Parameter"
-      />
-
-      <Dropdown
-        value={selectedCoagulant}
-        options={coagulantOptions}
-        optionLabel="name"
-        onChange={(e) => setSelectedCoagulant(e.value)}
-        placeholder="Select a Coagulant"
-      />
-
-      <Dropdown
-        value={selectedFlocculant}
-        options={flocculantOptions}
-        optionLabel="name"
-        onChange={(e) => setSelectedFlocculant(e.value)}
-        placeholder="Select a Flocculant"
-      />
-
-      <Button
-        label="Submit"
-        type="button"
-        icon="pi pi-search"
-        onClick={handleClick}
-      />
-      {removalLabels.map((obj) => {
-        return (
+      <div className="grid justify-content-center">
+        <div style={{margin:"10px"}}>
+          <Dropdown
+            value={selectedSource}
+            options={sourceOptions}
+            optionLabel="name"
+            onChange={(e) => setSelectedSource(e.value)}
+            placeholder="Select a Source"
+          />
+        </div>
+        <div style={{margin:"10px"}}>
+        <Dropdown
+          value={selectedParameter}
+          options={parameterOptions}
+          optionLabel="name"
+          onChange={(e) => setSelectedParameter(e.value)}
+          placeholder="Select a Parameter"
+        />
+        </div>
+        <div style={{margin:"10px"}}>
+        <Dropdown
+          value={selectedCoagulant}
+          options={coagulantOptions}
+          optionLabel="name"
+          onChange={(e) => setSelectedCoagulant(e.value)}
+          placeholder="Select a Coagulant"
+        />
+        </div>
+        <div style={{margin:"10px"}}>
+        <Dropdown
+          value={selectedFlocculant}
+          options={flocculantOptions}
+          optionLabel="name"
+          onChange={(e) => setSelectedFlocculant(e.value)}
+          placeholder="Select a Flocculant"
+        />
+        </div>
+        <div style={{margin:"10px"}}>
+        <Button
+          label="Search"
+          type="button"
+          icon="pi pi-search"
+          onClick={handleClick}
+        />
+        </div>
+      </div>
+      {/* {getExperimentalConditions()} */}
+      {/* {removalLabels.map((obj) => {
+        return ( */}
           <>
             {/* <RecommendationChart
             data={{
@@ -158,11 +190,11 @@ const Recommendations = () => {
               <div className="col-6">
                 <RecommendationScatter
                   data={{
-                    coagulationData: coagulationData[obj],
-                    sedimentationData: sedimentationData[obj],
-                    flocculationData: flocullationData[obj],
+                    coagulationData: selectedParameter?coagulationData[selectedParameter.code]:[],
+                    sedimentationData: selectedParameter?sedimentationData[selectedParameter.code]:[],
+                    flocculationData:  selectedParameter?flocullationData[selectedParameter.code]:[],
                     //   datasetLabel:chemicalDosage,
-                    y_label: obj,
+                    y_label:  selectedParameter?selectedParameter.code:'',
                     x_label: "Chemical dosage (mg/L)",
                   }}
                 />
@@ -170,19 +202,16 @@ const Recommendations = () => {
               <div className="col-6">
                 <SedimentationScatter
                   data={{
-                    coagulationData: coagulationData[obj],
-                    sedimentationData: sedimentationData[obj],
-                    flocculationData: flocullationData[obj],
-                    //   datasetLabel:chemicalDosage,
-                    y_label: obj,
-                    x_label: "Chemical dosage (mg/L)",
+                    sedimentationData:  selectedParameter?sedimentationData[selectedParameter.code]:[],
+                    y_label:  selectedParameter?selectedParameter.code:'',
+                    // x_label: "Chemical dosage (mg/L)",
                   }}
                 />
               </div>
             </div>
           </>
-        );
-      })}
+        {/* ); */}
+      {/* })} */}
     </div>
   );
 };

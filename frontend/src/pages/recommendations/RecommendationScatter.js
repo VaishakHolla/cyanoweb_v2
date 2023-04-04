@@ -12,6 +12,7 @@ const RecommendationScatter = (props) => {
       {
         label: "Coagulation",
         data: props.data.coagulationData,
+        // data: [{x:5,y:6.7},{x:10,y:33.3},{x:7,y:8},{x:12,y:32}],
         borderColor: "rgb(255, 99, 132)",
         borderWidth: 2,
         backgroundColor: "rgba(255,99,132,0.2)",
@@ -44,7 +45,7 @@ const RecommendationScatter = (props) => {
       scales: {
         x: {
           min: 0,
-          max: 100,
+          max: 15,
           title: {
             display: true,
             text: props.data.x_label,

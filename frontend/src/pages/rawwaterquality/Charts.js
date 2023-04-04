@@ -31,7 +31,7 @@ export default function Charts(props) {
                 {
                     label: props.data.dataset_label,
                     data: props.data.x_data,
-                    fill: false,
+                    fill: true,
                     borderColor: documentStyle.getPropertyValue(`--${lineColor}-500`),
                     tension: 0.4
                 }
@@ -50,13 +50,15 @@ export default function Charts(props) {
                 x: {
                   title: {
                     display: true,
-                    text: props.data.x_label
+                    text: props.data.x_label,
+                    color:"white"
                   }
                 },
                 y: {
                   title: {
                     display: true,
-                    text: props.data.y_label
+                    text: props.data.y_label,
+                    color:"white"
                   }
                 }
               }     

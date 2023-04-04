@@ -17,7 +17,7 @@ const Navigation = () => {
     <div>
            <header>
               <nav>
-                    <Menubar model={navList} className="navbar"/>
+                    <Menubar model={navList} className="navbar" />
               </nav>
            </header>
         </div>

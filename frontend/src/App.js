@@ -24,7 +24,10 @@ import Footer from "./components/footer";
 
 function App() {
   return( 
-    <div className="App">
+    <div className="App" style={{
+      // backgroundColor: "#a0dcbc",
+      // borderRadius: "15px",
+    }}>
       
       <BrowserRouter>
       <Navigation/>
