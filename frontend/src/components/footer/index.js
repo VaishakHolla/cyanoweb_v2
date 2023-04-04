@@ -7,19 +7,19 @@ import ODHELogo from '../../assets/ODHE.png'
 
 const Footer = () => {
   return (
-    <section className='footer'>
-        <section className='footer-info'>
-            <section className='footer-info-left'>
+    <div className='footer'>
+        <div className='grid'>
+            <div className='col'>
             <Image src={UCLogo} />
-            </section>
-            <section className='footer-info-center'>
+            </div>
+            <div className='col'>
                 <Image src ={OSULogo} />
-            </section>
-            <section className='footer-info-right'>
+            </div>
+            <div className='col'>
             <Image src ={ODHELogo} />
-            </section>
-        </section>
-    </section>
+            </div>
+        </div>
+    </div>
   )
 }
 
