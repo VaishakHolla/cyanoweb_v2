@@ -8,7 +8,7 @@ const Navigation = () => {
   const navList = [
     { label: "Home", url: "/" },
     { label: "Raw Water Quality", url: "/rawwaterquality" },
-    { label: "Recommendations", url: "/recommendations" },
+    
     {
       label: "Treatment Options",
       items: [
@@ -18,6 +18,7 @@ const Navigation = () => {
         { label: "Advanced Oxidation", url: "/cfs" },
       ],
     },
+    { label: "Recommendations", url: "/recommendations" },
     { label: "About", url: "/about" },
     { label: "Resources", url: "/resources" },
   ];
