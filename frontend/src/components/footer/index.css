@@ -3,6 +3,7 @@
     flex-direction: column;
     font-weight: bold;
     margin-top: auto;
+    padding:15px;
     background-color: rgb(79, 121, 66) !important;
 }
 

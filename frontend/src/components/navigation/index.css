@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   /* margin-bottom: 20px; */
+  border:0px;
   border-radius: 0;
+  padding:15px;
   background-color: rgb(79, 121, 66) !important;
 }
 
