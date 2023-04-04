@@ -25,6 +25,7 @@
 }
 .p-submenu-list{
     background: rgb(79, 121, 66)  !important;
+    z-index: 5;
 }
 
 .p-submenu-list .p-menuitem :hover{
