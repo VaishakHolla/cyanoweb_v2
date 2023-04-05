@@ -73,6 +73,44 @@
       "mcyEPlanktothrixRemoval": 50.0,
       "totalMiocrocystinsRemoval": 50.0
     }
+  },
+  {
+    "coagulation": {
+      "waterTemperature": 19,
+      "waterpH": 7,
+      "chemicalType": "Aluminum Sulfate",
+      "chemicalDosage": 7,
+      "chemicalSpeed": 100,
+      "reactionTime": "6 Sec",
+      "turbidityRemoval": 10,
+      "totalMicrocystisRemoval": 10,
+      "mcyEMicrocystisRemoval": 10,
+      "mcyEPlanktothrixRemoval": 10,
+      "totalMiocrocystinsRemoval": 10.0
+    },
+    "coagulation_flocculation": {
+      "waterTemperature": 19,
+      "waterpH": 7,
+      "chemicalType": "PolyDADMAC",
+      "chemicalDosage": 7,
+      "chemicalSpeed": 25,
+      "reactionTime": "12 Min",
+      "turbidityRemoval": 40,
+      "totalMicrocystisRemoval": 30,
+      "mcyEMicrocystisRemoval": 40,
+      "mcyEPlanktothrixRemoval": 40,
+      "totalMiocrocystinsRemoval": 40
+    },
+    "coagulation_flocculation_sedimentation": {
+      "waterTemperature": 19,
+      "waterpH": 7,
+      "reactionTime": "60 Min",
+      "turbidityRemoval": 80,
+      "totalMicrocystisRemoval": 80,
+      "mcyEMicrocystisRemoval": 80,
+      "mcyEPlanktothrixRemoval": 80,
+      "totalMiocrocystinsRemoval": 80
+    }
   }
   
 ]

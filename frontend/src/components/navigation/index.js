@@ -8,7 +8,7 @@ const Navigation = () => {
   const navList = [
     { label: "Home", url: "/" },
     { label: "Raw Water Quality", url: "/rawwaterquality" },
-    
+
     {
       label: "Treatment Options",
       items: [
@@ -19,8 +19,10 @@ const Navigation = () => {
       ],
     },
     { label: "Recommendations", url: "/recommendations" },
-    { label: "About", url: "/about" },
+    
     { label: "Resources", url: "/resources" },
+    { label: "Contact", url: "/about" },
+    { label: "Logout" },
   ];
   return (
     <div>

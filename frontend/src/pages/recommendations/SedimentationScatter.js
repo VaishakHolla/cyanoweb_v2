@@ -27,6 +27,14 @@ const SedimentationScatter = (props) => {
             color: "#495057",
           },
         },
+        tooltips: {
+            mode: 'index',
+            intersect: false
+         },
+         hover: {
+            mode: 'index',
+            intersect: false
+         }
       },
       scales: {
         x: {

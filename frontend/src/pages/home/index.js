@@ -3,7 +3,7 @@ import background_img from "../../assets/Home_Background.jpeg";
 const styles = {
   header: {
     backgroundImage: `url(${background_img})`,
-    height: "100vh",
+    height: "75vh",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -29,7 +29,7 @@ const Home = () => {
       <div style={styles.header}>
         <div style={styles.content}>
           <div className="grid">
-            <div className="col-6 " style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh"}}>
+            <div className="col-6 " style={{display:"flex",alignItems:"center",justifyContent:"center",height:"75vh"}}>
               {homeText}
             </div>
           </div>
