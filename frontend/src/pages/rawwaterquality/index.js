@@ -48,7 +48,7 @@ const RawWaterQuality = () => {
 
   useEffect(() => {
     console.log(`${process.env.REACT_APP_API_BASE_URL}`)
-    fetch("http://127.0.0.1:6868/api/rawwaterdata/all")
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/rawwaterdata/all`)
       .then(response =>response.json())
       .then(data => setData1(data))
       .catch(error => console.log(error));

@@ -76,7 +76,8 @@ const AddDataModal = () => {
     console.log(data);
     data.date && show();
     // console.log(formState.isSubmitSuccessful);
-    const rawResponse = await fetch('http://127.0.0.1:6868/api/rawwaterdata', {
+    const url = `${process.env.REACT_APP_API_BASE_URL}/rawwaterdata`
+    const rawResponse = await fetch(url, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

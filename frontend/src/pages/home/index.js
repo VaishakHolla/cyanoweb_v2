@@ -20,7 +20,7 @@ const styles = {
   },
 };
 const Home = () => {
-    
+  const url = `${process.env.REACT_APP_API_BASE_URL}`
     // useEffect(() => {
     //     console.log(process.env.REACT_APP_API_BASE_URL)
     //     console.log("useeffect")
@@ -29,7 +29,7 @@ const Home = () => {
     //    }, []);
     useEffect(() => {
         console.log(`${process.env.REACT_APP_API_BASE_URL}`)
-        fetch("http://127.0.0.1:6868/api")
+        fetch(url)
           .then(response =>{ console.log(response);return response.json()})
         //   .then(data => setData(data))
           .catch(error => console.log(error));

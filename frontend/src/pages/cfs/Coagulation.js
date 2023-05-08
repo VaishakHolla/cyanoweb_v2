@@ -198,7 +198,8 @@ const Coagulation = () => {
 
     console.log(data);
     // data.date && show();
-    const rawResponse = await fetch('http://127.0.0.1:6868/api/coagulation', {
+    const url = `${process.env.REACT_APP_API_BASE_URL}/coagulation`
+    const rawResponse = await fetch(url, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
