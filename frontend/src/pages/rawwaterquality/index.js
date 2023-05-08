@@ -4,6 +4,8 @@ import Charts from "./Charts";
 import MapComponent from "./MapComponent";
 import data from "./data.json";
 
+import { useSelector } from "react-redux";
+import {selectAllRawWaterData} from '../../features/rawwater/rawwaterSlice'
 // delete L.Icon.Default.prototype._getIconUrl;
 
 // L.Icon.Default.mergeOptions({
@@ -15,6 +17,9 @@ import data from "./data.json";
 const RawWaterQuality = () => {
   const apiData = data;
   const [selected, setSelected] = useState(null);
+  const rawwaterDataFromAPI = useSelector(selectAllRawWaterData)
+  console.log(rawwaterDataFromAPI,"REDUX RESPONSE???")
+  const [data1, setData1] = useState([]);
   const uniqueLocations = [
     { name: "Lake Eerie", lat: -83.261389, long: 41.7019444 },
     { name: "Grand Lake St. Marys", lat: -84.573333, long: 40.5419444 },
@@ -41,6 +46,14 @@ const RawWaterQuality = () => {
   const [mycePlanktothrix,setMycePlanktothrix]=useState([])
   const [date,setDate]=useState([])
 
+  useEffect(() => {
+    console.log(`${process.env.REACT_APP_API_BASE_URL}`)
+    fetch("http://127.0.0.1:6868/api/rawwaterdata/all")
+      .then(response =>response.json())
+      .then(data => setData1(data))
+      .catch(error => console.log(error));
+  }, []);
+  console.log(data1)
   const [templateData,setTemplateData] = useState({
     turbidity: [],
     ph: [],
@@ -53,9 +66,11 @@ const RawWaterQuality = () => {
     date: [],
   });
   function compareLocation(obj) {
-    let [obj_lat, obj_long] = obj.location.split(",");
+    console.log(selected,"selected source")
+    // let [obj_lat, obj_long] = obj.location.split(",");
     return (
-      Number(obj_lat)===selected.long& Number(obj_long)===selected.lat
+    //   Number(obj_lat)===selected.long& Number(obj_long)===selected.lat
+    obj.source === selected
     );
   }
   const formatData = (data) => {
@@ -80,7 +95,7 @@ const RawWaterQuality = () => {
         setMycePlanktothrix([])
         setTotalMicrocystins([])
         setTotalMicrocystis([])
-      let testData=  apiData.filter((obj) => compareLocation(obj));
+      let testData=  data1.filter((obj) => compareLocation(obj));
 
     testData.map((obj) => {
         defaultData.turbidity.push(obj.turbidity);
@@ -93,6 +108,7 @@ const RawWaterQuality = () => {
         defaultData.totalmicrocytis.push(obj.totalmicrocytis);
         defaultData.date.push(new Date(obj.date).toLocaleDateString());
       });
+      console.log(testData)
     //   setTemplateData(defaultData)
       setTurbidity(defaultData.turbidity)
       setDissolvedOxygen(defaultData.dissolvedoxygen)
@@ -117,26 +133,10 @@ const RawWaterQuality = () => {
   }, [selected]);
 
   const handleClick = (obj) => {
-    setSelected(obj);
+    console.log(obj)
+    setSelected(obj.name);
     formatData(apiData)
   };
-  const chartData = {
-    x_label: "x_label",
-    y_label: "y_label",
-    dataset_label: "dataset_label",
-    x_data: [65, 59, 80, 81, 56, 55, 40],
-    y_data: ["January", "February", "March", "April", "May", "June", "July"],
-  };
-
-  const chartLabel = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
   const defaultData = {
     x_label: "",
     y_label: "",

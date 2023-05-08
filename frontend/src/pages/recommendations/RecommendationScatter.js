@@ -46,7 +46,7 @@ const RecommendationScatter = (props) => {
       scales: {
         x: {
           min: 0,
-          max: 15,
+          max: 10,
           title: {
             display: true,
             text: props.data.x_label,

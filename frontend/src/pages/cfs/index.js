@@ -5,7 +5,7 @@ import Sedimentation from "./Sedimentation";
 import { Button } from "primereact/button";
 
 const CFS = () => {
-  const [showSelect, setShowSelect] = useState('');
+  const [showSelect, setShowSelect] = useState('coagulation');
   const renderForm=()=>{
     switch(showSelect){
         case 'coagulation': return <Coagulation/>;break;

@@ -14,14 +14,12 @@ import { Message } from "primereact/message";
 const AddDataModal = () => {
   const [visible, setVisible] = useState(false);
   const cities = [
-    { name: "New York", code: "NY" },
-    { name: "Rome", code: "RM" },
-    { name: "London", code: "LDN" },
-    { name: "Istanbul", code: "IST" },
-    { name: "Paris", code: "PRS" },
+    { name: "Lake Eerie", code:'LE'},
+    { name: "Grand Lake St. Marys", code:'GL'},
+    { name: "Ohio River", code:'OR'},
   ];
   const toast = useRef(null);
-
+  
   const defaultValues = {
     location: "", //dropdown
     date: "", //calendar
@@ -71,13 +69,38 @@ const AddDataModal = () => {
     });
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     // data.value && show();
     // data.calendar && show();
     // data.dropdown && show();
     console.log(data);
     data.date && show();
     // console.log(formState.isSubmitSuccessful);
+    const rawResponse = await fetch('http://127.0.0.1:6868/api/rawwaterdata', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+    source:data.location.name,
+    date:data.date,
+    temperature:data.temperature,
+    ph:data.pH,
+    turbidity:data.turbidity,
+    dissolvedoxygen:data.dissolvedOxygen,
+    totalmicrocytis:data.totalMicrocystis,
+    mcyemicrocytis:data.mycEMicrocystis,
+    mcyeplanktothrix:data.mycEPlanktothrix,
+    totalmicrocystins:data.totalMicrocystins
+    })
+  });
+
+  const content = await rawResponse.json();
+
+  console.log(content);
+
+    
     reset();
     setVisible();
   };
@@ -171,6 +194,43 @@ const AddDataModal = () => {
                         onChange={field.onChange}
                         dateFormat="mm/dd/yy"
                         className={classNames({
+                          "p-invalid": fieldState.error,
+                        })}
+                      />
+                    </div>
+                    <div className="col-5">
+                      {getFormErrorMessage(field.name)}
+                    </div>
+                  </div>
+                )}
+              />
+            </div>
+            <div className="align-form-inputs">
+              <Controller
+                name="temperature"
+                control={control}
+                rules={{
+                  required: "Enter a valid temperature.",
+                  validate: (value) =>
+                    (value >= 0 && value <= 50) || "Enter a valid temperature.",
+                }}
+                render={({ field, fieldState }) => (
+                  <div className="grid align-items-center">
+                    <div className="col-3 ">
+                      <label htmlFor={field.name}>temperature</label>
+                    </div>
+                    <div className="col-4 ">
+                      <InputNumber
+                        id={field.name}
+                        inputRef={field.ref}
+                        value={field.value}
+                        onBlur={field.onBlur}
+                        maxFractionDigits={2}
+                        onValueChange={(e) => field.onChange(e)}
+                        useGrouping={false}
+                        min={0}
+                        max={50}
+                        inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
                       />

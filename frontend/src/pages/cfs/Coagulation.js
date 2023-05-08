@@ -191,13 +191,61 @@ const Coagulation = () => {
     });
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     // data.value && show();
     // data.calendar && show();
     // data.dropdown && show();
 
-    // console.log(data);
-    data.date && show();
+    console.log(data);
+    // data.date && show();
+    const rawResponse = await fetch('http://127.0.0.1:6868/api/coagulation', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: data.model,
+      device: data.device,
+      date: data.date,
+      source: data.source.name,
+      experiment_id : data.experiment_id,
+
+      water_temperature: data.waterTemperature, //inputNumber
+      water_pH: data.waterpH, //inputNumber
+      chemical_type: data.chemicalType.name, //dropdown
+      other_chemical_type: data.otherChemicalType, //inputText
+      manufacturer: data.manufacturer, //inputText
+      chemical_dosage: data.chemicalDosage, //inputNumber
+      mixing_speed: data.mixingSpeed, //inputNumber
+      reaction_time: data.reactionTime, //
+      reaction_unit: data.reactionUnit.name, //dropdown [Min,Sec]
+
+
+      turbidity_initial: data.turbidityInitial,
+      turbidity_final: data.turbidityFinal,
+      turbidity_removal: data.turbidityRemoval,
+      totalMicrocystis_initial: data.totalMicrocystisInitial,
+      totalMicrocystis_final: data.totalMicrocystisFinal,
+      totalMicrocystis_removal: data.totalMicrocystisRemoval,
+      mcyeMicrocystis_initial: data.mcyeMicrocystisInitial,
+      mcyeMicrocystis_final: data.mcyeMicrocystisFinal,
+      mcyeMicrocystis_removal: data.mcyeMicrocystisRemoval,
+      mycePlanktothrix_initial: data.mycePlanktothrixInitial,
+      mycePlanktothrix_final: data.mycePlanktothrixFinal,
+      mycePlanktothrix_removal: data.mycePlanktothrixRemoval,
+      totalMicrocystins_initial: data.totalMicrocystinsInitial,
+      totalMicrocystins_final: data.totalMicrocystinsFinal,
+      totalMicrocystins_removal: data.totalMicrocystinsRemoval,
+      })
+    })
+    .then(res=>res.json)
+    .catch((err)=>
+    console.log(err));
+  
+    // const content = await rawResponse.json();
+  
+    // console.log(content);
     reset();
   };
 
@@ -546,7 +594,9 @@ const Coagulation = () => {
                     })}
                   />
                   <label htmlFor={field.name} style={{color:"#070606"}}>
-                    {parameters.initialUsedName}
+                    {/* {parameters.initialUsedName}
+                     */}
+                     Initial
                   </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -584,7 +634,10 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#070606"}}>{parameters.finalUsedName}</label>
+                  <label htmlFor={field.name} style={{color:"#070606"}}>
+                    {/* {parameters.finalUsedName} */}
+                    Final
+                    </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -621,7 +674,8 @@ const Coagulation = () => {
                     })}
                   />
                   <label htmlFor={field.name} style={{color:"#070606"}}>
-                    {parameters.removalUsedName}
+                    {/* {parameters.removalUsedName} */}
+                    Removal
                   </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -788,19 +842,21 @@ const Coagulation = () => {
         // }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
+          Coagulation
           <div style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em',borderRadius:'.5em'}}>{basicInformation()}</div>
           <div className="card grid" style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em',borderRadius:'.5em'}}>
             <div className="col-3" style={{backgroundColor:'rgb(140,163,140)',margin:'1.75em',borderRadius:'.5em'}}>{experimentalConditions()}</div>
             <div className="col-8" style={{backgroundColor:'rgb(140,163,140)',margin:'1.75em',borderRadius:'.5em'}}>{experimentalResults()}</div>
-          </div>
-
-          <Button
+            <Button
             label="Submit"
             type="submit"
             icon="pi pi-check"
             className="button"
             style={{ margin: "10px" }}
           />
+          </div>
+
+          
         </form>
       </div>
       <div></div>

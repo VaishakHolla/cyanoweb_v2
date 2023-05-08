@@ -10,7 +10,7 @@ import 'primeflex/primeflex.css';
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route,Link} from 'react-router-dom';
 
 import Home from "./pages/home";
 import CFS from "./pages/cfs";
@@ -30,17 +30,30 @@ function App() {
     }}>
       
       <BrowserRouter>
+      
       <Navigation/>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/rawwaterquality" element={<RawWaterQuality/>}/>
-          <Route path="/recommendations" element={<Recommendations/>}/>
-          <Route path="/cfs" element={<CFS/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/resources" element={<Resources/>}/>
-        </Routes>
+
+      {/* <Link to={"/"}>Home</Link>
+            <Link to={"/rawwaterquality"}>rawwaterquality</Link>
+            <Link to={"/recommendations"}>recommendations</Link>
+            <Link to={"/cfs"}>cfs</Link>
+            <Link to={"/about"}>about</Link> */}
+      <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/rawwaterquality" component={RawWaterQuality}/>
+          <Route path="/recommendations" component={Recommendations}/>
+          <Route path="/cfs" component={CFS}/>
+          <Route path="/about" component={About}/>
+          <Route path="/resources" component={Resources}/>
+          {/* <Route path="/" render={() => (
+        <div className="test">
+          Hello
+        </div>
+      )} /> */}
+      </Switch> 
         <Footer/>
-      </BrowserRouter>
+          
+        </BrowserRouter>   
     {/* <Counter /> */}
     </div>
   )

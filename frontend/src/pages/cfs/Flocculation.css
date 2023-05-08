@@ -1,0 +1,7 @@
+.vertical{
+    /* display: table-cell; */
+    vertical-align: middle;
+}
+.button{
+    background-color:rgb(1, 68, 33) !important;
+}

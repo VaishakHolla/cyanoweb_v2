@@ -1,0 +1,11 @@
+.vertical{
+    /* display: table-cell; */
+    vertical-align: middle;
+}
+.button{
+    background-color:rgb(1, 68, 33) !important;
+}
+
+.reactionTime .p-inputtext .p-component .p-filled .p-inputnumber-input{
+    width:10em;
+}
