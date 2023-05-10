@@ -78,9 +78,9 @@ exports.findAll = (req, res) => {
 
 // Find a single Flocculation with an id
 exports.findOne = (req, res) => {
-  const source = req.params.source;
-
-  Flocculation.find({source:source})
+  const source = req.body.source;
+  console.log(source)
+  Flocculation.find({'basic_information.source':source})
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Flocculation not found with source " + source });

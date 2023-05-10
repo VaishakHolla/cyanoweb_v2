@@ -79,10 +79,11 @@ exports.findAll = (req, res) => {
 
 // Find a single Coagulation with an id
 exports.findOne = (req, res) => {
-  const source = req.params.source;
-
-  Coagulation.find({source:source})
+  const source = req.body.source;
+  console.log(req.body)
+  Coagulation.find({'basic_information.source':source})
     .then(data => {
+      console.log(data)
       if (!data)
         res.status(404).send({ message: "Coagulation not found with id " + source });
       else res.send(data);

@@ -78,9 +78,9 @@ exports.findAll = (req, res) => {
 
 // Find a single Sedimentation with an id
 exports.findOne = (req, res) => {
-  const source = req.params.source;
-
-  Sedimentation.find({source:source})
+  const source = req.body.source;
+  console.log(source)
+  Sedimentation.find({'basic_information.source':source})
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Sedimentation not found with id " + source });

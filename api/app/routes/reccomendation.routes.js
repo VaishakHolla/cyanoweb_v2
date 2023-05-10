@@ -5,4 +5,5 @@ module.exports = app => {
   
     // Create a new Coagulation
     router.get("/search",reccomendation.search);
+    app.use('/api/reccomendation', router);
 }

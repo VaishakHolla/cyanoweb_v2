@@ -19,6 +19,12 @@ const Sedimentation = () => {
     { name: "Istanbul", code: "IST" },
     { name: "Paris", code: "PRS" },
   ];
+
+  const sources = [
+    { name: "Lake Eerie", code:'LE'},
+    { name: "Grand Lake St. Marys", code:'GL'},
+    { name: "Ohio River", code:'OR'},
+  ];
   const toast = useRef(null);
 
   const defaultValues = {
@@ -111,7 +117,7 @@ const Sedimentation = () => {
         (getValues("turbidityRemoval") != watchTurbidity[1] - watchTurbidity[0])
       ) {
         // console.log("inside if");
-        setValue("turbidityRemoval", watchTurbidity[1] - watchTurbidity[0]);
+        setValue("turbidityRemoval", ((watchTurbidity[1] - watchTurbidity[0])/watchTurbidity[1])*100);
       }
       if (
         (watchTotalMicrocystis[0] != "") &
@@ -121,7 +127,7 @@ const Sedimentation = () => {
       ) {
         setValue(
           "totalMicrocystisRemoval",
-          watchTotalMicrocystis[1] - watchTotalMicrocystis[0]
+          ((watchTotalMicrocystis[1] - watchTotalMicrocystis[0])/watchTotalMicrocystis[1])*100
         );
       }
       if (
@@ -132,7 +138,7 @@ const Sedimentation = () => {
       ) {
         setValue(
           "mcyeMicrocystisRemoval",
-          watchmcyeMicrocystis[1] - watchmcyeMicrocystis[0]
+          ((watchmcyeMicrocystis[1] - watchmcyeMicrocystis[0])/watchmcyeMicrocystis[1])*100
         );
       }
       if (
@@ -143,7 +149,7 @@ const Sedimentation = () => {
       ) {
         setValue(
           "mycePlanktothrixRemoval",
-          watchmycePlanktothrix[1] - watchmycePlanktothrix[0]
+          ((watchmycePlanktothrix[1] - watchmycePlanktothrix[0])/watchmycePlanktothrix[1])*100
         );
       }
       if (
@@ -154,7 +160,7 @@ const Sedimentation = () => {
       ) {
         setValue(
           "totalMicrocystinsRemoval",
-          watchtotalMicrocystins[1] - watchtotalMicrocystins[0]
+          ((watchtotalMicrocystins[1] - watchtotalMicrocystins[0])/watchtotalMicrocystins[1])*100
         );
       }
     }, 1000);
@@ -191,13 +197,50 @@ const Sedimentation = () => {
     });
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     // data.value && show();
     // data.calendar && show();
     // data.dropdown && show();
 
     // console.log(data);
-    data.date && show();
+    // data.date && show();
+    const url = `${process.env.REACT_APP_API_BASE_URL}/sedimentation`
+    const rawResponse = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: data.model,
+      device: data.device,
+      date: data.date,
+      source: data.source.name,
+      experiment_id : data.experiment_id,
+
+      water_temperature: data.waterTemperature, //inputNumber
+      water_pH: data.waterpH, //inputNumber
+     reaction_time: data.reactionTime, //
+      reaction_unit: data.reactionUnit.name, //dropdown [Min,Sec]
+
+
+      turbidity_initial: data.turbidityInitial,
+      turbidity_final: data.turbidityFinal,
+      turbidity_removal: data.turbidityRemoval,
+      totalMicrocystis_initial: data.totalMicrocystisInitial,
+      totalMicrocystis_final: data.totalMicrocystisFinal,
+      totalMicrocystis_removal: data.totalMicrocystisRemoval,
+      mcyeMicrocystis_initial: data.mcyeMicrocystisInitial,
+      mcyeMicrocystis_final: data.mcyeMicrocystisFinal,
+      mcyeMicrocystis_removal: data.mcyeMicrocystisRemoval,
+      mycePlanktothrix_initial: data.mycePlanktothrixInitial,
+      mycePlanktothrix_final: data.mycePlanktothrixFinal,
+      mycePlanktothrix_removal: data.mycePlanktothrixRemoval,
+      totalMicrocystins_initial: data.totalMicrocystinsInitial,
+      totalMicrocystins_final: data.totalMicrocystinsFinal,
+      totalMicrocystins_removal: data.totalMicrocystinsRemoval,
+      })
+    })
     reset();
   };
 
@@ -517,7 +560,7 @@ const Sedimentation = () => {
                       optionLabel="name"
                       placeholder="Select"
                       name={field.name}
-                      options={cities}
+                      options={sources}
                       control={control}
                       onChange={(e) => field.onChange(e.value)}
                       style={{ width: "100%" }}

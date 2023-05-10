@@ -104,7 +104,7 @@ const AddDataModal = () => {
     console.log(content);
 
     dispatch(fetchRawWaterData());
-    reset();
+    reset({...defaultValues});
     setVisible(false);
   };
 

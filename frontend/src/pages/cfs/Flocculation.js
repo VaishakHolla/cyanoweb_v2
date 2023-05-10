@@ -123,7 +123,7 @@ const Flocculation = () => {
         (getValues("turbidityRemoval") != watchTurbidity[1] - watchTurbidity[0])
       ) {
         // console.log("inside if");
-        setValue("turbidityRemoval", watchTurbidity[1] - watchTurbidity[0]);
+        setValue("turbidityRemoval", ((watchTurbidity[1] - watchTurbidity[0])/watchTurbidity[1])*100);
       }
       if (
         (watchTotalMicrocystis[0] != "") &
@@ -133,7 +133,7 @@ const Flocculation = () => {
       ) {
         setValue(
           "totalMicrocystisRemoval",
-          watchTotalMicrocystis[1] - watchTotalMicrocystis[0]
+          ((watchTotalMicrocystis[1] - watchTotalMicrocystis[0])/watchTotalMicrocystis[1])*100
         );
       }
       if (
@@ -144,7 +144,7 @@ const Flocculation = () => {
       ) {
         setValue(
           "mcyeMicrocystisRemoval",
-          watchmcyeMicrocystis[1] - watchmcyeMicrocystis[0]
+          ((watchmcyeMicrocystis[1] - watchmcyeMicrocystis[0])/watchmcyeMicrocystis[1])*100
         );
       }
       if (
@@ -155,7 +155,7 @@ const Flocculation = () => {
       ) {
         setValue(
           "mycePlanktothrixRemoval",
-          watchmycePlanktothrix[1] - watchmycePlanktothrix[0]
+          ((watchmycePlanktothrix[1] - watchmycePlanktothrix[0])/watchmycePlanktothrix[1])*100
         );
       }
       if (
@@ -166,7 +166,7 @@ const Flocculation = () => {
       ) {
         setValue(
           "totalMicrocystinsRemoval",
-          watchtotalMicrocystins[1] - watchtotalMicrocystins[0]
+          ((watchtotalMicrocystins[1] - watchtotalMicrocystins[0])/watchtotalMicrocystins[1])*100
         );
       }
     }, 1000);
