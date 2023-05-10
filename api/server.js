@@ -39,6 +39,7 @@ require("./app/routes/coagulation.routes")(app);
 require("./app/routes/flocculation.routes")(app);
 require("./app/routes/sedimentation.routes")(app);
 require("./app/routes/rawwaterdata.routes")(app);
+require("./app/routes/reccomendation.routes")(app);
 
 
 // set port, listen for requests

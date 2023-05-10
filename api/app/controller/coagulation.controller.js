@@ -79,18 +79,18 @@ exports.findAll = (req, res) => {
 
 // Find a single Coagulation with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const source = req.params.source;
 
-  Coagulation.findById(id)
+  Coagulation.find({source:source})
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Coagulation not found with id " + id });
+        res.status(404).send({ message: "Coagulation not found with id " + source });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Coagulation with id=" + id });
+        .send({ message: "Error retrieving Coagulation with id=" + source });
     });
 };
 // Update a Coagulation by the id in the request

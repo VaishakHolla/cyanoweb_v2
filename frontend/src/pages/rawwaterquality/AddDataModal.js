@@ -11,6 +11,8 @@ import { Controller, useForm } from "react-hook-form";
 import { InputText } from "primereact/inputtext";
 import { Message } from "primereact/message";
 
+import { useDispatch } from "react-redux";
+import {fetchRawWaterData} from '../../features/rawwater/rawwaterSlice'
 const AddDataModal = () => {
   const [visible, setVisible] = useState(false);
   const cities = [
@@ -19,7 +21,7 @@ const AddDataModal = () => {
     { name: "Ohio River", code:'OR'},
   ];
   const toast = useRef(null);
-  
+  const dispatch = useDispatch();
   const defaultValues = {
     location: "", //dropdown
     date: "", //calendar
@@ -99,11 +101,11 @@ const AddDataModal = () => {
 
   const content = await rawResponse.json();
 
-  console.log(content);
+    console.log(content);
 
-    
+    dispatch(fetchRawWaterData());
     reset();
-    setVisible();
+    setVisible(false);
   };
 
   const getFormErrorMessage = (name) => {

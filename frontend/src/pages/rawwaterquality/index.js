@@ -4,8 +4,8 @@ import Charts from "./Charts";
 import MapComponent from "./MapComponent";
 import data from "./data.json";
 
-import { useSelector } from "react-redux";
-import {selectAllRawWaterData} from '../../features/rawwater/rawwaterSlice'
+import { useSelector,useDispatch } from "react-redux";
+import {selectAllRawWaterData,fetchRawWaterData} from '../../features/rawwater/rawwaterSlice'
 // delete L.Icon.Default.prototype._getIconUrl;
 
 // L.Icon.Default.mergeOptions({
@@ -46,12 +46,14 @@ const RawWaterQuality = () => {
   const [mycePlanktothrix,setMycePlanktothrix]=useState([])
   const [date,setDate]=useState([])
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    console.log(`${process.env.REACT_APP_API_BASE_URL}`)
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/rawwaterdata/all`)
-      .then(response =>response.json())
-      .then(data => setData1(data))
-      .catch(error => console.log(error));
+    // console.log(`${process.env.REACT_APP_API_BASE_URL}`)
+    // fetch(`${process.env.REACT_APP_API_BASE_URL}/rawwaterdata/all`)
+    //   .then(response =>response.json())
+    //   .then(data => setData1(data))
+    //   .catch(error => console.log(error));
+    dispatch(fetchRawWaterData())
   }, []);
   console.log(data1)
   const [templateData,setTemplateData] = useState({
@@ -95,7 +97,7 @@ const RawWaterQuality = () => {
         setMycePlanktothrix([])
         setTotalMicrocystins([])
         setTotalMicrocystis([])
-      let testData=  data1.filter((obj) => compareLocation(obj));
+      let testData=  rawwaterDataFromAPI.filter((obj) => compareLocation(obj));
 
     testData.map((obj) => {
         defaultData.turbidity.push(obj.turbidity);
@@ -144,7 +146,7 @@ const RawWaterQuality = () => {
     data: [],
   };
   const defaultLabel = [];
-
+  console.log(paramterLabels)
   // useEffect(() => {
   //   first
 
@@ -260,11 +262,11 @@ const RawWaterQuality = () => {
             </div>
 
             <div className="col-6">
-              <Charts
+              {/* <Charts
                 data={defaultData}
                 label={defaultLabel}
                 lineColor={"green"}
-              />
+              /> */}
             </div>
           </div>
         </div>

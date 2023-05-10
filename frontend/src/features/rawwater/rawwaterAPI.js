@@ -8,7 +8,7 @@
 // });
 
 export async function getRawWaterData() {
-    const response = await fetch('http://127.0.0.1:8080/api/rawwaterdata/all');
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/rawwaterdata/all`);
     if (!response.ok) {
       throw new Error('Failed to fetch raw water data.');
     }

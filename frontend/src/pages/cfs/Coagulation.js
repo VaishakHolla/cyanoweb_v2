@@ -202,11 +202,11 @@ const Coagulation = () => {
     });
   };
 
-  const onSubmit = async(data) => {
+  const onSubmit = async(e,data) => {
     // data.value && show();
     // data.calendar && show();
     // data.dropdown && show();
-
+    e.preventDefault()
     console.log(data);
     // data.date && show();
     const url = `${process.env.REACT_APP_API_BASE_URL}/coagulation`
@@ -351,7 +351,7 @@ const Coagulation = () => {
                     optionLabel="name"
                     placeholder="Select"
                     name={field.name}
-                    options={sources}
+                    options={chemicaltypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
                     style={{ width: "53%" }}
@@ -730,7 +730,7 @@ const Coagulation = () => {
                       optionLabel="name"
                       placeholder="Select"
                       name={field.name}
-                      options={chemicaltypes}
+                      options={sources}
                       control={control}
                       onChange={(e) => field.onChange(e.value)}
                       style={{ width: "100%" }}

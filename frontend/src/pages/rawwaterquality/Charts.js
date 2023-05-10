@@ -46,19 +46,20 @@ export default function Charts(props) {
                         color: textColor
                     }
                 }
-            },scales: {
+            },
+            scales: {
                 x: {
                   title: {
                     display: true,
                     text: props.data.x_label,
-                    color:"white"
+                    // color:"white"
                   }
                 },
                 y: {
                   title: {
                     display: true,
                     text: props.data.y_label,
-                    color:"white"
+                    // color:"white"
                   }
                 }
               }     

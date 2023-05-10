@@ -350,7 +350,7 @@ const Flocculation = () => {
                     optionLabel="name"
                     placeholder="Select"
                     name={field.name}
-                    options={sources}
+                    options={chemicaltypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
                     style={{ width: "53%" }}
@@ -729,7 +729,7 @@ const Flocculation = () => {
                       optionLabel="name"
                       placeholder="Select"
                       name={field.name}
-                      options={chemicaltypes}
+                      options={sources}
                       control={control}
                       onChange={(e) => field.onChange(e.value)}
                       style={{ width: "100%" }}
