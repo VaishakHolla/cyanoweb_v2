@@ -233,6 +233,7 @@ const AddDataModal = () => {
                         useGrouping={false}
                         min={0}
                         max={50}
+                        suffix="℃"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
@@ -270,6 +271,7 @@ const AddDataModal = () => {
                         useGrouping={false}
                         min={0}
                         max={14}
+                        allowEmpty={true}
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
@@ -288,8 +290,8 @@ const AddDataModal = () => {
                 control={control}
                 rules={{
                   required: "Enter a valid Turbidity.",
-                  validate: (value) =>
-                    (value >= 0 && value <= 14) || "Enter a valid Turbidity.",
+                  // validate: (value) =>
+                  //   (value >= 0 && value <= 14) || "Enter a valid Turbidity.",
                 }}
                 render={({ field, fieldState }) => (
                   <>
@@ -306,8 +308,8 @@ const AddDataModal = () => {
                           maxFractionDigits={2}
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
-                          min={0}
-                          max={14}
+                          allowEmpty={true}
+                          suffix="NTU"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -327,9 +329,9 @@ const AddDataModal = () => {
                 control={control}
                 rules={{
                   required: "Enter a valid Dissolved Oxygen.",
-                  validate: (value) =>
-                    (value >= 0 && value <= 14) ||
-                    "Enter a valid Dissolved Oxygen.",
+                  // validate: (value) =>
+                  //   (value >= 0 && value <= 14) ||
+                  //   "Enter a valid Dissolved Oxygen.",
                 }}
                 render={({ field, fieldState }) => (
                   <div className="grid align-items-center">
@@ -339,14 +341,14 @@ const AddDataModal = () => {
                     <div className="col-4 ">
                       <InputNumber
                         id={field.name}
+                        allowEmpty={true}
                         inputRef={field.ref}
                         value={field.value}
                         onBlur={field.onBlur}
                         maxFractionDigits={2}
                         onValueChange={(e) => field.onChange(e)}
                         useGrouping={false}
-                        min={0}
-                        max={14}
+                        suffix="mg/L"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
@@ -365,9 +367,9 @@ const AddDataModal = () => {
                 control={control}
                 rules={{
                   required: "Enter a valid Total Microcystis.",
-                  validate: (value) =>
-                    (value >= 0 && value <= 14) ||
-                    "Enter a valid Total Microcystis value.",
+                  // validate: (value) =>
+                  //   (value >= 0 && value <= 14) ||
+                  //   "Enter a valid Total Microcystis value.",
                 }}
                 render={({ field, fieldState }) => (
                   <>
@@ -384,8 +386,8 @@ const AddDataModal = () => {
                           maxFractionDigits={2}
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
-                          min={0}
-                          max={14}
+                          allowEmpty={true}
+                          suffix="Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -405,9 +407,9 @@ const AddDataModal = () => {
                 control={control}
                 rules={{
                   required: "Enter a valid mycE Microcystis.",
-                  validate: (value) =>
-                    (value >= 0 && value <= 14) ||
-                    "Enter a valid mycE Microcystis.",
+                  // validate: (value) =>
+                  //   (value >= 0 && value <= 14) ||
+                  //   "Enter a valid mycE Microcystis.",
                 }}
                 render={({ field, fieldState }) => (
                   <>
@@ -424,8 +426,8 @@ const AddDataModal = () => {
                           maxFractionDigits={2}
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
-                          min={0}
-                          max={14}
+                          allowEmpty={true}
+                          suffix="Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -445,9 +447,9 @@ const AddDataModal = () => {
                 control={control}
                 rules={{
                   required: "Enter a valid mycE Planktothrix.",
-                  validate: (value) =>
-                    (value >= 0 && value <= 14) ||
-                    "Enter a valid mycE Planktothrix.",
+                  // validate: (value) =>
+                  //   (value >= 0 && value <= 14) ||
+                  //   "Enter a valid mycE Planktothrix.",
                 }}
                 render={({ field, fieldState }) => (
                   <>
@@ -458,14 +460,15 @@ const AddDataModal = () => {
                       <div className="col-4 ">
                         <InputNumber
                           id={field.name}
+                          allowEmpty={true}
                           inputRef={field.ref}
                           value={field.value}
                           onBlur={field.onBlur}
                           maxFractionDigits={2}
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
-                          min={0}
-                          max={14}
+                          
+                          suffix="Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -485,9 +488,9 @@ const AddDataModal = () => {
                 control={control}
                 rules={{
                   required: "Enter a valid Total Microcystins.",
-                  validate: (value) =>
-                    (value >= 0 && value <= 14) ||
-                    "Enter a valid Total Microcystins.",
+                  // validate: (value) =>
+                  //   (value >= 0 && value <= 14) ||
+                  //   "Enter a valid Total Microcystins.",
                 }}
                 render={({ field, fieldState }) => (
                   <>
@@ -498,14 +501,15 @@ const AddDataModal = () => {
                       <div className="col-4 ">
                         <InputNumber
                           id={field.name}
+                          allowEmpty={true}
                           inputRef={field.ref}
                           value={field.value}
                           onBlur={field.onBlur}
                           maxFractionDigits={2}
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
-                          min={0}
-                          max={14}
+                          
+                          suffix="ppb"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
