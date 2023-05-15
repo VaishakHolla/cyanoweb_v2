@@ -284,8 +284,7 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>Water Temperature</label>
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -299,7 +298,8 @@ const Flocculation = () => {
                     })}
                   />{" "}
                   
-                {/* </span> */}
+                <label htmlFor={field.name} style={{color:"#070606"}}>Water Temperature</label>
+                </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
@@ -316,8 +316,7 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>Water pH</label>
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -329,8 +328,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  
-                {/* </span> */}
+                <label htmlFor={field.name} style={{color:"#070606"}}>Water pH</label>
+                </span> 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
@@ -343,8 +342,7 @@ const Flocculation = () => {
             rules={{ required: "chemicalType is required." }}
             render={({ field, fieldState }) => (
               <div className=" align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>Chemical Type</label>
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
                   <Dropdown
                     value={field.value}
                     optionLabel="name"
@@ -358,8 +356,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  
-                {/* </span> */}
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Chemical Type</label>
+                 </span> 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
@@ -374,16 +372,15 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>Other Chemical Type</label>
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputText
                     id={field.name}
                     value={field.value}
                     className={classNames({ "p-invalid": fieldState.error })}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  
-                {/* </span> */}
+                <label htmlFor={field.name} style={{color:"#070606"}}>Other Chemical Type</label>  
+                 </span>
 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -399,16 +396,15 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>Manufacturer</label>
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputText
                     id={field.name}
                     value={field.value}
                     className={classNames({ "p-invalid": fieldState.error })}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  
-                {/* </span> */}
+                <label htmlFor={field.name} style={{color:"#070606"}}>Manufacturer</label>
+                 </span> 
 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -426,8 +422,8 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>Chemical Dosage</label>
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
+               
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -440,8 +436,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  
-                {/* </span> */}
+                 <label htmlFor={field.name} style={{color:"#070606"}}>Chemical Dosage</label>  
+                 </span> 
 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -459,8 +455,7 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>Mixing Speed</label>
+                <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -473,8 +468,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  
-                {/* </span> */}
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Mixing Speed</label>
+                 </span> 
 
                 <div>{getFormErrorMessage(field.name)}</div>
                 {/* <div className="col-3 ">
@@ -510,8 +505,7 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                <label htmlFor={field.name} style={{color:"#070606"}}>reactionTime</label>
+                 <span className="p-float-label" style={{ margin: "5px" }}>                
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -523,8 +517,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  
-                {/* </span> */}
+                 <label htmlFor={field.name} style={{color:"#070606"}}>reactionTime</label> 
+                 </span> 
 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -536,9 +530,9 @@ const Flocculation = () => {
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
                   {/* <div className="col-3"> */}
-                  <label htmlFor={field.name} style={{color:"#070606"}}>reactionUnit</label>
+                  
                   <Dropdown
                     value={field.value}
                     optionLabel="name"
@@ -556,8 +550,8 @@ const Flocculation = () => {
                     })}
                   />
 
-                  
-                {/* </span> */}
+               <label htmlFor={field.name} style={{color:"#070606"}}>reactionUnit</label> 
+               </span> 
                 {/* </div> */}
 
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -599,13 +593,10 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-
-                <label htmlFor={field.name} style={{color:"#070606"}}>
+                <span className="p-float-label" style={{ margin: "5px" }}> 
                     {/* {parameters.initialUsedName}
                      */}
-                     Initial
-                  </label>
+              
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -618,7 +609,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                {/* </span> */}
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Initial</label>
+                 </span> 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
@@ -641,12 +633,7 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-
-                <label htmlFor={field.name} style={{color:"#070606"}}>
-                    {/* {parameters.finalUsedName} */}
-                    Final
-                    </label>
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -659,7 +646,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                {/* </span> */}
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Final</label>
+                </span> 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
@@ -680,12 +668,7 @@ const Flocculation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-
-                <label htmlFor={field.name} style={{color:"#070606"}}>
-                    {/* {parameters.removalUsedName} */}
-                    Removal
-                  </label>
+                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -699,7 +682,8 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                {/* </span> */}
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Removal</label>
+                 </span> 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
@@ -722,8 +706,7 @@ const Flocculation = () => {
               rules={{ required: "source is required." }}
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
-                  {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                  <label htmlFor={field.name} style={{color:"#070606"}}>Source</label>
+                   <span className="p-float-label" style={{ margin: "5px" }}> 
                     <Dropdown
                       value={field.value}
                       optionLabel="name"
@@ -737,8 +720,8 @@ const Flocculation = () => {
                         "p-invalid": fieldState.error,
                       })}
                     />
-                    
-                  {/* </span> */}
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Source</label>
+                  </span> 
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
               )}
@@ -751,8 +734,8 @@ const Flocculation = () => {
               rules={{ required: "Date is required." }}
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
-                  {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                  <label htmlFor={field.name} style={{color:"#070606"}}>Date</label>
+                   <span className="p-float-label" style={{ margin: "5px" }}> 
+                  
                     <Calendar
                       inputId={field.name}
                       value={field.value}
@@ -762,8 +745,8 @@ const Flocculation = () => {
                         "p-invalid": fieldState.error,
                       })}
                     />
-                    
-                  {/* </span> */}
+                 <label htmlFor={field.name} style={{color:"#070606"}}>Date</label>
+                   </span> 
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
               )}
@@ -778,16 +761,16 @@ const Flocculation = () => {
               }}
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
-                  {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                  <label htmlFor={field.name} style={{color:"#070606"}}>Model</label>
+                 <span className="p-float-label" style={{ margin: "5px" }}> 
+                  
                     <InputText
                       id={field.name}
                       value={field.value}
                       className={classNames({ "p-invalid": fieldState.error })}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    
-                  {/* </span> */}
+                 <label htmlFor={field.name} style={{color:"#070606"}}>Model</label>
+                   </span> 
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
               )}
@@ -802,16 +785,16 @@ const Flocculation = () => {
               }}
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
-                  {/* <span className="p-float-label" style={{ margin: "5px" }}> */}
-                  <label htmlFor={field.name} style={{color:"#070606"}}>Device</label>
+                   <span className="p-float-label" style={{ margin: "5px" }}> 
+                
                     <InputText
                       id={field.name}
                       value={field.value}
                       className={classNames({ "p-invalid": fieldState.error })}
                       onChange={(e) => field.onChange(e.target.value)}
                     />
-                    
-                  {/* </span> */}
+                 <label htmlFor={field.name} style={{color:"#070606"}}>Device</label>
+                  </span> 
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
               )}
