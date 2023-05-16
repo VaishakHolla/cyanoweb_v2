@@ -278,9 +278,9 @@ const Flocculation = () => {
             control={control}
             rules={{
               required: "Enter a valid waterTemperature.",
-              validate: (value) =>
-                (value >= 0 && value <= 44) ||
-                "Enter a valid waterTemperature.",
+              // validate: (value) =>
+              //   (value >= 0 && value <= 44) ||
+              //   "Enter a valid waterTemperature.",
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
@@ -290,8 +290,8 @@ const Flocculation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={44}
+                    // min={0}
+                    // max={44}
                     suffix="℃"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
@@ -417,8 +417,8 @@ const Flocculation = () => {
             control={control}
             rules={{
               required: "Enter a valid chemicalDosage.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) || "Enter a valid chemicalDosage.",
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) || "Enter a valid chemicalDosage.",
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
@@ -429,8 +429,8 @@ const Flocculation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={14}
+                    // min={0}
+                    // max={14}
                     suffix="mg/L"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
@@ -450,8 +450,8 @@ const Flocculation = () => {
             control={control}
             rules={{
               required: "Enter a valid mixingSpeed.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) || "Enter a valid mixingSpeed.",
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) || "Enter a valid mixingSpeed.",
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
@@ -461,8 +461,8 @@ const Flocculation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={14}
+                    // min={0}
+                    // max={14}
                     suffix="rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
@@ -500,8 +500,8 @@ const Flocculation = () => {
             control={control}
             rules={{
               required: "Enter a valid reactionTime.",
-              validate: (value) =>
-                (value >= 0 && value <= 14) || "Enter a valid reactionTime.",
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) || "Enter a valid reactionTime.",
             }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "40px" }}>
@@ -511,8 +511,8 @@ const Flocculation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={14}
+                    // min={0}
+                    // max={14}
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -587,9 +587,9 @@ const Flocculation = () => {
             control={control}
             rules={{
               required: `Enter a valid ${parameters.initialUsedName}.`,
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                `Enter a valid ${parameters.initialUsedName}.,`,
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) ||
+              //   `Enter a valid ${parameters.initialUsedName}.,`,
             }}
             render={({ field, fieldState }) => (
               <div>
@@ -602,8 +602,6 @@ const Flocculation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={14}
                     // style={{ width: "50%" }}
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
@@ -627,9 +625,9 @@ const Flocculation = () => {
             control={control}
             rules={{
               required: `Enter a valid ${parameters.finalUsedName}.`,
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                `Enter a valid ${parameters.finalUsedName}.,`,
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) ||
+              //   `Enter a valid ${parameters.finalUsedName}.,`,
             }}
             render={({ field, fieldState }) => (
               <div>
@@ -641,7 +639,7 @@ const Flocculation = () => {
                     onBlur={field.onBlur}
                     min={0}
                     // style={{ width: "50%" }}
-                    max={14}
+                    // max={14}
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -662,9 +660,9 @@ const Flocculation = () => {
             control={control}
             rules={{
               required: `Enter a valid ${parameters.removalUsedName}.`,
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                `Enter a valid ${parameters.removalUsedName}.,`,
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) ||
+              //   `Enter a valid ${parameters.removalUsedName}.,`,
             }}
             render={({ field, fieldState }) => (
               <div>
@@ -674,8 +672,8 @@ const Flocculation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={14}
+                    // min={0}
+                    // max={14}
                     // style={{ width: "50%" }}
                     disabled
                     inputClassName={classNames({

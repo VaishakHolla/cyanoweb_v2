@@ -331,9 +331,9 @@ const Sedimentation = () => {
                 control={control}
                 rules={{
                   required: "Enter a valid reactionTime.",
-                  validate: (value) =>
-                    (value >= 0 && value <= 14) ||
-                    "Enter a valid reactionTime.",
+                  // validate: (value) =>
+                  //   (value >= 0 && value <= 14) ||
+                  //   "Enter a valid reactionTime.",
                 }}
                 render={({ field, fieldState }) => (
                   <div className="align-items-center"style={{ margin: "40px" }}>
@@ -344,8 +344,8 @@ const Sedimentation = () => {
                         id={field.name}
                         value={field.value}
                         onBlur={field.onBlur}
-                        min={0}
-                        max={14}
+                        // min={0}
+                        // max={14}
                         className="reactionTime"
                         // style={{width:"50%"}}
                         suffix="rpm"
@@ -430,9 +430,9 @@ const Sedimentation = () => {
             control={control}
             rules={{
               required: `Enter a valid ${parameters.initialUsedName}.`,
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                `Enter a valid ${parameters.initialUsedName}.,`,
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) ||
+              //   `Enter a valid ${parameters.initialUsedName}.,`,
             }}
             render={({ field, fieldState }) => (
               <div>
@@ -442,8 +442,8 @@ const Sedimentation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={14}
+                    // min={0}
+                    // max={14}
                     // style={{ width: "50%" }}
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
@@ -471,9 +471,9 @@ const Sedimentation = () => {
             control={control}
             rules={{
               required: `Enter a valid ${parameters.finalUsedName}.`,
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                `Enter a valid ${parameters.finalUsedName}.,`,
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) ||
+              //   `Enter a valid ${parameters.finalUsedName}.,`,
             }}
             render={({ field, fieldState }) => (
               <div>
@@ -483,9 +483,9 @@ const Sedimentation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
+                    // min={0}
                     // style={{ width: "50%" }}
-                    max={14}
+                    // max={14}
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -509,9 +509,9 @@ const Sedimentation = () => {
             control={control}
             rules={{
               required: `Enter a valid ${parameters.removalUsedName}.`,
-              validate: (value) =>
-                (value >= 0 && value <= 14) ||
-                `Enter a valid ${parameters.removalUsedName}.,`,
+              // validate: (value) =>
+              //   (value >= 0 && value <= 14) ||
+              //   `Enter a valid ${parameters.removalUsedName}.,`,
             }}
             render={({ field, fieldState }) => (
               <div>
@@ -521,8 +521,8 @@ const Sedimentation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
-                    min={0}
-                    max={14}
+                    // min={0}
+                    // max={14}
                     // style={{ width: "50%" }}
                     disabled
                     inputClassName={classNames({
