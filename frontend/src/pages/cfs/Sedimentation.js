@@ -267,11 +267,9 @@ const Sedimentation = () => {
                 "Enter a valid waterTemperature.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center">
-                <label htmlFor={field.name} style={{ color: "#070606" }}>
-                  Water Temperature (0-30)
-                </label>
-                <span className="">
+              <div className="align-items-center" style={{ margin: "40px" }}>
+               
+                <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -283,7 +281,10 @@ const Sedimentation = () => {
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />{" "}
+                  />
+                   <label htmlFor={field.name} style={{ color: "#070606" }}>
+                  Water Temperature (0-30)
+                </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -300,11 +301,9 @@ const Sedimentation = () => {
                 (value >= 0 && value <= 14) || "Enter a valid waterpH.",
             }}
             render={({ field, fieldState }) => (
-              <div className="flex flex-column gap-2">
-                <label htmlFor={field.name} style={{ color: "#070606" }}>
-                  Water pH(0-14)
-                </label>
-                <span className="">
+              <div className="flex flex-column gap-2"style={{ margin: "40px" }}>
+               
+                <span  className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -316,6 +315,7 @@ const Sedimentation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
+                <label htmlFor={field.name} style={{ color: "#070606" }}> Water pH(0-14)</label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
@@ -324,8 +324,8 @@ const Sedimentation = () => {
         </div>
 
         <div className="align-form-inputs">
-          <div className="grid">
-            <div className="col-6">
+          <div >
+            <div >
               <Controller
                 name="reactionTime"
                 control={control}
@@ -336,11 +336,9 @@ const Sedimentation = () => {
                     "Enter a valid reactionTime.",
                 }}
                 render={({ field, fieldState }) => (
-                  <div className="align-items-center">
-                    <label htmlFor={field.name} style={{ color: "#070606" }}>
-                      Reaction Time
-                    </label>
-                    <span>
+                  <div className="align-items-center"style={{ margin: "40px" }}>
+                   
+                    <span className="p-float-label" style={{ margin: "5px" }}>
                       <InputNumber
                         onValueChange={(e) => field.onChange(e)}
                         id={field.name}
@@ -355,6 +353,9 @@ const Sedimentation = () => {
                           "p-invalid": fieldState.error,
                         })}
                       />
+                     <label htmlFor={field.name} style={{ color: "#070606" }}>
+                      Reaction Time
+                    </label>
                     </span>
 
                     <div>{getFormErrorMessage(field.name)}</div>
@@ -362,17 +363,15 @@ const Sedimentation = () => {
                 )}
               />
             </div>
-            <div className="col-4">
+            <div className="align-form-inputs">
               <Controller
                 name="reactionUnit"
                 control={control}
                 rules={{ required: "reaction unit is required." }}
                 render={({ field, fieldState }) => (
-                  <div className="align-items-center">
-                    <label htmlFor={field.name} style={{ color: "#070606" }}>
-                      Reaction Unit
-                    </label>
-                    <span>
+                  <div className="align-items-center" style={{margin: "40px"}}>
+                    
+                    <span className="p-float-label" style={{ margin: "5px" }}>
                       {/* <div className="col-3"> */}
                       <Dropdown
                         value={field.value}
@@ -390,6 +389,9 @@ const Sedimentation = () => {
                           "p-invalid": fieldState.error,
                         })}
                       />
+                      <label htmlFor={field.name} style={{ color: "#070606" }}>
+                      Reaction Unit
+                    </label>
                     </span>
                     {/* </div> */}
 
