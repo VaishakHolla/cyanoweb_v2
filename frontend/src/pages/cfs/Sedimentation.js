@@ -34,32 +34,32 @@ const Sedimentation = () => {
     device: "", //inputText
 
     //Experimental Conditions
-    waterTemperature: "", //inputNumber
-    waterpH: "", //inputNumber
+    waterTemperature: null, //inputNumber
+    waterpH: null, //inputNumber
     chemicalType: "", //dropdown
     otherChemicalType: "", //inputText
     manufacturer: "", //inputText
-    chemicalDosage: "", //inputNumber
-    mixingSpeed: "", //inputNumber
-    reactionTime: "", //
+    chemicalDosage: null, //inputNumber
+    mixingSpeed: null, //inputNumber
+    reactionTime: null, //
     reactionUnit: "", //dropdown [Min,Sec]
 
     //Experimental results
-    turbidityInitial: "",
-    turbidityFinal: "",
-    turbidityRemoval: "",
-    totalMicrocystisInitial: "",
-    totalMicrocystisFinal: "",
-    totalMicrocystisRemoval: "",
-    mcyeMicrocystisInitial: "",
-    mcyeMicrocystisFinal: "",
-    mcyeMicrocystisRemoval: "",
-    mycePlanktothrixInitial: "",
-    mycePlanktothrixFinal: "",
-    mycePlanktothrixRemoval: "",
-    totalMicrocystinsInitial: "",
-    totalMicrocystinsFinal: "",
-    totalMicrocystinsRemoval: "",
+    turbidityInitial: null,
+    turbidityFinal: null,
+    turbidityRemoval: null,
+    totalMicrocystisInitial: null,
+    totalMicrocystisFinal: null,
+    totalMicrocystisRemoval: null,
+    mcyeMicrocystisInitial: null,
+    mcyeMicrocystisFinal: null,
+    mcyeMicrocystisRemoval: null,
+    mycePlanktothrixInitial: null,
+    mycePlanktothrixFinal: null,
+    mycePlanktothrixRemoval: null,
+    totalMicrocystinsInitial: null,
+    totalMicrocystinsFinal: null,
+    totalMicrocystinsRemoval: null,
 
     // temperature: "", //inputNumber
     // pH: "", //inputNumber
