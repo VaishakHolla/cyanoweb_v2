@@ -101,7 +101,7 @@ const AddDataModal = () => {
 
   const content = await rawResponse.json();
 
-    console.log(content);
+    // console.log(content);
 
     dispatch(fetchRawWaterData());
     reset({...defaultValues});

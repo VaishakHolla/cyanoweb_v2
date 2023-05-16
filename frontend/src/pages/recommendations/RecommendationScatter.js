@@ -6,7 +6,7 @@ const RecommendationScatter = (props) => {
   //     var alpha = opacity === undefined ? 0.5 : 1 - opacity;
   //     return colorLib(value).alpha(alpha).rgbString();
   //   }
-  console.log(props,"recommendationscatter")
+  // console.log(props,"recommendationscatter")
 
   const data = {
     datasets: [

@@ -9,6 +9,8 @@ module.exports = app => {
     router.get("/",flocculation.test);
 
     router.get("/all",flocculation.findAll);
-    router.get("/find",flocculation.findOne)
+    router.get("/find",flocculation.findOne);
+    router.get("/delete",flocculation.delete);
+    router.get("/deleteAll",flocculation.deleteAll);
     app.use('/api/flocculation', router);
 }

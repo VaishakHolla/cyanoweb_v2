@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Chart } from 'primereact/chart';
 
 const RecommendationChart = (props) => {
-    console.log(props.data.coagulationData,props.data.flocculationData,props.data.sedimentationData)
+    // console.log(props.data.coagulationData,props.data.flocculationData,props.data.sedimentationData)
     const [basicData] = useState({
         labels: [0,props.data.datasetLabel,5],
         datasets: [

@@ -9,6 +9,8 @@ module.exports = app => {
     router.get("/",sedimentation.test);
 
     router.get("/all",sedimentation.findAll);
-    router.get("/find",sedimentation.findOne)
+    router.get("/find",sedimentation.findOne);
+    router.get("/delete",sedimentation.delete);
+    router.get("/deleteAll",sedimentation.deleteAll);
     app.use('/api/sedimentation', router);
 }

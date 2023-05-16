@@ -55,7 +55,7 @@ const RawWaterQuality = () => {
     //   .catch(error => console.log(error));
     dispatch(fetchRawWaterData())
   }, []);
-  console.log(data1)
+  // console.log(data1)
   const [templateData,setTemplateData] = useState({
     turbidity: [],
     ph: [],
@@ -68,7 +68,7 @@ const RawWaterQuality = () => {
     date: [],
   });
   function compareLocation(obj) {
-    console.log(selected,"selected source")
+    // console.log(selected,"selected source")
     // let [obj_lat, obj_long] = obj.location.split(",");
     return (
     //   Number(obj_lat)===selected.long& Number(obj_long)===selected.lat
@@ -110,7 +110,7 @@ const RawWaterQuality = () => {
         defaultData.totalmicrocytis.push(obj.totalmicrocytis);
         defaultData.date.push(new Date(obj.date).toLocaleDateString());
       });
-      console.log(testData)
+      // console.log(testData)
     //   setTemplateData(defaultData)
       setTurbidity(defaultData.turbidity)
       setDissolvedOxygen(defaultData.dissolvedoxygen)
@@ -135,7 +135,7 @@ const RawWaterQuality = () => {
   }, [selected]);
 
   const handleClick = (obj) => {
-    console.log(obj)
+    // console.log(obj)
     setSelected(obj.name);
     formatData(apiData)
   };
@@ -146,7 +146,7 @@ const RawWaterQuality = () => {
     data: [],
   };
   const defaultLabel = [];
-  console.log(paramterLabels)
+  // console.log(paramterLabels)
   // useEffect(() => {
   //   first
 

@@ -3,7 +3,7 @@ const Coagulation = db.coagulation;
 
 // Create and Save a new Coagulation
 exports.create = (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
@@ -64,7 +64,7 @@ exports.test =(req,res)=>{
 
 // Retrieve all Coagulations from the database.
 exports.findAll = (req, res) => {
-    console.log("Here")
+    // console.log("Here")
     Coagulation.find()
     .then(data => {
       res.send(data);
@@ -80,10 +80,10 @@ exports.findAll = (req, res) => {
 // Find a single Coagulation with an id
 exports.findOne = (req, res) => {
   const source = req.body.source;
-  console.log(req.body)
+  // console.log(req.body)
   Coagulation.find({'basic_information.source':source})
     .then(data => {
-      console.log(data)
+      // console.log(data)
       if (!data)
         res.status(404).send({ message: "Coagulation not found with id " + source });
       else res.send(data);
@@ -120,8 +120,7 @@ exports.update = (req, res) => {
 };
 // Delete a Coagulation with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.id;
-
+  const id = req.body.id;
   Coagulation.findByIdAndRemove(id)
     .then((data) => {
       if (!data) {

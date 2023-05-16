@@ -207,9 +207,9 @@ const Coagulation = () => {
     // data.value && show();
     // data.calendar && show();
     // data.dropdown && show();
-    console.log(e)
+    // console.log(e)
     e.preventDefault()
-    console.log(data);
+    // console.log(data);
     // data.date && show();
     const url = `${process.env.REACT_APP_API_BASE_URL}/coagulation`
     const rawResponse = await fetch(url, {

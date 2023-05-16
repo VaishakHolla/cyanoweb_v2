@@ -7,8 +7,10 @@
     router.post("/", coagulation.create);
 
     router.get("/",coagulation.test);
+    
     router.get("/all",coagulation.findAll);
     router.get("/find",coagulation.findOne)
-
+    router.get("/delete",coagulation.delete);
+    router.get("/deleteAll",coagulation.deleteAll);
     app.use('/api/coagulation', router);
 }

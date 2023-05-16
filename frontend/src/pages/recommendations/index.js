@@ -6,8 +6,14 @@ import data from "./data.json";
 import RecommendationScatter from "./RecommendationScatter";
 import SedimentationScatter from "./SedimentationScatter";
 import SedimentationLine from "./SedimentationLine";
+
+import { useSelector,useDispatch } from "react-redux";
+import {selectAllReccomendationData,fetchReccomendationData} from '../../features/reccomendation/reccomendationSlice'
 import "./index.css";
 const Recommendations = () => {
+  const reccomendationDataFromAPI = useSelector(selectAllReccomendationData)
+  const dispatch = useDispatch();
+  // console.log("REDUX API",reccomendationDataFromAPI)
   const sourceOptions = [
     { name: "Lake Erie", code: "LE" },
     { name: "Grand Lake St. Marys", code: "GM" },
@@ -21,14 +27,14 @@ const Recommendations = () => {
     { name: "Total Microcystins", code: "totalMiocrocystinsRemoval" },
   ];
   const coagulantOptions = [
-    { name: "Aluminum sulfate", code: "AS" },
-    { name: "Ferric chloride", code: "FC" },
-    { name: "Polyaluminum chloride", code: "PC" },
+    { name: "Aluminum Sulfate", code: "AS" },
+    { name: "Ferric Chloride", code: "FC" },
+    { name: "Polyaluminum Chloride", code: "PC" },
   ];
   const flocculantOptions = [
-    { name: "Polyethylene oxide", code: "PO" },
+    { name: "Polyethylene Oxide", code: "PO" },
     { name: "PolyDADMAC", code: "PD" },
-    { name: "Sodium polyacrylate", code: "SP" },
+    { name: "Sodium Polyacrylate", code: "SP" },
   ];
 
   const removalLabels = [
@@ -102,7 +108,7 @@ const Recommendations = () => {
     return [coagulationData, flocullationData, sedimentationData];
   }
   //   console.log(formatData(data),"hekkk")
-  let [coagulationData, flocullationData, sedimentationData] = formatData(data);
+  let [coagulationData, flocullationData, sedimentationData] = formatData(reccomendationDataFromAPI);
 
   const [selectedSource, setSelectedSource] = useState(null);
   const [selectedParameter, setSelectedParameter] = useState(null);
@@ -110,12 +116,18 @@ const Recommendations = () => {
   const [selectedFlocculant, setSelectedFlocculant] = useState(null);
 
   const handleClick = () => {
-    console.log(
-      selectedSource,
-      selectedParameter,
-      selectedCoagulant,
-      selectedFlocculant
-    );
+    // console.log(
+    //   selectedSource,
+    //   selectedParameter,
+    //   selectedCoagulant,
+    //   selectedFlocculant
+    // );
+    let params ={
+      source:selectedSource,
+      coagulant:selectedCoagulant,
+      flocculant:selectedFlocculant
+    }
+    dispatch(fetchReccomendationData(params))
   };
 
   const getExperimentalConditions = () => {

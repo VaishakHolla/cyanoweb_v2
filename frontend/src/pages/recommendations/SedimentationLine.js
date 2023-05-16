@@ -2,7 +2,7 @@ import React,{ useState }  from 'react'
 import { Chart } from 'primereact/chart';
 
 const SedimentationLine = (props) => {
-    console.log(props)
+    // console.log(props)
     let dataset=[]
     props.data.sedimentationData.map(obj=>{
         dataset.push({
