@@ -156,6 +156,7 @@ const RawWaterQuality = () => {
   // }, [third])
 
   return (
+    
     <div>
       <AddDataModal />
       <div className="grid">
@@ -272,6 +273,7 @@ const RawWaterQuality = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

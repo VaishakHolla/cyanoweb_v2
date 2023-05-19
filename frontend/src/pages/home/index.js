@@ -5,7 +5,7 @@ import http from "../../utils/http-common"
 const styles = {
   header: {
     backgroundImage: `url(${background_img})`,
-    height: "75vh",
+    height: "105vh",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -38,6 +38,7 @@ const Home = () => {
   const homeText =
     "Cyano WEB is a web infrastructure to help store and analyze water data related to CyanoHABs virtually.";
   return (
+    
     <div
       style={{
         backgorundColor: "rgba(0,0,0,0.4)",
@@ -53,6 +54,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

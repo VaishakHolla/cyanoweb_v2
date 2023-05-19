@@ -21,7 +21,6 @@ import Resources from "./pages/resources";
 
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
-
 function App() {
   return( 
     <div className="App" style={{
@@ -30,29 +29,33 @@ function App() {
     }}>
       
       <BrowserRouter>
-      
       <Navigation/>
+      <Switch>
+      
 
       {/* <Link to={"/"}>Home</Link>
             <Link to={"/rawwaterquality"}>rawwaterquality</Link>
             <Link to={"/recommendations"}>recommendations</Link>
             <Link to={"/cfs"}>cfs</Link>
             <Link to={"/about"}>about</Link> */}
-      <Switch>
-          <Route exact path="/" component={Home}/>
+      
+       
+         <Route exact path="/" component={Home}/>
           <Route path="/rawwaterquality" component={RawWaterQuality}/>
           <Route path="/recommendations" component={Recommendations}/>
           <Route path="/cfs" component={CFS}/>
           <Route path="/about" component={About}/>
           <Route path="/resources" component={Resources}/>
+          
+          
           {/* <Route path="/" render={() => (
         <div className="test">
           Hello
         </div>
       )} /> */}
-      </Switch> 
-        <Footer/>
-          
+     
+      </Switch>
+      <Footer/>
         </BrowserRouter>   
     {/* <Counter /> */}
     </div>

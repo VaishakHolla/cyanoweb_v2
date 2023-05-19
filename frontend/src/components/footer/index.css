@@ -1,12 +1,10 @@
 .footer{
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    margin-top: auto;
-    padding:15px;
+    float: right;
+    overflow-x:hidden;
+    position:bottom;
     background-color: rgb(79, 121, 66) !important;
+    
 }
-
 .footer-seperator{
     flex-grow: 1;
     border: none;

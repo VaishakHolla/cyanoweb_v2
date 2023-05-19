@@ -16,6 +16,7 @@ const CFS = () => {
     }
   }
   return (
+    
     <div>
       <div className="grid align-inputs-center" style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em'}}>
         <div className="col-4">
@@ -51,6 +52,7 @@ const CFS = () => {
       <Flocculation />
       <Sedimentation /> */}
     </div>
+   
   );
 };
 

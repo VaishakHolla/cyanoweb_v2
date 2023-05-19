@@ -9,7 +9,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import "./Coagulation.css";
-
+import Footer from "../../components/footer";
 const Coagulation = () => {
   // const [visible, setVisible] = useState(false);
   const cities = [
@@ -856,6 +856,7 @@ const Coagulation = () => {
   };
 
   return (
+  
     <div>
       <div
         className="card justify-content-center dialog-margin"
@@ -885,6 +886,7 @@ const Coagulation = () => {
       </div>
       <div></div>
     </div>
+   
   );
 };
 

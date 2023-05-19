@@ -7,6 +7,7 @@ import RecommendationScatter from "./RecommendationScatter";
 import SedimentationScatter from "./SedimentationScatter";
 import SedimentationLine from "./SedimentationLine";
 import "./index.css";
+
 const Recommendations = () => {
   const sourceOptions = [
     { name: "Lake Erie", code: "LE" },
@@ -135,6 +136,7 @@ const Recommendations = () => {
   };
 
   return (
+  
     <div>
       <div className="grid justify-content-center">
         <div style={{ margin: "10px" }}>
@@ -242,6 +244,7 @@ const Recommendations = () => {
       {/* ); */}
       {/* })} */}
     </div>
+   
   );
 };
 

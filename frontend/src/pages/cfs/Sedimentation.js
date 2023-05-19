@@ -9,7 +9,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import "./Sedimentation.css";
-
+import Footer from "../../components/footer";
 const Sedimentation = () => {
   // const [visible, setVisible] = useState(false);
   const cities = [
@@ -696,6 +696,7 @@ const Sedimentation = () => {
   };
 
   return (
+    
     <div>
       <div
         className="card justify-content-center dialog-margin"
@@ -757,6 +758,7 @@ const Sedimentation = () => {
       </div>
       <div></div>
     </div>
+  
   );
 };
 
