@@ -504,7 +504,7 @@ const Flocculation = () => {
                 (value >= 0 && value <= 14) || "Enter a valid reactionTime.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "40px",position:"relative",right:"50px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}>                
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -529,7 +529,7 @@ const Flocculation = () => {
             control={control}
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "40px",position:"relative",bottom:"87px",left:"170px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}> 
                   {/* <div className="col-3"> */}
                   

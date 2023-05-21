@@ -336,7 +336,7 @@ const Sedimentation = () => {
                     "Enter a valid reactionTime.",
                 }}
                 render={({ field, fieldState }) => (
-                  <div className="align-items-center"style={{ margin: "40px" }}>
+                  <div className="align-items-center"style={{ margin: "40px",position:"relative",right:"50px" }}>
                    
                     <span className="p-float-label" style={{ margin: "5px" }}>
                       <InputNumber
@@ -371,20 +371,20 @@ const Sedimentation = () => {
                 render={({ field, fieldState }) => (
                   <div className="align-items-center" style={{margin: "40px"}}>
                     
-                    <span className="p-float-label" style={{ margin: "5px" }}>
+                    <span className="p-float-label" style={{ margin: "5px",position:"relative",bottom:"87px",left:"165px" }}>
                       {/* <div className="col-3"> */}
                       <Dropdown
                         value={field.value}
                         optionLabel="name"
-                        placeholder="Select"
+                        placeholder="min/sec"
                         name={"reactionUnit"}
                         options={[
-                          { name: "Minutes", code: "m" },
-                          { name: "Seconds", code: "s" },
+                          { name: "Min", code: "m" },
+                          { name: "Sec", code: "s" },
                         ]}
                         control={control}
                         onChange={(e) => field.onChange(e.value)}
-                        style={{ width: "100%" }}
+                        style={{ width: "53%" }}
                         className={classNames({
                           "p-invalid": fieldState.error,
                         })}
