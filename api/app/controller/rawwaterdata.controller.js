@@ -1,6 +1,6 @@
 const db = require("../models");
 const Rawwaterdata = db.rawwaterdata;
-
+const CustomError = require('../utils/customerror');
 // Create and Save a new Rawwaterdata
 exports.create = (req, res) => {
     // console.log("inside")
@@ -24,14 +24,45 @@ exports.create = (req, res) => {
   rawwaterdata
     .save(rawwaterdata)
     .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Rawwaterdata.",
+      res.send({
+        message:"Raw water data successfully uploaded",
+        data: data,
       });
+    }).catch((err) => {
+      console.error(err,"error"); // Log the error for debugging purposes
+      console.error(err.message,"error_message"); // Log the error for debugging purposes
+    
+      // Check for specific error types
+      if (err instanceof CustomError) {
+        // Handle specific custom error
+        const errorResponse = {
+          status: 400,
+          errorCode: err.code,
+          message: err.message,
+          data: err.additionalData || null,
+        };
+        res.status(400).send(errorResponse);
+      }else if (err.name === 'ValidationError') {
+        // Handle database validation error
+        const errorResponse = {
+          status: 400,
+          errorCode: 'VALIDATION_ERROR',
+          message: err.message,
+          data: null,
+        };
+        res.status(400).send(errorResponse);
+      }  else {
+        // Handle generic error
+        const errorResponse = {
+          status: 500,
+          errorCode: 'INTERNAL_SERVER_ERROR',
+          message: 'An unexpected error occurred.',
+          data: null,
+        };
+        res.status(500).send(errorResponse);
+      }
     });
+    
 };
 
 exports.test =(req,res)=>{

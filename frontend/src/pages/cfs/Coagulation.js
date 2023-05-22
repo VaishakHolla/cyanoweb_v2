@@ -252,16 +252,47 @@ const Coagulation = () => {
       totalMicrocystins_final: data.totalMicrocystinsFinal,
       totalMicrocystins_removal: data.totalMicrocystinsRemoval,
       })
+    }).then(response => {
+      if (!response.ok) {
+        throw response.json().then(errorResponse => {
+          const { message } = errorResponse;
+          const error = new Error(message);
+          error.response = errorResponse;
+          toast.current.show({
+            severity: "error",
+            summary: message,
+          });
+          throw error;
+        });
+      }
+      return response.json();
     })
-    .then(res=>res.json)
-    .catch((err)=>
-    console.log(err));
+    .then(data => {
+      // Handle the successful response
+      console.log(data,"data");
+        toast.current.show({
+        severity: "success",
+        summary: data.message,
+      });
+      reset({...defaultValues});
+      clearErrors(defaultValues)
+    })
+    .catch(error => {
+      if (error.response) {
+        // Backend error
+        const { message } = error.response;
+        console.error('Error:', message);
+      } else {
+        // Network or parsing error
+        console.error('Error:', error.message);
+      }
+    });
   
     // const content = await rawResponse.json();
   
     // console.log(content);
-    reset({...defaultValues});
-    clearErrors(defaultValues)
+    // reset({...defaultValues});
+    // clearErrors(defaultValues)
   };
 
   const getFormErrorMessage = (name) => {
@@ -857,6 +888,7 @@ const Coagulation = () => {
 
   return (
     <div>
+      <Toast ref={toast} />
       <div
         className="card justify-content-center dialog-margin"
         // style={{

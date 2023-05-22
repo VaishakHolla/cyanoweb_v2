@@ -250,13 +250,41 @@ const Flocculation = () => {
       totalMicrocystins_removal: data.totalMicrocystinsRemoval,
       })
     })
-    .then(res=>res.json)
-    .catch((err)=>
-    console.log(err));
-
-
-    data.date && show();
-    reset();
+    .then(response => {
+      if (!response.ok) {
+        throw response.json().then(errorResponse => {
+          const { message } = errorResponse;
+          const error = new Error(message);
+          error.response = errorResponse;
+          toast.current.show({
+            severity: "error",
+            summary: message,
+          });
+          throw error;
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle the successful response
+      console.log(data,"data");
+        toast.current.show({
+        severity: "success",
+        summary: data.message,
+      });
+      reset({...defaultValues});
+      // clearErrors(defaultValues)
+    })
+    .catch(error => {
+      if (error.response) {
+        // Backend error
+        const { message } = error.response;
+        console.error('Error:', message);
+      } else {
+        // Network or parsing error
+        console.error('Error:', error.message);
+      }
+    });
   };
 
   const getFormErrorMessage = (name) => {
@@ -838,6 +866,7 @@ const Flocculation = () => {
 
   return (
     <div>
+      <Toast ref={toast} />
       <div
         className="card justify-content-center dialog-margin"
         // style={{

@@ -25,14 +25,14 @@ const AddDataModal = () => {
   const defaultValues = {
     location: "", //dropdown
     date: "", //calendar
-    temperature: "", //inputNumber
-    pH: "", //inputNumber
-    turbidity: "", //inputNumber
-    dissolvedOxygen: "", //inputNumber
-    totalMicrocystis: "", //inputNumber
-    mycEMicrocystis: "", //inputNumber
-    mycEPlanktothrix: "", //inputNumber
-    totalMicrocystins: "", //inputNumber
+    temperature: null, //inputNumber
+    pH: null, //inputNumber
+    turbidity: null, //inputNumber
+    dissolvedOxygen: null, //inputNumber
+    totalMicrocystis: null, //inputNumber
+    mycEMicrocystis: null, //inputNumber
+    mycEPlanktothrix: null, //inputNumber
+    totalMicrocystins: null, //inputNumber
   };
 
   const {
@@ -76,7 +76,7 @@ const AddDataModal = () => {
     // data.calendar && show();
     // data.dropdown && show();
     console.log(data);
-    data.date && show();
+    // data.date && show();
     // console.log(formState.isSubmitSuccessful);
     const url = `${process.env.REACT_APP_API_BASE_URL}/rawwaterdata`
     const rawResponse = await fetch(url, {
@@ -97,15 +97,43 @@ const AddDataModal = () => {
     mcyeplanktothrix:data.mycEPlanktothrix,
     totalmicrocystins:data.totalMicrocystins
     })
-  });
-
-  const content = await rawResponse.json();
-
-    // console.log(content);
-
+  }).then(response => {
+    if (!response.ok) {
+      throw response.json().then(errorResponse => {
+        const { message } = errorResponse;
+        const error = new Error(message);
+        error.response = errorResponse;
+        toast.current.show({
+          severity: "error",
+          summary: message,
+        });
+        throw error;
+      });
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Handle the successful response
+    console.log(data,"data");
+      toast.current.show({
+      severity: "success",
+      summary: data.message,
+    });
     dispatch(fetchRawWaterData());
     reset({...defaultValues});
     setVisible(false);
+  })
+  .catch(error => {
+    if (error.response) {
+      // Backend error
+      const { message } = error.response;
+      console.error('Error:', message);
+    } else {
+      // Network or parsing error
+      console.error('Error:', error.message);
+    }
+  });
+
   };
 
   const getFormErrorMessage = (name) => {

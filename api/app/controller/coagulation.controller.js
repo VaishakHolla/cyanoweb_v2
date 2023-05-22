@@ -1,6 +1,6 @@
 const db = require("../models");
 const Coagulation = db.coagulation;
-
+const CustomError = require('../utils/customerror');
 // Create and Save a new Coagulation
 exports.create = (req, res) => {
     // console.log(req.body)
@@ -48,13 +48,40 @@ exports.create = (req, res) => {
   coagulation
     .save(coagulation)
     .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Coagulation.",
+      res.send({
+        message:"Coagulation successfully created",
+        data: data,
       });
+    }).catch((err) => {
+      // Check for specific error types
+      if (err instanceof CustomError) {
+        // Handle specific custom error
+        const errorResponse = {
+          status: 400,
+          errorCode: err.code,
+          message: err.message,
+          data: err.additionalData || null,
+        };
+        res.status(400).send(errorResponse);
+      }else if (err.name === 'ValidationError') {
+        // Handle database validation error
+        const errorResponse = {
+          status: 400,
+          errorCode: 'VALIDATION_ERROR',
+          message: err.message,
+          data: null,
+        };
+        res.status(400).send(errorResponse);
+      }  else {
+        // Handle generic error
+        const errorResponse = {
+          status: 500,
+          errorCode: 'INTERNAL_SERVER_ERROR',
+          message: 'An unexpected error occurred.',
+          data: null,
+        };
+        res.status(500).send(errorResponse);
+      }
     });
 };
 
