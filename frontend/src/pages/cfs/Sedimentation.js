@@ -311,7 +311,8 @@ const Sedimentation = () => {
                     onBlur={field.onBlur}
                     min={0}
                     max={30}
-                    suffix="℃"
+                    maxFractionDigits={5} 
+                    suffix=" ℃"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -345,6 +346,7 @@ const Sedimentation = () => {
                     onBlur={field.onBlur}
                     min={0}
                     max={14}
+                    maxFractionDigits={5} 
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -380,9 +382,10 @@ const Sedimentation = () => {
                         onBlur={field.onBlur}
                         // min={0}
                         // max={14}
+                        maxFractionDigits={5} 
                         className="reactionTime"
                         // style={{width:"50%"}}
-                        suffix="rpm"
+                        suffix=" rpm"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
@@ -479,6 +482,7 @@ const Sedimentation = () => {
                     // min={0}
                     // max={14}
                     // style={{ width: "50%" }}
+                    maxFractionDigits={5} 
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -520,6 +524,7 @@ const Sedimentation = () => {
                     // min={0}
                     // style={{ width: "50%" }}
                     // max={14}
+                    maxFractionDigits={5} 
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -558,6 +563,7 @@ const Sedimentation = () => {
                     // min={0}
                     // max={14}
                     // style={{ width: "50%" }}
+                    maxFractionDigits={5} 
                     disabled
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,

@@ -261,7 +261,7 @@ const AddDataModal = () => {
                         useGrouping={false}
                         min={0}
                         max={50}
-                        suffix="℃"
+                        suffix=" ℃"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
@@ -337,7 +337,7 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           allowEmpty={true}
-                          suffix="NTU"
+                          suffix=" NTU"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -376,7 +376,7 @@ const AddDataModal = () => {
                         maxFractionDigits={2}
                         onValueChange={(e) => field.onChange(e)}
                         useGrouping={false}
-                        suffix="mg/L"
+                        suffix=" mg/L"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
@@ -415,7 +415,7 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           allowEmpty={true}
-                          suffix="Log gene copies/L"
+                          suffix=" Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -455,7 +455,7 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           allowEmpty={true}
-                          suffix="Log gene copies/L"
+                          suffix=" Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -496,7 +496,7 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           
-                          suffix="Log gene copies/L"
+                          suffix=" Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
@@ -537,7 +537,7 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           
-                          suffix="ppb"
+                          suffix=" ppb"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}

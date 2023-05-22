@@ -325,9 +325,10 @@ const Coagulation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     min={0}
                     max={30}
-                    suffix="℃"
+                    suffix=" ℃"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -357,6 +358,7 @@ const Coagulation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     min={0}
                     max={14}
                     inputClassName={classNames({
@@ -467,9 +469,10 @@ const Coagulation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     // min={0}
                     // max={14}
-                    suffix="mg/L"
+                    suffix=" mg/L"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -500,9 +503,10 @@ const Coagulation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     // min={0}
                     // max={14}
-                    suffix="rpm"
+                    suffix=" rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -523,7 +527,7 @@ const Coagulation = () => {
                     onBlur={field.onBlur}
                     min={0}
                     max={14}
-                    suffix="rpm"
+                    suffix=" rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -552,6 +556,7 @@ const Coagulation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     // min={0}
                     // max={14}
                     inputClassName={classNames({
@@ -642,6 +647,7 @@ const Coagulation = () => {
                     value={field.value}
                     allowEmpty={true}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     // min={0}
                     // max={14}
                     // style={{ width: "50%" }}
@@ -685,6 +691,7 @@ const Coagulation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -717,6 +724,7 @@ const Coagulation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     // style={{ width: "50%" }}
                     disabled
                     inputClassName={classNames({

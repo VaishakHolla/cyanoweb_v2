@@ -319,7 +319,8 @@ const Flocculation = () => {
                     onBlur={field.onBlur}
                     // min={0}
                     // max={44}
-                    suffix="℃"
+                    maxFractionDigits={5} 
+                    suffix=" ℃"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -351,6 +352,7 @@ const Flocculation = () => {
                     onBlur={field.onBlur}
                     min={0}
                     max={14}
+                    maxFractionDigits={5} 
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -458,7 +460,8 @@ const Flocculation = () => {
                     onBlur={field.onBlur}
                     // min={0}
                     // max={14}
-                    suffix="mg/L"
+                    maxFractionDigits={5} 
+                    suffix=" mg/L"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -490,7 +493,8 @@ const Flocculation = () => {
                     onBlur={field.onBlur}
                     // min={0}
                     // max={14}
-                    suffix="rpm"
+                    maxFractionDigits={5} 
+                    suffix=" rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -510,7 +514,7 @@ const Flocculation = () => {
                     onBlur={field.onBlur}
                     min={0}
                     max={14}
-                    suffix="rpm"
+                    suffix=" rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -540,6 +544,7 @@ const Flocculation = () => {
                     onBlur={field.onBlur}
                     // min={0}
                     // max={14}
+                    maxFractionDigits={5} 
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -629,6 +634,7 @@ const Flocculation = () => {
                     id={field.name}
                     value={field.value}
                     onBlur={field.onBlur}
+                    maxFractionDigits={5} 
                     // style={{ width: "50%" }}
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
@@ -665,6 +671,7 @@ const Flocculation = () => {
                     value={field.value}
                     onBlur={field.onBlur}
                     min={0}
+                    maxFractionDigits={5} 
                     // style={{ width: "50%" }}
                     // max={14}
                     inputClassName={classNames({
@@ -702,6 +709,7 @@ const Flocculation = () => {
                     // min={0}
                     // max={14}
                     // style={{ width: "50%" }}
+                    maxFractionDigits={5} 
                     disabled
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
