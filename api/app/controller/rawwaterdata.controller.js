@@ -73,6 +73,9 @@ exports.test =(req,res)=>{
 exports.findAll = (req, res) => {
     Rawwaterdata.find()
     .then(data => {
+      data.sort(function(a,b){
+        return new Date(a.date) - new Date(b.date)
+      })
       res.send(data);
     })
     .catch(err => {
