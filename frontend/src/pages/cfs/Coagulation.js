@@ -911,7 +911,9 @@ const Coagulation = () => {
           <div className="card grid" style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em',borderRadius:'.5em'}}>
             <div className="col-3" style={{backgroundColor:'rgb(140,163,140)',margin:'1.75em',borderRadius:'.5em'}}>{experimentalConditions()}</div>
             <div className="col-8" style={{backgroundColor:'rgb(140,163,140)',margin:'1.75em',borderRadius:'.5em'}}>{experimentalResults()}</div>
-            <Button
+          </div>
+          <div>
+          <Button
             label="Submit"
             type="submit"
             icon="pi pi-check"
@@ -919,7 +921,6 @@ const Coagulation = () => {
             style={{ margin: "10px" }}
           />
           </div>
-
           
         </form>
       </div>

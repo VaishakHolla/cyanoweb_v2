@@ -786,7 +786,9 @@ const Sedimentation = () => {
             >
               {experimentalResults()}
             </div>
-            <Button
+          </div>
+          <div>
+          <Button
               label="Submit"
               type="submit"
               icon="pi pi-check"
