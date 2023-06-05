@@ -59,7 +59,7 @@ const SedimentationLine = (props) => {
                   max: 60,
                   title: {
                     display: true,
-                    text: "Reaction time (minute)",
+                    text: "Settling time (minute)",
                   },
                   ticks: {
                     color: "#495057",

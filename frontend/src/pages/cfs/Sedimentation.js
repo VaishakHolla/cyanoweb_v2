@@ -301,7 +301,7 @@ const Sedimentation = () => {
                 "Enter a valid waterTemperature.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
@@ -312,11 +312,11 @@ const Sedimentation = () => {
                     min={0}
                     max={30}
                     maxFractionDigits={5} 
-                    suffix=" ℃"
+                    // suffix=" ℃"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{" ℃"}
                    <label htmlFor={field.name} style={{ color: "#070606" }}>
                   Water Temperature (0-30)
                 </label>
@@ -336,7 +336,7 @@ const Sedimentation = () => {
                 (value >= 0 && value <= 14) || "Enter a valid waterpH.",
             }}
             render={({ field, fieldState }) => (
-              <div className="flex flex-column gap-2"style={{ margin: "40px" }}>
+              <div className="flex flex-column gap-2"style={{ margin: "20px" }}>
                
                 <span  className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
@@ -372,7 +372,7 @@ const Sedimentation = () => {
                   //   "Enter a valid reactionTime.",
                 }}
                 render={({ field, fieldState }) => (
-                  <div className="align-items-center"style={{ margin: "40px" }}>
+                  <div className="align-items-center"style={{ margin: "20px" }}>
                    
                     <span className="p-float-label" style={{ margin: "5px" }}>
                       <InputNumber
@@ -385,11 +385,11 @@ const Sedimentation = () => {
                         maxFractionDigits={5} 
                         className="reactionTime"
                         // style={{width:"50%"}}
-                        suffix=" rpm"
+                        // suffix=" rpm"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
-                      />
+                      />{" rpm"}
                      <label htmlFor={field.name} style={{ color: "#070606" }}>
                       Reaction Time
                     </label>
@@ -571,7 +571,7 @@ const Sedimentation = () => {
                   />
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
                     {/* {parameters.removalUsedName} */}
-                    Removal
+                    Removal %
                   </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>

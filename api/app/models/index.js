@@ -10,5 +10,6 @@ db.coagulation = require("./coagulation.model.js")(mongoose);
 db.flocculation = require("./flocculation.model.js")(mongoose);
 db.sedimentation = require("./sedimentation.model.js")(mongoose);
 db.rawwaterdata = require("./rawwaterdata.model.js")(mongoose);
+db.combinedcfs = require("./combinedcfs.model.js")(mongoose);
 
 module.exports = db;

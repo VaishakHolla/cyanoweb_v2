@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Coagulation from "./Coagulation";
 import Flocculation from "./Flocculation";
 import Sedimentation from "./Sedimentation";
+import CombinedCFS from "./CombinedCFS";
 import { Button } from "primereact/button";
 
 const CFS = () => {
@@ -11,6 +12,7 @@ const CFS = () => {
         case 'coagulation': return <Coagulation/>;break;
         case 'flocculation': return <Flocculation/>;break;
         case 'sedimentation': return <Sedimentation/>;break;
+        case 'combinedcfs':return <CombinedCFS/>;break;
         case '': console.log("here empty");break;
         default : break;
     }
@@ -41,6 +43,15 @@ const CFS = () => {
             label="Sedimentation"
             icon="pi "
             onClick={() => setShowSelect("sedimentation")}
+            className="button"
+            style={{ minWidth: "20rem" }}
+          />
+        </div>
+        <div className="col-4">
+          <Button
+            label="CombinedCFS"
+            icon="pi "
+            onClick={() => setShowSelect("combinedcfs")}
             className="button"
             style={{ minWidth: "20rem" }}
           />

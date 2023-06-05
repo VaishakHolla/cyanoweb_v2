@@ -318,7 +318,7 @@ const Coagulation = () => {
                 "Enter a valid waterTemperature.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -328,11 +328,11 @@ const Coagulation = () => {
                     maxFractionDigits={5} 
                     min={0}
                     max={30}
-                    suffix=" ℃"
+                    // suffix=" ℃"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />{" "}
+                  />{" ℃"}
                   
                 <label htmlFor={field.name} style={{color:"#070606"}}>Water Temperature</label>
                 </span>
@@ -351,7 +351,7 @@ const Coagulation = () => {
                 (value >= 0 && value <= 14) || "Enter a valid waterpH.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -379,7 +379,7 @@ const Coagulation = () => {
             control={control}
             rules={{ required: "chemicalType is required." }}
             render={({ field, fieldState }) => (
-              <div className=" align-items-center" style={{ margin: "40px" }}>
+              <div className=" align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                 
                   <Dropdown
@@ -390,7 +390,7 @@ const Coagulation = () => {
                     options={chemicaltypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "53%" }}
+                    style={{ width: "73%" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -410,7 +410,7 @@ const Coagulation = () => {
               required: "Enter a valid otherChemicalType.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                 
                   <InputText
@@ -435,7 +435,7 @@ const Coagulation = () => {
               required: "Enter a valid manufacturer.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputText
                     id={field.name}
@@ -462,7 +462,7 @@ const Coagulation = () => {
               //   (value >= 0 && value <= 14) || "Enter a valid chemicalDosage.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -472,11 +472,11 @@ const Coagulation = () => {
                     maxFractionDigits={5} 
                     // min={0}
                     // max={14}
-                    suffix=" mg/L"
+                    // suffix=" mg/L"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{" mg/L"}
                   
                 <label htmlFor={field.name} style={{color:"#070606"}}>Chemical Dosage</label>
                 </span>
@@ -496,7 +496,7 @@ const Coagulation = () => {
               //   (value >= 0 && value <= 14) || "Enter a valid mixingSpeed.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -506,11 +506,11 @@ const Coagulation = () => {
                     maxFractionDigits={5} 
                     // min={0}
                     // max={14}
-                    suffix=" rpm"
+                    // suffix=" rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{" rpm"}
                   
                 <label htmlFor={field.name} style={{color:"#070606"}}>Mixing Speed</label>
                 </span>
@@ -548,7 +548,7 @@ const Coagulation = () => {
               //   (value >= 0 && value <= 14) || "Enter a valid reactionTime.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                 
                   <InputNumber
@@ -575,7 +575,7 @@ const Coagulation = () => {
             control={control}
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   {/* <div className="col-3"> */}
                   <Dropdown
@@ -589,7 +589,7 @@ const Coagulation = () => {
                     ]}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "53%" }}
+                    style={{ width: "73%" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -734,7 +734,7 @@ const Coagulation = () => {
 
                 <label htmlFor={field.name} style={{color:"#070606"}}>
                     {/* {parameters.removalUsedName} */}
-                    Removal
+                    Removal %
                   </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>

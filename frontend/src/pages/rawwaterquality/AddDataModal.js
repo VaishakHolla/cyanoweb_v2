@@ -161,7 +161,7 @@ const AddDataModal = () => {
         className="center-header"
         visible={visible}
         position={"top"}
-        style={{ width: "50vw" }}
+        style={{ width: "75vw" }}
         onHide={() => {
           reset();
           setVisible(false);
@@ -185,7 +185,7 @@ const AddDataModal = () => {
                     <div className="col-3 ">
                       <label htmlFor={field.name}>Location</label>
                     </div>
-                    <div className="col-4">
+                    <div className="col-5">
                       <Dropdown
                         value={field.value}
                         optionLabel="name"
@@ -194,14 +194,14 @@ const AddDataModal = () => {
                         options={cities}
                         control={control}
                         onChange={(e) => field.onChange(e.value)}
-                        style={{ width: "100%" }}
+                        style={{ width: "50%" }}
                         className={classNames({
                           "p-invalid": fieldState.error,
                         })}
                       />
                     </div>
 
-                    <div className="col-5">
+                    <div className="col-4">
                       {getFormErrorMessage(field.name)}
                     </div>
                   </div>
@@ -218,7 +218,7 @@ const AddDataModal = () => {
                     <div className="col-3 ">
                       <label htmlFor={field.name}>Date</label>
                     </div>
-                    <div className="col-4">
+                    <div className="col-5">
                       <Calendar
                         inputId={field.name}
                         value={field.value}
@@ -229,7 +229,7 @@ const AddDataModal = () => {
                         })}
                       />
                     </div>
-                    <div className="col-5">
+                    <div className="col-4">
                       {getFormErrorMessage(field.name)}
                     </div>
                   </div>
@@ -250,7 +250,7 @@ const AddDataModal = () => {
                     <div className="col-3 ">
                       <label htmlFor={field.name}>temperature</label>
                     </div>
-                    <div className="col-4 ">
+                    <div className="col-5 ">
                       <InputNumber
                         id={field.name}
                         inputRef={field.ref}
@@ -261,13 +261,13 @@ const AddDataModal = () => {
                         useGrouping={false}
                         min={0}
                         max={50}
-                        suffix=" ℃"
+                        // suffix=" ℃"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
-                      />
+                      />{" ℃"}
                     </div>
-                    <div className="col-5">
+                    <div className="col-4">
                       {getFormErrorMessage(field.name)}
                     </div>
                   </div>
@@ -288,7 +288,7 @@ const AddDataModal = () => {
                     <div className="col-3 ">
                       <label htmlFor={field.name}>pH</label>
                     </div>
-                    <div className="col-4 ">
+                    <div className="col-5 ">
                       <InputNumber
                         id={field.name}
                         inputRef={field.ref}
@@ -305,7 +305,7 @@ const AddDataModal = () => {
                         })}
                       />
                     </div>
-                    <div className="col-5">
+                    <div className="col-4">
                       {getFormErrorMessage(field.name)}
                     </div>
                   </div>
@@ -327,7 +327,7 @@ const AddDataModal = () => {
                       <div className="col-3 ">
                         <label htmlFor={field.name}>Turbidity</label>
                       </div>
-                      <div className="col-4 ">
+                      <div className="col-5 ">
                         <InputNumber
                           id={field.name}
                           inputRef={field.ref}
@@ -337,13 +337,13 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           allowEmpty={true}
-                          suffix=" NTU"
+                          // suffix=" NTU"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
-                        />
+                        />{" NTU"}
                       </div>
-                      <div className="col-5">
+                      <div className="col-4">
                         {getFormErrorMessage(field.name)}
                       </div>
                     </div>
@@ -366,7 +366,7 @@ const AddDataModal = () => {
                     <div className="col-3 ">
                       <label htmlFor={field.name}>Dissolved Oxygen</label>
                     </div>
-                    <div className="col-4 ">
+                    <div className="col-5 ">
                       <InputNumber
                         id={field.name}
                         allowEmpty={true}
@@ -376,13 +376,13 @@ const AddDataModal = () => {
                         maxFractionDigits={2}
                         onValueChange={(e) => field.onChange(e)}
                         useGrouping={false}
-                        suffix=" mg/L"
+                        // suffix=" mg/L"
                         inputClassName={classNames({
                           "p-invalid": fieldState.error,
                         })}
-                      />
+                      />{" mg/L"}
                     </div>
-                    <div className="col-5">
+                    <div className="col-4">
                       {getFormErrorMessage(field.name)}
                     </div>
                   </div>
@@ -405,7 +405,7 @@ const AddDataModal = () => {
                       <div className="col-3 ">
                         <label htmlFor={field.name}>Total Microcystis</label>
                       </div>
-                      <div className="col-4 ">
+                      <div className="col-5 ">
                         <InputNumber
                           id={field.name}
                           inputRef={field.ref}
@@ -415,13 +415,13 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           allowEmpty={true}
-                          suffix=" Log gene copies/L"
+                          // suffix=" Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
-                        />
+                        />{" Log gene copies/L"}
                       </div>
-                      <div className="col-5">
+                      <div className="col-4">
                         {getFormErrorMessage(field.name)}
                       </div>
                     </div>
@@ -445,7 +445,7 @@ const AddDataModal = () => {
                       <div className="col-3 ">
                         <label htmlFor={field.name}>mycE Microcystis</label>
                       </div>
-                      <div className="col-4 ">
+                      <div className="col-5 ">
                         <InputNumber
                           id={field.name}
                           inputRef={field.ref}
@@ -455,13 +455,13 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           allowEmpty={true}
-                          suffix=" Log gene copies/L"
+                          // suffix=" Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
-                        />
+                        />{" Log gene copies/L"}
                       </div>
-                      <div className="col-5">
+                      <div className="col-4">
                         {getFormErrorMessage(field.name)}
                       </div>
                     </div>
@@ -485,7 +485,7 @@ const AddDataModal = () => {
                       <div className="col-3 ">
                         <label htmlFor={field.name}>mycE Planktothrix</label>
                       </div>
-                      <div className="col-4 ">
+                      <div className="col-5 ">
                         <InputNumber
                           id={field.name}
                           allowEmpty={true}
@@ -496,13 +496,13 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           
-                          suffix=" Log gene copies/L"
+                          // suffix=" Log gene copies/L"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
-                        />
+                        />{" Log gene copies/L"}
                       </div>
-                      <div className="col-5">
+                      <div className="col-4">
                         {getFormErrorMessage(field.name)}
                       </div>
                     </div>
@@ -526,7 +526,7 @@ const AddDataModal = () => {
                       <div className="col-3 ">
                         <label htmlFor={field.name}>Total Microcystins</label>
                       </div>
-                      <div className="col-4 ">
+                      <div className="col-5 ">
                         <InputNumber
                           id={field.name}
                           allowEmpty={true}
@@ -537,13 +537,13 @@ const AddDataModal = () => {
                           onValueChange={(e) => field.onChange(e)}
                           useGrouping={false}
                           
-                          suffix=" ppb"
+                          // suffix=" ppb"
                           inputClassName={classNames({
                             "p-invalid": fieldState.error,
                           })}
-                        />
+                        />{" ppb"}
                       </div>
-                      <div className="col-5">
+                      <div className="col-4">
                         {getFormErrorMessage(field.name)}
                       </div>
                     </div>
@@ -552,7 +552,9 @@ const AddDataModal = () => {
               />
             </div>
 
+            <div style={{textAlign:"center"}}>
             <Button label="Submit" type="submit" icon="pi pi-check" className="button"/>
+            </div>
           </form>
         </div>
       </Dialog>

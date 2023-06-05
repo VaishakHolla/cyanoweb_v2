@@ -310,7 +310,7 @@ const Flocculation = () => {
               //   "Enter a valid waterTemperature.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -320,11 +320,11 @@ const Flocculation = () => {
                     // min={0}
                     // max={44}
                     maxFractionDigits={5} 
-                    suffix=" ℃"
+                    // suffix=" ℃"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />{" "}
+                  />{" ℃"}
                   
                 <label htmlFor={field.name} style={{color:"#070606"}}>Water Temperature</label>
                 </span>
@@ -343,7 +343,7 @@ const Flocculation = () => {
                 (value >= 0 && value <= 14) || "Enter a valid waterpH.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -370,7 +370,7 @@ const Flocculation = () => {
             control={control}
             rules={{ required: "chemicalType is required." }}
             render={({ field, fieldState }) => (
-              <div className=" align-items-center" style={{ margin: "40px" }}>
+              <div className=" align-items-center" style={{ margin: "20px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}> 
                   <Dropdown
                     value={field.value}
@@ -380,7 +380,7 @@ const Flocculation = () => {
                     options={chemicaltypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "53%" }}
+                    style={{ width: "73%" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -400,7 +400,7 @@ const Flocculation = () => {
               required: "Enter a valid otherChemicalType.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputText
                     id={field.name}
@@ -424,7 +424,7 @@ const Flocculation = () => {
               required: "Enter a valid manufacturer.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputText
                     id={field.name}
@@ -450,7 +450,7 @@ const Flocculation = () => {
               //   (value >= 0 && value <= 14) || "Enter a valid chemicalDosage.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}> 
                
                   <InputNumber
@@ -461,11 +461,11 @@ const Flocculation = () => {
                     // min={0}
                     // max={14}
                     maxFractionDigits={5} 
-                    suffix=" mg/L"
+                    // suffix=" mg/L"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{" mg/L"}
                  <label htmlFor={field.name} style={{color:"#070606"}}>Chemical Dosage</label>  
                  </span> 
 
@@ -484,7 +484,7 @@ const Flocculation = () => {
               //   (value >= 0 && value <= 14) || "Enter a valid mixingSpeed.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}> 
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -494,11 +494,11 @@ const Flocculation = () => {
                     // min={0}
                     // max={14}
                     maxFractionDigits={5} 
-                    suffix=" rpm"
+                    // suffix=" rpm"
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{" rpm"}
                   <label htmlFor={field.name} style={{color:"#070606"}}>Mixing Speed</label>
                  </span> 
 
@@ -535,7 +535,7 @@ const Flocculation = () => {
               //   (value >= 0 && value <= 14) || "Enter a valid reactionTime.",
             }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}>                
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -561,7 +561,7 @@ const Flocculation = () => {
             control={control}
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
-              <div className="align-items-center" style={{ margin: "40px" }}>
+              <div className="align-items-center" style={{ margin: "20px" }}>
                  <span className="p-float-label" style={{ margin: "5px" }}> 
                   {/* <div className="col-3"> */}
                   
@@ -576,7 +576,7 @@ const Flocculation = () => {
                     ]}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "53%" }}
+                    style={{ width: "73%" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -715,7 +715,7 @@ const Flocculation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#070606"}}>Removal</label>
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Removal %</label>
                  </span> 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>

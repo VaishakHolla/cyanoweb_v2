@@ -40,6 +40,7 @@ require("./app/routes/flocculation.routes")(app);
 require("./app/routes/sedimentation.routes")(app);
 require("./app/routes/rawwaterdata.routes")(app);
 require("./app/routes/reccomendation.routes")(app);
+require("./app/routes/combinedcfs.routes")(app);
 
 
 // set port, listen for requests
