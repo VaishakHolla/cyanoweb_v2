@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json())
 
 var corsOptions = {
-  origin: "http://localhost:3000"
+  origin: process.env.CLIENT_ORIGIN
 };
 console.log(process.env.CLIENT_ORIGIN,"CLIENT ORIGIN HERE")
 app.use(cors(corsOptions));
