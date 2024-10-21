@@ -2,19 +2,52 @@ const db = require("../models");
 const CombinedCFS = db.combinedcfs;
 const CustomError = require('../utils/customerror');
 // Create and Save a new CombinedCFS
+
+function generateExperimentID(source,date,coagulant,flocculant){
+  const coagulantTypes = [
+    { name: "Aluminum Sulfate", code: "AS" },
+    { name: "Ferric Chloride", code: "FC" },
+    { name: "Polyaluminum Chloride", code: "PC" },
+    { name: "NA", code: "NA" },
+  ];
+  const flocculantTypes =[
+    {name:"Polyethylene Oxide",code:"PO"},
+    {name:"PolyDADMAC",code:"PD"},
+    {name:"Sodium Polyacrylate",code:"SP"},
+    {name:"NA",code:"NA"},
+  ];
+  const sources = [
+    { name: "Lake Erie", code: "LAER" },
+    { name: "Grand Lake St. Marys", code: "GLSM" },
+    { name: "Ohio River", code: "OHRI" },
+  ];
+  const newDate = new Date(date)
+  const year = newDate.getUTCFullYear();
+  const month = newDate.getMonth()+1
+  const day = newDate.getUTCDate()
+  formattedDate = `${month.toString().padStart(2,'0')}${day.toString().padStart(2,'0')}${year.toString().slice(-2)}`
+  console.log(source,coagulant,flocculant)
+  source_code=sources.filter(item =>item.name === source)[0].code
+  coagulant_code=coagulantTypes.filter(item =>item.name === coagulant)[0].code
+  flocculant_code=flocculantTypes.filter(item =>item.name === flocculant)[0].code
+ 
+  return source_code+formattedDate+coagulant_code+flocculant_code
+}
+
 exports.create = (req, res) => {
     // console.log(req.body)
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
+
   const combinedcfs = new CombinedCFS({
     basic_information: {
       model: req.body.model,
       device: req.body.device,
       date: req.body.date,
       source: req.body.source,
-      experiment_id : req.body.experiment_id
+      experiment_id : generateExperimentID(req.body.source,req.body.date,req.body.coagulant_type,req.body.flocculant_type)
     },
     experimental_conditions: {
         water_temperature: req.body.water_temperature, //inputNumber

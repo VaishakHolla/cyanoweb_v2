@@ -81,6 +81,17 @@ services:
     networks:
       - backend
       - frontend
+  
+  api-nginx:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.nginx
+    env_file: ./.env
+    ports:
+      - 8000:8000
+    networks:
+      - backend
+      - frontend
 
   frontend:
     depends_on:

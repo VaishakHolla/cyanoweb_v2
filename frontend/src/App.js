@@ -29,7 +29,7 @@ function App() {
       // borderRadius: "15px",
     }}>
       
-      <BrowserRouter>
+      <BrowserRouter basename="/cyanoweb">
       
       <Navigation/>
 

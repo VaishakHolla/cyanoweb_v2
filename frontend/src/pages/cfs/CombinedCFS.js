@@ -34,7 +34,7 @@ const CombinedCFS = () => {
     // {name:"Other (Specify Below)",code:"OT"},
   ];
   const sources = [
-    { name: "Lake Eerie", code: "LE" },
+    { name: "Lake Erie", code: "LE" },
     { name: "Grand Lake St. Marys", code: "GL" },
     { name: "Ohio River", code: "OR" },
   ];
@@ -248,7 +248,7 @@ const CombinedCFS = () => {
     e.preventDefault();
     // console.log(data);
     // data.date && show();
-    const url = `${process.env.REACT_APP_API_BASE_URL}/combinedcfs`;
+    const url = `/cyanoweb/api/combinedcfs`;
     const rawResponse = await fetch(url, {
       method: "POST",
       headers: {
@@ -270,17 +270,17 @@ const CombinedCFS = () => {
         coagulant_chemical_dosage: data.coagulantChemicalDosage, //inputNumber
         coagulant_mixing_speed: data.coagulantMixingSpeed, //inputNumber
         coagulant_reaction_time: data.coagulantReactionTime, //
-        coagulant_reaction_unit: data.coagulantReactionUnit.name, //dropdown [Min,Sec]
+        coagulant_reaction_unit: "Seconds", //dropdown [Min,Sec]
         flocculant_type: data.flocculantType.name, //dropdown
         
         flocculant_manufacturer: data.flocculantManufacturer, //inputText
         flocculant_chemical_dosage: data.flocculantChemicalDosage, //inputNumber
         flocculant_mixing_speed: data.flocculantMixingSpeed, //inputNumber
         flocculant_reaction_time: data.flocculantReactionTime, //
-        flocculant_reaction_unit: data.flocculantReactionUnit.name, //dropdown [Min,Sec]
+        flocculant_reaction_unit: "Minutes", //dropdown [Min,Sec]
 
         sedimentation_reaction_time: data.sedimentationReactionTime, //
-        sedimentation_reaction_unit: data.sedimentationReactionUnit.name, //dropdown [Min,Sec]
+        sedimentation_reaction_unit: "Minutes", //dropdown [Min,Sec]
 
         turbidity_initial: data.turbidityInitial,
         turbidity_final: data.turbidityFinal,
@@ -353,7 +353,7 @@ const CombinedCFS = () => {
   const experimentalConditions = () => {
     return (
       <>
-        <div className="justify-content-center">Experimental Conditions</div>
+        <div className="centerItems">Experimental Conditions</div>
         <div className="align-form-inputs">
           <Controller
             name="waterTemperature"
@@ -367,7 +367,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                  <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -401,7 +401,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -424,7 +424,7 @@ const CombinedCFS = () => {
           />
         </div>
         <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
-        <div className="justify-content-center">Coagulation</div>
+        <div className="centerItems">Coagulation</div>
 
         <div className="align-form-inputs">
           <Controller
@@ -434,7 +434,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className=" align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <Dropdown
+                <span className="requiredInput">*</span><Dropdown
                     value={field.value}
                     optionLabel="name"
                     placeholder="Select"
@@ -442,13 +442,13 @@ const CombinedCFS = () => {
                     options={coagulanttypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
-                    Type
+                    Chemical Type
                   </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -461,9 +461,6 @@ const CombinedCFS = () => {
           <Controller
             name="coagulantManufacturer"
             control={control}
-            rules={{
-              required: "Enter a valid manufacturer.",
-            }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
@@ -496,7 +493,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -508,7 +505,7 @@ const CombinedCFS = () => {
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />{"mg/L"}
+                  />{"mg/L as Al or Fe"}
 
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
                     Chemical Dosage
@@ -532,7 +529,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -586,7 +583,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -597,7 +594,7 @@ const CombinedCFS = () => {
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{"Second(s)"}
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
                     Reaction Time
                   </label>
@@ -607,15 +604,15 @@ const CombinedCFS = () => {
               </div>
             )}
           />
-          <Controller
+          {/* <Controller
             name="coagulantReactionUnit"
             control={control}
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  {/* <div className="col-3"> */}
-                  <Dropdown
+                  
+                  <span className="requiredInput">*</span><Dropdown
                     value={field.value}
                     optionLabel="name"
                     placeholder="Min/Sec"
@@ -626,26 +623,25 @@ const CombinedCFS = () => {
                     ]}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
 
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
-                    Reaction Unit
+                    Time Unit
                   </label>
                 </span>
-                {/* </div> */}
 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
-          />
+          /> */}
         </div>
         <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
 
-        <div className="justify-content-center">Flocculation</div>
+        <div className="centerItems">Flocculation</div>
         <div className="align-form-inputs">
           <Controller
             name="flocculantType"
@@ -654,7 +650,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className=" align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <Dropdown
+                <span className="requiredInput">*</span><Dropdown
                     value={field.value}
                     optionLabel="name"
                     placeholder="Select"
@@ -662,13 +658,13 @@ const CombinedCFS = () => {
                     options={flocculanttypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
-                    Type
+                    Chemical Type
                   </label>
                 </span>
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -681,9 +677,6 @@ const CombinedCFS = () => {
           <Controller
             name="flocculantManufacturer"
             control={control}
-            rules={{
-              required: "Enter a valid manufacturer.",
-            }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
@@ -716,7 +709,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -752,7 +745,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -806,7 +799,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -817,7 +810,7 @@ const CombinedCFS = () => {
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{"Minutes"}
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
                     Reaction Time
                   </label>
@@ -827,15 +820,15 @@ const CombinedCFS = () => {
               </div>
             )}
           />
-          <Controller
+          {/* <Controller
             name="flocculantReactionUnit"
             control={control}
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  {/* <div className="col-3"> */}
-                  <Dropdown
+                  
+                  <span className="requiredInput">*</span><Dropdown
                     value={field.value}
                     optionLabel="name"
                     placeholder="Min/Sec"
@@ -846,26 +839,25 @@ const CombinedCFS = () => {
                     ]}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
 
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
-                    Reaction Unit
+                    Time Unit
                   </label>
                 </span>
-                {/* </div> */}
 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
-          />
+          /> */}
         </div>
         <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
 
-        <div className="justify-content-center">Sedimentation</div>
+        <div className="centerItems">Sedimentation</div>
         <div className="align-form-inputs">
           <Controller
             name="sedimentationReactionTime"
@@ -878,7 +870,7 @@ const CombinedCFS = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -889,7 +881,7 @@ const CombinedCFS = () => {
                     inputClassName={classNames({
                       "p-invalid": fieldState.error,
                     })}
-                  />
+                  />{"Minutes"}
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
                     Settling Time
                   </label>
@@ -899,15 +891,14 @@ const CombinedCFS = () => {
               </div>
             )}
           />
-          <Controller
+          {/* <Controller
             name="sedimentationReactionUnit"
             control={control}
             rules={{ required: "reaction unit is required." }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  {/* <div className="col-3"> */}
-                  <Dropdown
+                  <span className="requiredInput">*</span><Dropdown
                     value={field.value}
                     optionLabel="name"
                     placeholder="Min/Sec"
@@ -918,22 +909,21 @@ const CombinedCFS = () => {
                     ]}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
 
                   <label htmlFor={field.name} style={{ color: "#070606" }}>
-                    Reaction Unit
+                    Time Unit
                   </label>
                 </span>
-                {/* </div> */}
 
                 <div>{getFormErrorMessage(field.name)}</div>
               </div>
             )}
-          />
+          /> */}
         </div>
         {/* <div className="align-form-inputs">
           <Controller
@@ -951,7 +941,7 @@ const CombinedCFS = () => {
                     options={chemicaltypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -1124,7 +1114,7 @@ const CombinedCFS = () => {
     };
     // console.log(parameters);
     return (
-      <div className="grid align-items-center" style={{ margin: "10px" }}>
+      <div className="grid align-items-center" style={{ margin: "5px" }}>
         {/* <div className=""> */}
         <div className="col-3">{fieldName}</div>
         <div className="col-3">
@@ -1143,8 +1133,9 @@ const CombinedCFS = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="p-float-label" >
+                {name==="turbidity"?<span className="requiredInput">*</span>:<span></span>}
+                <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -1187,8 +1178,9 @@ const CombinedCFS = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="p-float-label" >
+                {name==="turbidity"?<span className="requiredInput">*</span>:<span></span>}
+                <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -1218,7 +1210,7 @@ const CombinedCFS = () => {
             control={control}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
+                <span className="p-float-label" >
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -1247,10 +1239,128 @@ const CombinedCFS = () => {
     );
   };
 
+
+  const genericParameterComponentOptional = (name, usedName, fieldName) => {
+    const parameters = {
+      initial: name + "Initial",
+      initialUsedName: usedName + " Initial",
+      final: name + "Final",
+      finalUsedName: usedName + " Final",
+      removal: name + "Removal",
+      removalUsedName: usedName + " Removal",
+    };
+    // console.log(parameters);
+    return (
+      <div className="grid align-items-center" style={{ margin: "5px" }}>
+        {/* <div className=""> */}
+        <div className="col-3">{fieldName}</div>
+        <div className="col-3">
+          {/* <label htmlFor="integer" >
+                        Integer
+                    </label>
+                    <InputText id="integer" keyfilter="int" className="w-full" /> */}
+          <Controller
+            name={parameters.initial}
+            control={control}
+            render={({ field, fieldState }) => (
+              <div>
+                <span className="p-float-label" >
+                <InputNumber
+                    onValueChange={(e) => field.onChange(e)}
+                    id={field.name}
+                    value={field.value}
+                    allowEmpty={true}
+                    onBlur={field.onBlur}
+                    maxFractionDigits={5}
+                    // min={0}
+                    // max={14}
+                    // style={{ width: "50%" }}
+                    inputClassName={classNames({
+                      "p-invalid": fieldState.error,
+                    })}
+                  />
+
+                  <label htmlFor={field.name} style={{ color: "#070606" }}>
+                    {/* {parameters.initialUsedName}
+                     */}
+                    Initial
+                  </label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
+              </div>
+            )}
+          />
+        </div>
+
+        <div className="col-3">
+          {/* <label htmlFor="number" className="font-bold block mb-2">
+                        Number
+                    </label>
+                    <InputText id="number" keyfilter="num" className="w-full" /> */}
+          <Controller
+            name={parameters.final}
+            control={control}
+            render={({ field, fieldState }) => (
+              <div>
+                <span className="p-float-label" >
+                <InputNumber
+                    onValueChange={(e) => field.onChange(e)}
+                    id={field.name}
+                    value={field.value}
+                    onBlur={field.onBlur}
+                    maxFractionDigits={5}
+                    inputClassName={classNames({
+                      "p-invalid": fieldState.error,
+                    })}
+                  />
+
+                  <label htmlFor={field.name} style={{ color: "#070606" }}>
+                    {/* {parameters.finalUsedName} */}
+                    Final
+                  </label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
+              </div>
+            )}
+          />
+        </div>
+        <div className="col-3">
+          <Controller
+            name={parameters.removal}
+            control={control}
+            render={({ field, fieldState }) => (
+              <div>
+                <span className="p-float-label" >
+                  <InputNumber
+                    onValueChange={(e) => field.onChange(e)}
+                    id={field.name}
+                    value={field.value}
+                    onBlur={field.onBlur}
+                    maxFractionDigits={5}
+                    // style={{ width: "50%" }}
+                    disabled
+                    inputClassName={classNames({
+                      "p-invalid": fieldState.error,
+                    })}
+                  />
+
+                  <label htmlFor={field.name} style={{ color: "#070606" }}>
+                    Removal %
+                  </label>
+                </span>
+                <div>{getFormErrorMessage(field.name)}</div>
+              </div>
+            )}
+          />
+        </div>
+      </div>
+    );
+  };
+
   const basicInformation = () => {
     return (
       <>
-        <div style={{ padding: "5px" }}>Basic Information</div>
+        <div className="centerItems" style={{ padding: "5px" }}>Basic Information</div>
         <div className="grid align-items-center justify-content-center">
           <div className="align-form-inputs">
             <Controller
@@ -1260,7 +1370,7 @@ const CombinedCFS = () => {
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
-                    <Dropdown
+                  <span className="requiredInput">*</span><Dropdown
                       value={field.value}
                       optionLabel="name"
                       placeholder="Select"
@@ -1268,13 +1378,13 @@ const CombinedCFS = () => {
                       options={sources}
                       control={control}
                       onChange={(e) => field.onChange(e.value)}
-                      style={{ width: "100%" }}
+                      style={{ width: "15rem" }}
                       className={classNames({
                         "p-invalid": fieldState.error,
                       })}
                     />
                     <label htmlFor={field.name} style={{ color: "#070606" }}>
-                      Source
+                      Water Source
                     </label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
@@ -1290,7 +1400,7 @@ const CombinedCFS = () => {
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
-                    <Calendar
+                  <span className="requiredInput">*</span><Calendar
                       inputId={field.name}
                       value={field.value}
                       onChange={field.onChange}
@@ -1312,9 +1422,6 @@ const CombinedCFS = () => {
             <Controller
               name="model"
               control={control}
-              rules={{
-                required: "Enter a valid model.",
-              }}
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
@@ -1338,9 +1445,6 @@ const CombinedCFS = () => {
             <Controller
               name="device"
               control={control}
-              rules={{
-                required: "Enter a valid device.",
-              }}
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
@@ -1367,32 +1471,32 @@ const CombinedCFS = () => {
   const experimentalResults = () => {
     return (
       <>
-        <div className="justify-content-center">Experimental Results</div>
+        <div className="centerItems">Experimental Results</div>
         <div className="align-form-inputs">
           {genericParameterComponent(
             "turbidity",
             "Turbidity",
-            "Turbidity(NTU)"
+            "Turbidity (NTU)"
           )}
-          {genericParameterComponent(
+          {genericParameterComponentOptional(
             "totalMicrocystis",
             "Total Microcystis",
             "Total Microcystis (PC-IGS) (Log gene copies/L)"
           )}
-          {genericParameterComponent(
+          {genericParameterComponentOptional(
             "mcyeMicrocystis",
             "mcye Microcystis",
-            "mcye Microcystis(Log gene copies/L)"
+            "mcye Microcystis (Log gene copies/L)"
           )}
-          {genericParameterComponent(
+          {genericParameterComponentOptional(
             "mycePlanktothrix",
             "myce Planktothrix",
-            "mcye Planktothrix(Log gene copies/L)"
+            "mcye Planktothrix (Log gene copies/L)"
           )}
-          {genericParameterComponent(
+          {genericParameterComponentOptional(
             "totalMicrocystins",
             "Total Microcystins",
-            "Total Microcystins(ppb)"
+            "Total Microcystins (ppb)"
           )}
         </div>
       </>
@@ -1411,7 +1515,8 @@ const CombinedCFS = () => {
         // }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          CombinedCFS
+          <div className="centerItems">Combined C/F/S</div>
+          <div className="centerItems"> Caution: Input all required information(*) before clicking the submit button otherwise, your submission will not be accepted.</div>
           <div
             style={{
               backgroundColor: "rgb(182,204,182)",

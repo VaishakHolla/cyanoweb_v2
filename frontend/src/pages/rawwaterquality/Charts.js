@@ -56,6 +56,7 @@ export default function Charts(props) {
                   }
                 },
                 y: {
+                    min:0,
                   title: {
                     display: true,
                     text: props.data.y_label,

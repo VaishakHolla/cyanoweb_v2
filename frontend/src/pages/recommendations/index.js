@@ -7,6 +7,8 @@ import RecommendationScatter from "./RecommendationScatter";
 import SedimentationScatter from "./SedimentationScatter";
 import SedimentationLine from "./SedimentationLine";
 
+import CombinedCFSReccomendation from "./CombinedCFSReccomendation";
+
 import { useSelector,useDispatch } from "react-redux";
 import {selectAllReccomendationData,fetchReccomendationData} from '../../features/reccomendation/reccomendationSlice'
 import "./index.css";
@@ -15,16 +17,16 @@ const Recommendations = () => {
   const dispatch = useDispatch();
   // console.log("REDUX API",reccomendationDataFromAPI)
   const sourceOptions = [
-    { name: "Lake Erie", code: "LE" },
+    { name: "Lake Eerie", code: "LE" },
     { name: "Grand Lake St. Marys", code: "GM" },
     { name: "Ohio River", code: "OR" },
   ];
   const parameterOptions = [
-    { name: "Turbidity", code: "turbidityRemoval" },
-    { name: "Total Microcystis", code: "totalMicrocystisRemoval" },
-    { name: "mcye Microcystis", code: "mcyEMicrocystisRemoval" },
-    { name: "myce Planktothrix", code: "mcyEPlanktothrixRemoval" },
-    { name: "Total Microcystins", code: "totalMiocrocystinsRemoval" },
+    { name: "Turbidity", code: "turbidity_removal" },
+    { name: "Total Microcystis", code: "totalMicrocystis_removal" },
+    { name: "mcye Microcystis", code: "mcyeMicrocystis_removal" },
+    { name: "myce Planktothrix", code: "mycePlanktothrix_removal" },
+    { name: "Total Microcystins", code: "totalMicrocystins_removal" },
   ];
   const coagulantOptions = [
     { name: "Aluminum Sulfate", code: "AS" },
@@ -37,83 +39,128 @@ const Recommendations = () => {
     { name: "Sodium Polyacrylate", code: "SP" },
   ];
 
+  // const removalLabels = [
+  //   "turbidityRemoval",
+  //   "totalMicrocystisRemoval",
+  //   "mcyEMicrocystisRemoval",
+  //   "mcyEPlanktothrixRemoval",
+  //   "totalMiocrocystinsRemoval",
+  // ];
+
   const removalLabels = [
-    "turbidityRemoval",
-    "totalMicrocystisRemoval",
-    "mcyEMicrocystisRemoval",
-    "mcyEPlanktothrixRemoval",
-    "totalMiocrocystinsRemoval",
+    "turbidity_removal" ,
+    "totalMicrocystis_removal" ,
+    "mcyeMicrocystis_removal" ,
+    "mycePlanktothrix_removal" ,
+    "totalMicrocystins_removal"
   ];
 
-  function formatData(dataObj) {
-    let coagulationData = {
-      turbidityRemoval: [{ x: 0, y: 0 }],
-      totalMicrocystisRemoval: [{ x: 0, y: 0 }],
-      mcyEMicrocystisRemoval: [{ x: 0, y: 0 }],
-      mcyEPlanktothrixRemoval: [{ x: 0, y: 0 }],
-      totalMiocrocystinsRemoval: [{ x: 0, y: 0 }],
-    };
-    let flocullationData = {
-      turbidityRemoval: [{ x: 0, y: 0 }],
-      totalMicrocystisRemoval: [{ x: 0, y: 0 }],
-      mcyEMicrocystisRemoval: [{ x: 0, y: 0 }],
-      mcyEPlanktothrixRemoval: [{ x: 0, y: 0 }],
-      totalMiocrocystinsRemoval: [{ x: 0, y: 0 }],
-    };
-    let sedimentationData = {
-      turbidityRemoval: [],
-      totalMicrocystisRemoval: [],
-      mcyEMicrocystisRemoval: [],
-      mcyEPlanktothrixRemoval: [],
-      totalMiocrocystinsRemoval: [],
-    };
-    dataObj.map((obj) => {
-      removalLabels.map((removalObj) => {
-        coagulationData[removalObj].push({
-          y: obj.coagulation[removalObj],
-          x: obj.coagulation.chemicalDosage,
-        });
+  // function formatData(dataObj) {
+  //   let coagulationData = {
+  //     turbidityRemoval: [{ x: 0, y: 0 }],
+  //     totalMicrocystisRemoval: [{ x: 0, y: 0 }],
+  //     mcyEMicrocystisRemoval: [{ x: 0, y: 0 }],
+  //     mcyEPlanktothrixRemoval: [{ x: 0, y: 0 }],
+  //     totalMiocrocystinsRemoval: [{ x: 0, y: 0 }],
+  //   };
+  //   let flocullationData = {
+  //     turbidityRemoval: [{ x: 0, y: 0 }],
+  //     totalMicrocystisRemoval: [{ x: 0, y: 0 }],
+  //     mcyEMicrocystisRemoval: [{ x: 0, y: 0 }],
+  //     mcyEPlanktothrixRemoval: [{ x: 0, y: 0 }],
+  //     totalMiocrocystinsRemoval: [{ x: 0, y: 0 }],
+  //   };
+  //   let sedimentationData = {
+  //     turbidityRemoval: [],
+  //     totalMicrocystisRemoval: [],
+  //     mcyEMicrocystisRemoval: [],
+  //     mcyEPlanktothrixRemoval: [],
+  //     totalMiocrocystinsRemoval: [],
+  //   };
+  //   dataObj.map((obj) => {
+  //     removalLabels.map((removalObj) => {
+  //       coagulationData[removalObj].push({
+  //         y: obj.coagulation[removalObj],
+  //         x: obj.coagulation.chemicalDosage,
+  //       });
 
-        flocullationData[removalObj].push({
-          y: obj.coagulation_flocculation[removalObj],
-          x: obj.coagulation_flocculation.chemicalDosage,
-        });
+  //       flocullationData[removalObj].push({
+  //         y: obj.coagulation_flocculation[removalObj],
+  //         x: obj.coagulation_flocculation.chemicalDosage,
+  //       });
 
-        sedimentationData[removalObj].push({
-          label: obj.coagulation_flocculation.chemicalDosage + "mg/L",
-          showLine: true,
-          data: [
-            { x: 0, y: obj.coagulation_flocculation[removalObj] },
-            {
-              y: obj.coagulation_flocculation_sedimentation[removalObj],
-              x: Number(
-                obj.coagulation_flocculation_sedimentation.reactionTime.split(
-                  "Min"
-                )[0]
-              ),
-            },
-          ],
-        });
-      });
-    });
-    [coagulationData, flocullationData, sedimentationData].map((dataObj) => {
-      Object.keys(dataObj).map((obj) => {
-        dataObj[obj] = dataObj[obj].sort((a, b) => a.x - b.x || a.y - b.y);
-      });
-    });
-    // console.log(sedimentationData);
+  //       sedimentationData[removalObj].push({
+  //         label: obj.coagulation_flocculation.chemicalDosage + "mg/L",
+  //         showLine: true,
+  //         data: [
+  //           { x: 0, y: obj.coagulation_flocculation[removalObj] },
+  //           {
+  //             y: obj.coagulation_flocculation_sedimentation[removalObj],
+  //             x: Number(
+  //               obj.coagulation_flocculation_sedimentation.reactionTime.split(
+  //                 "Min"
+  //               )[0]
+  //             ),
+  //           },
+  //         ],
+  //       });
+  //     });
+  //   });
+  //   [coagulationData, flocullationData, sedimentationData].map((dataObj) => {
+  //     Object.keys(dataObj).map((obj) => {
+  //       dataObj[obj] = dataObj[obj].sort((a, b) => a.x - b.x || a.y - b.y);
+  //     });
+  //   });
+  //   // console.log(sedimentationData);
 
-    // coagulationData.totalMiocrocystinsRemoval=coagulationData.totalMiocrocystinsRemoval.sort((a, b) => a.x - b.x||a.y-b.y)
-    // flocullationData.totalMiocrocystinsRemoval=flocullationData.totalMiocrocystinsRemoval.sort((a, b) => a.x - b.x||a.y-b.y)
-    return [coagulationData, flocullationData, sedimentationData];
-  }
+  //   // coagulationData.totalMiocrocystinsRemoval=coagulationData.totalMiocrocystinsRemoval.sort((a, b) => a.x - b.x||a.y-b.y)
+  //   // flocullationData.totalMiocrocystinsRemoval=flocullationData.totalMiocrocystinsRemoval.sort((a, b) => a.x - b.x||a.y-b.y)
+  //   return [coagulationData, flocullationData, sedimentationData];
+  // }
   //   console.log(formatData(data),"hekkk")
-  let [coagulationData, flocullationData, sedimentationData] = formatData(reccomendationDataFromAPI);
+  // let [coagulationData, flocullationData, sedimentationData] = formatData(reccomendationDataFromAPI);
+
+  // function formatCombinedCFSData(data){
+  //   data.map(experiment => {
+  //     const commonData = experiment.common;
+    
+  //     const chartData = removalLabels.reduce((result, label) => {
+  //       const values = experiment.flocculant_data.map(entry => ({
+  //         x: entry.flocculant_chemical_dosage,
+  //         y: entry.results[0][label] || 0, // Use 0 if the value is missing
+  //       }));
+    
+  //       result[label] = values;
+  //       return result;
+  //     }, {});
+  //     console.log({ date: commonData.date, chartData })
+  //     return { date: commonData.date, chartData };
+  //   });
+  // }
+
 
   const [selectedSource, setSelectedSource] = useState(null);
   const [selectedParameter, setSelectedParameter] = useState(null);
   const [selectedCoagulant, setSelectedCoagulant] = useState(null);
   const [selectedFlocculant, setSelectedFlocculant] = useState(null);
+
+  let combinedCFSFormattedData = reccomendationDataFromAPI.map(experiment => {
+    const commonData = experiment.common;
+  
+    const chartData = removalLabels.reduce((result, label) => {
+      const values = experiment.flocculant_data.map(entry => ({
+        x: entry.flocculant_chemical_dosage,
+        y: entry.results[0][label] || 0, // Use 0 if the value is missing
+      }));
+      values.sort((a, b) => a.x - b.x)
+      result[label] = values;
+      return result;
+    }, {});
+    // console.log({ date: commonData.date, chartData })
+    return { date: commonData.date, chartData };
+  });
+
+  console.log(combinedCFSFormattedData)
 
   const handleClick = () => {
     // console.log(
@@ -195,23 +242,8 @@ const Recommendations = () => {
           />
         </div>
       </div>
-      {/* {getExperimentalConditions()} */}
-      {/* {removalLabels.map((obj) => {
-        return ( */}
       <>
-        {/* <RecommendationChart
-            data={{
-              coagulationData: data.coagulation[obj],
-              sedimentationData:
-                data.coagulation_flocculation_sedimentaion[obj],
-              flocculationData: data.coagulation_flocculation[obj],
-              datasetLabel:data.coagulation.chemicalDosage,
-              x_label:obj,
-              y_label:"Removal"
-            }}
-          /> */}
-        {/* {console.log(coagulationData[obj],obj)} */}
-        <div className="grid">
+        {/* <div className="grid">
           <div className="col-6">
             <RecommendationScatter
               data={{
@@ -224,35 +256,33 @@ const Recommendations = () => {
                 flocculationData: selectedParameter
                   ? flocullationData[selectedParameter.code]
                   : [],
-                //   datasetLabel:chemicalDosage,
-                y_label: selectedParameter ? selectedParameter.code : "",
+                y_label: selectedParameter ? selectedParameter.name : "",
                 x_label: "Chemical dosage (mg/L)",
               }}
             />
           </div>
-          {/* <div className="col-6">
-                <SedimentationScatter
-                  data={{
-                    sedimentationData:  selectedParameter?sedimentationData[selectedParameter.code]:[],
-                    y_label:  selectedParameter?selectedParameter.code:'',
-                    // x_label: "Chemical dosage (mg/L)",
-                  }}
-                />
-              </div> */}
           <div className="col-6">
             <SedimentationLine
               data={{
                 sedimentationData: selectedParameter
                   ? sedimentationData[selectedParameter.code]
                   : [],
-                y_label: selectedParameter ? selectedParameter.code : "",
+                y_label: selectedParameter ? selectedParameter.name : "",
               }}
             />
           </div>
-        </div>
+        </div> */}
+        {combinedCFSFormattedData.length > 0 ? (
+        <CombinedCFSReccomendation
+          formattedData={combinedCFSFormattedData}
+          selectedParameter={selectedParameter}
+          selectedCoagulant={selectedCoagulant}
+        />
+      ) : (
+        <div>No data available for the selected parameter.</div>
+      )}
+        
       </>
-      {/* ); */}
-      {/* })} */}
     </div>
   );
 };

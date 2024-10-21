@@ -9,3 +9,13 @@
 .reactionTime .p-inputtext .p-component .p-filled .p-inputnumber-input{
     width:10em;
 }
+
+.requiredInput{
+    color: red;
+}
+
+.centerItems{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}

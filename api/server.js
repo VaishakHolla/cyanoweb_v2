@@ -3,7 +3,8 @@ const cors = require("cors");
 require("dotenv").config();
 const app = express();
 app.use(express.json())
-
+const path = require('path');
+const UCAuth = require(path.resolve( __dirname, './app/helpers/uc-auth.js' ));
 var corsOptions = {
   origin: process.env.CLIENT_ORIGIN
 };
@@ -26,6 +27,8 @@ db.mongoose
 // parse requests of content-type - application/json
 app.use(express.json());
 
+// use UC HTTP headers auth to secure the api
+// app.use(UCAuth);
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 

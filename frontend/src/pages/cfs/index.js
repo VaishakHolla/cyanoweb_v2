@@ -19,7 +19,7 @@ const CFS = () => {
   }
   return (
     <div>
-      <div className="grid align-inputs-center" style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em'}}>
+      {/* <div className="grid align-inputs-center" style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em'}}>
         <div className="col-4">
           <Button
             label="Coagulation"
@@ -56,11 +56,12 @@ const CFS = () => {
             style={{ minWidth: "20rem" }}
           />
         </div>
-      </div>
-      {renderForm()}
+      </div> */}
+      {/* {renderForm()} */}
       {/* <Coagulation />
       <Flocculation />
       <Sedimentation /> */}
+      <CombinedCFS/>
     </div>
   );
 };

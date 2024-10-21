@@ -306,7 +306,7 @@ const Coagulation = () => {
   const experimentalConditions = () => {
     return (
       <>
-        <div className="justify-content-center">Experimental Conditions</div>
+        <div className="centerItems">Experimental Conditions</div>
         <div className="align-form-inputs">
           <Controller
             name="waterTemperature"
@@ -320,7 +320,7 @@ const Coagulation = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -353,7 +353,7 @@ const Coagulation = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -382,7 +382,7 @@ const Coagulation = () => {
               <div className=" align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                 
-                  <Dropdown
+                <span className="requiredInput">*</span><Dropdown
                     value={field.value}
                     optionLabel="name"
                     placeholder="Select"
@@ -390,7 +390,7 @@ const Coagulation = () => {
                     options={chemicaltypes}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
@@ -406,9 +406,9 @@ const Coagulation = () => {
           <Controller
             name="otherChemicalType"
             control={control}
-            rules={{
-              required: "Enter a valid otherChemicalType.",
-            }}
+            // rules={{
+            //   required: "Enter a valid otherChemicalType.",
+            // }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
@@ -431,9 +431,9 @@ const Coagulation = () => {
           <Controller
             name="manufacturer"
             control={control}
-            rules={{
-              required: "Enter a valid manufacturer.",
-            }}
+            // rules={{
+            //   required: "Enter a valid manufacturer.",
+            // }}
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
@@ -464,7 +464,7 @@ const Coagulation = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -498,7 +498,7 @@ const Coagulation = () => {
             render={({ field, fieldState }) => (
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -551,7 +551,7 @@ const Coagulation = () => {
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                 
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -563,7 +563,7 @@ const Coagulation = () => {
                       "p-invalid": fieldState.error,
                     })}
                   />
-                  <label htmlFor={field.name} style={{color:"#070606"}}>reactionTime</label>
+                  <label htmlFor={field.name} style={{color:"#070606"}}>Reaction Time</label>
                 </span>
 
                 <div>{getFormErrorMessage(field.name)}</div>
@@ -578,7 +578,7 @@ const Coagulation = () => {
               <div className="align-items-center" style={{ margin: "20px" }}>
                 <span className="p-float-label" style={{ margin: "5px" }}>
                   {/* <div className="col-3"> */}
-                  <Dropdown
+                  <span className="requiredInput">*</span><Dropdown
                     value={field.value}
                     optionLabel="name"
                     placeholder="Min/Sec"
@@ -589,14 +589,14 @@ const Coagulation = () => {
                     ]}
                     control={control}
                     onChange={(e) => field.onChange(e.value)}
-                    style={{ width: "73%" }}
+                    style={{ width: "15rem" }}
                     className={classNames({
                       "p-invalid": fieldState.error,
                     })}
                   />
 
                   
-<label htmlFor={field.name} style={{color:"#070606"}}>reactionUnit</label>
+<label htmlFor={field.name} style={{color:"#070606"}}>Reaction Unit</label>
                 </span>
                 {/* </div> */}
 
@@ -620,7 +620,7 @@ const Coagulation = () => {
     };
     // console.log(parameters);
     return (
-      <div className="grid align-items-center" style={{ margin: "10px" }}>
+      <div className="grid align-items-center" style={{ margin: "5px" }}>
         {/* <div className=""> */}
         <div className="col-3">{fieldName}</div>
         <div className="col-3">
@@ -639,9 +639,9 @@ const Coagulation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
+                <span className="p-float-label" >
 
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -684,9 +684,9 @@ const Coagulation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
+                <span className="p-float-label">
 
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -717,7 +717,7 @@ const Coagulation = () => {
             
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
+                <span className="p-float-label">
 
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
@@ -750,7 +750,7 @@ const Coagulation = () => {
   const basicInformation = () => {
     return (
       <>
-        <div style={{ padding: "5px" }}>Basic Information</div>
+        <div className="centerItems" style={{ padding: "5px" }}>Basic Information</div>
         <div className="grid align-items-center justify-content-center">
           <div className="align-form-inputs">
             <Controller
@@ -761,7 +761,7 @@ const Coagulation = () => {
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
                   
-                    <Dropdown
+                  <span className="requiredInput">*</span><Dropdown
                       value={field.value}
                       optionLabel="name"
                       placeholder="Select"
@@ -769,12 +769,12 @@ const Coagulation = () => {
                       options={sources}
                       control={control}
                       onChange={(e) => field.onChange(e.value)}
-                      style={{ width: "100%" }}
+                      style={{ width: "15rem" }}
                       className={classNames({
                         "p-invalid": fieldState.error,
                       })}
                     />
-                    <label htmlFor={field.name} style={{color:"#070606"}}>Source</label>
+                    <label htmlFor={field.name} style={{color:"#070606"}}>Water Source</label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
                 </div>
@@ -790,7 +790,7 @@ const Coagulation = () => {
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
                   
-                    <Calendar
+                  <span className="requiredInput">*</span><Calendar
                       inputId={field.name}
                       value={field.value}
                       onChange={field.onChange}
@@ -862,7 +862,7 @@ const Coagulation = () => {
   const experimentalResults = () => {
     return (
       <>
-        <div className="justify-content-center">Experimental Results</div>
+        <div className="centerItems">Experimental Results</div>
         <div className="align-form-inputs">
           {genericParameterComponent(
             "turbidity",
@@ -906,7 +906,9 @@ const Coagulation = () => {
         // }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          Coagulation
+        <div className="centerItems">Coagulation</div>
+          <div className="centerItems"> Caution: Input all required information(*) before clicking the submit button otherwise, your submission will not be accepted.</div>
+          
           <div style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em',borderRadius:'.5em'}}>{basicInformation()}</div>
           <div className="card grid" style={{backgroundColor:'rgb(182,204,182)',margin:'1.75em',borderRadius:'.5em'}}>
             <div className="col-3" style={{backgroundColor:'rgb(140,163,140)',margin:'1.75em',borderRadius:'.5em'}}>{experimentalConditions()}</div>
@@ -930,3 +932,4 @@ const Coagulation = () => {
 };
 
 export default Coagulation;
+

@@ -289,7 +289,7 @@ const Sedimentation = () => {
   const experimentalConditions = () => {
     return (
       <>
-        <div className="justify-content-center">Experimental Conditions</div>
+        <div className="centerItems">Experimental Conditions</div>
         <div className="align-form-inputs">
           <Controller
             name="waterTemperature"
@@ -304,7 +304,7 @@ const Sedimentation = () => {
               <div className="align-items-center" style={{ margin: "20px" }}>
                
                 <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -339,7 +339,7 @@ const Sedimentation = () => {
               <div className="flex flex-column gap-2"style={{ margin: "20px" }}>
                
                 <span  className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -375,7 +375,7 @@ const Sedimentation = () => {
                   <div className="align-items-center"style={{ margin: "20px" }}>
                    
                     <span className="p-float-label" style={{ margin: "5px" }}>
-                      <InputNumber
+                    <span className="requiredInput">*</span><InputNumber
                         onValueChange={(e) => field.onChange(e)}
                         id={field.name}
                         value={field.value}
@@ -410,7 +410,7 @@ const Sedimentation = () => {
                     
                     <span className="p-float-label" style={{ margin: "5px" }}>
                       {/* <div className="col-3"> */}
-                      <Dropdown
+                      <span className="requiredInput">*</span><Dropdown
                         value={field.value}
                         optionLabel="name"
                         placeholder="Select"
@@ -421,7 +421,7 @@ const Sedimentation = () => {
                         ]}
                         control={control}
                         onChange={(e) => field.onChange(e.value)}
-                        style={{ width: "100%" }}
+                        style={{ width: "15rem" }}
                         className={classNames({
                           "p-invalid": fieldState.error,
                         })}
@@ -454,7 +454,7 @@ const Sedimentation = () => {
     };
     // console.log(parameters);
     return (
-      <div className="grid align-items-center" style={{ margin: "10px" }}>
+      <div className="grid align-items-center" style={{ margin: "5px" }}>
         {/* <div className=""> */}
         <div className="col-3">{fieldName}</div>
         <div className="col-3">
@@ -473,8 +473,8 @@ const Sedimentation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="p-float-label">
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -515,8 +515,8 @@ const Sedimentation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
-                  <InputNumber
+                <span className="p-float-label">
+                <span className="requiredInput">*</span><InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
                     value={field.value}
@@ -554,7 +554,7 @@ const Sedimentation = () => {
             }}
             render={({ field, fieldState }) => (
               <div>
-                <span className="p-float-label" style={{ margin: "5px" }}>
+                <span className="p-float-label">
                   <InputNumber
                     onValueChange={(e) => field.onChange(e)}
                     id={field.name}
@@ -587,7 +587,7 @@ const Sedimentation = () => {
   const basicInformation = () => {
     return (
       <>
-        <div style={{ padding: "5px" }}>Basic Information</div>
+        <div className="centerItems" style={{ padding: "5px" }}>Basic Information</div>
         <div className="grid align-items-center justify-content-center">
           <div className="align-form-inputs">
             <Controller
@@ -597,7 +597,7 @@ const Sedimentation = () => {
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
-                    <Dropdown
+                  <span className="requiredInput">*</span><Dropdown
                       value={field.value}
                       optionLabel="name"
                       placeholder="Select"
@@ -605,13 +605,13 @@ const Sedimentation = () => {
                       options={sources}
                       control={control}
                       onChange={(e) => field.onChange(e.value)}
-                      style={{ width: "100%" }}
+                      style={{ width: "15rem" }}
                       className={classNames({
                         "p-invalid": fieldState.error,
                       })}
                     />
                     <label htmlFor={field.name} style={{ color: "#070606" }}>
-                      source
+                      Water Source
                     </label>
                   </span>
                   <div>{getFormErrorMessage(field.name)}</div>
@@ -627,7 +627,7 @@ const Sedimentation = () => {
               render={({ field, fieldState }) => (
                 <div className="align-items-center" style={{ margin: "20px" }}>
                   <span className="p-float-label" style={{ margin: "5px" }}>
-                    <Calendar
+                  <span className="requiredInput">*</span><Calendar
                       inputId={field.name}
                       value={field.value}
                       onChange={field.onChange}
@@ -703,7 +703,7 @@ const Sedimentation = () => {
   const experimentalResults = () => {
     return (
       <>
-        <div className="justify-content-center">Experimental Results</div>
+        <div className="centerItems">Experimental Results</div>
         <div className="align-form-inputs">
           {genericParameterComponent(
             "turbidity",
@@ -747,7 +747,9 @@ const Sedimentation = () => {
         // }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          Sedimentaion
+          
+        <div className="centerItems">Sedimentaion</div>
+          <div className="centerItems"> Caution: Input all required information(*) before clicking the submit button otherwise, your submission will not be accepted.</div>
           <div
             style={{
               backgroundColor: "rgb(182,204,182)",

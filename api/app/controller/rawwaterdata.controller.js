@@ -71,6 +71,7 @@ exports.test =(req,res)=>{
 
 // Retrieve all Rawwaterdatas from the database.
 exports.findAll = (req, res) => {
+  console.log("Inside of all api")
     Rawwaterdata.find()
     .then(data => {
       data.sort(function(a,b){

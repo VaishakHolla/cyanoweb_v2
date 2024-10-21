@@ -159,10 +159,10 @@ const RawWaterQuality = () => {
     <div>
       <AddDataModal />
       <div className="grid">
-        <div className="col-6">
+        <div className="col-4">
           <MapComponent locations={uniqueLocations} handleClick={handleClick} />
         </div>
-        <div className="col-6">
+        <div className="col-8">
           <div className="grid">
             <div className="col-6">
               <Charts

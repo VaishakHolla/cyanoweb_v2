@@ -1,0 +1,31 @@
+.custom-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .legend {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  .purple {
+    background-color: #6c4279;
+    color: white;
+  }
+  
+  .green {
+    background-color: #4f7942;
+    color: white;
+  }
+  
+  .chart-container {
+    position: relative; /* This will make the chart container take the maximum height available. */
+  }
+
+  .chart-container canvas {
+    width: 100% !important; /* Set canvas width to 100% of the container */
+    height: 60vh !important; /* Allow canvas height to adjust automatically */
+  }
